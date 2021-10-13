@@ -1,12 +1,19 @@
+import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
+import java.io.FileInputStream
+import java.util.Properties
 
 plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
+    id("com.codingfeline.buildkonfig")
 }
 
 version = "1.0"
+
+val notionProperties = Properties()
+notionProperties.load(FileInputStream(rootProject.file("notion.properties")))
 
 kotlin {
     android()
@@ -26,7 +33,7 @@ kotlin {
         frameworkName = "shared"
         podfile = project.file("../iosApp/Podfile")
     }
-    
+
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -57,5 +64,41 @@ android {
     defaultConfig {
         minSdkVersion(28)
         targetSdkVersion(30)
+    }
+}
+
+buildkonfig {
+    packageName = "io.github.warahiko.shoppingmemokmmapplication"
+
+    defaultConfigs {
+        buildConfigField(STRING, "NOTION_BASE_URL", "https://api.notion.com/v1/")
+        buildConfigField(STRING, "NOTION_TOKEN", notionProperties.getProperty("notionToken"))
+        buildConfigField(
+            STRING,
+            "NOTION_VERSION",
+            notionProperties.getProperty("notionVersion")
+        )
+        buildConfigField(
+            STRING,
+            "DATABASE_ID",
+            notionProperties.getProperty("databaseIdRelease")
+        )
+        buildConfigField(
+            STRING,
+            "TAG_DATABASE_ID",
+            notionProperties.getProperty("tagDatabaseIdRelease")
+        )
+    }
+    defaultConfigs("dev") {
+        buildConfigField(
+            STRING,
+            "DATABASE_ID",
+            notionProperties.getProperty("databaseIdDebug")
+        )
+        buildConfigField(
+            STRING,
+            "TAG_DATABASE_ID",
+            notionProperties.getProperty("tagDatabaseIdDebug")
+        )
     }
 }
