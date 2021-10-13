@@ -3,9 +3,11 @@
     package="io.github.warahiko.shoppingmemokmmapplication.android">
 
     <application
+        android:name=".ShoppingMemoApplication"
         android:allowBackup="false"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -15,4 +17,4 @@
             </intent-filter>
         </activity>
     </application>
-</manifest> 
+</manifest>

@@ -3,9 +3,10 @@ import shared
 
 struct ContentView: View {
 	let greet = Greeting().greeting()
+    let repository = InjectorIos().shoppingItemListRepository
 
 	var body: some View {
-		Text(greet)
+        Text(greet + repository.fetchShoppingList().joined())
 	}
 }
 
