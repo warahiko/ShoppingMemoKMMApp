@@ -1,5 +1,6 @@
 package io.github.warahiko.shoppingmemokmmapplication.data.mapper
 
+import com.benasher44.uuid.uuidFrom
 import io.github.warahiko.shoppingmemokmmapplication.data.ext.concatText
 import io.github.warahiko.shoppingmemokmmapplication.data.model.ShoppingItem
 import io.github.warahiko.shoppingmemokmmapplication.data.model.Status
@@ -9,11 +10,10 @@ import io.github.warahiko.shoppingmemokmmapplication.data.network.model.Relation
 import io.github.warahiko.shoppingmemokmmapplication.data.network.model.Select
 import io.github.warahiko.shoppingmemokmmapplication.data.network.model.ShoppingItemPage
 import kotlinx.datetime.toLocalDate
-import java.util.UUID
 
 fun ShoppingItemPage.toShoppingItem(): ShoppingItem {
     return ShoppingItem(
-        id = UUID.fromString(id),
+        id = uuidFrom(id),
         name = checkNotNull(properties[ShoppingItemProperty.Name.key]?.title?.concatText()),
         count = checkNotNull(properties[ShoppingItemProperty.Count.key]?.number?.toInt()),
         status = checkNotNull(properties[ShoppingItemProperty.Status.key]?.select?.let {

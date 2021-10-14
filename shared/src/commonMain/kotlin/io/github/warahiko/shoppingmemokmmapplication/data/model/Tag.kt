@@ -1,9 +1,10 @@
 package io.github.warahiko.shoppingmemokmmapplication.data.model
 
-import java.util.UUID
+import com.benasher44.uuid.Uuid
+import com.benasher44.uuid.uuid4
 
 data class Tag(
-    val id: UUID,
+    val id: Uuid,
     val name: String,
     val type: String,
 ) {
@@ -15,7 +16,7 @@ data class Tag(
             type: String = "",
         ): Tag {
             return Tag(
-                id = UUID.randomUUID(),
+                id = uuid4(),
                 name = name,
                 type = type,
             )

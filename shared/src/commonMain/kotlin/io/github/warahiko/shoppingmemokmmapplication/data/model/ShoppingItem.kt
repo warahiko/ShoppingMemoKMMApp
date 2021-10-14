@@ -1,10 +1,11 @@
 package io.github.warahiko.shoppingmemokmmapplication.data.model
 
+import com.benasher44.uuid.Uuid
+import com.benasher44.uuid.uuid4
 import kotlinx.datetime.LocalDate
-import java.util.UUID
 
 data class ShoppingItem(
-    val id: UUID,
+    val id: Uuid,
     val name: String,
     val count: Int,
     val status: Status,
@@ -36,13 +37,13 @@ data class ShoppingItem(
             memo: String,
             tag: Tag?,
         ): ShoppingItem {
-            return ShoppingItem(id = UUID.randomUUID(), name, count, status, doneDate, memo, tag)
+            return ShoppingItem(id = uuid4(), name, count, status, doneDate, memo, tag)
         }
     }
 }
 
 data class ShoppingItemEditable(
-    val id: UUID,
+    val id: Uuid,
     val name: String,
     val count: String,
     val status: Status,
@@ -65,7 +66,7 @@ data class ShoppingItemEditable(
     companion object {
         fun newInstanceToAdd(): ShoppingItemEditable {
             return ShoppingItemEditable(
-                id = UUID.randomUUID(),
+                id = uuid4(),
                 name = "",
                 count = "1",
                 status = Status.NEW,
