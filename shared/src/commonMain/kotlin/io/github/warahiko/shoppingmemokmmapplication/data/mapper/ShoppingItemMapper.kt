@@ -8,8 +8,7 @@ import io.github.warahiko.shoppingmemokmmapplication.data.network.model.Property
 import io.github.warahiko.shoppingmemokmmapplication.data.network.model.Relation
 import io.github.warahiko.shoppingmemokmmapplication.data.network.model.Select
 import io.github.warahiko.shoppingmemokmmapplication.data.network.model.ShoppingItemPage
-import java.text.SimpleDateFormat
-import java.util.Locale
+import kotlinx.datetime.toLocalDate
 import java.util.UUID
 
 fun ShoppingItemPage.toShoppingItem(): ShoppingItem {
@@ -20,7 +19,7 @@ fun ShoppingItemPage.toShoppingItem(): ShoppingItem {
         status = checkNotNull(properties[ShoppingItemProperty.Status.key]?.select?.let {
             Status.from(it.name)
         }),
-        doneDate = properties[ShoppingItemProperty.DoneDate.key]?.date?.start?.toDate(),
+        doneDate = properties[ShoppingItemProperty.DoneDate.key]?.date?.start?.toLocalDate(),
         memo = checkNotNull(properties[ShoppingItemProperty.Memo.key]?.richTexts?.concatText()),
         tag = null,
     )
@@ -34,7 +33,7 @@ fun ShoppingItem.toProperties(): Map<String, Property> {
         ShoppingItemProperty.Name.key to Property(title = name.toRichTextList()),
         ShoppingItemProperty.Count.key to Property(number = count.toLong()),
         ShoppingItemProperty.Status.key to Property(select = Select(status.text)),
-        ShoppingItemProperty.DoneDate.key to Property(date = Date(start = doneDate?.toDateString() ?: "")),
+        ShoppingItemProperty.DoneDate.key to Property(date = Date(start = doneDate?.toString() ?: "")),
         ShoppingItemProperty.Memo.key to Property(richTexts = memo.toRichTextList()),
     ).let { map ->
         tag?.let { tag ->
@@ -51,12 +50,4 @@ private enum class ShoppingItemProperty(val key: String) {
     DoneDate("DoneDate"),
     Memo("Memo"),
     Tag("Tag"),
-}
-
-private fun java.util.Date.toDateString(): String {
-    return SimpleDateFormat("yyyy-MM-dd", Locale.US).format(this)
-}
-
-private fun String.toDate(): java.util.Date? {
-    return SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(this)
 }

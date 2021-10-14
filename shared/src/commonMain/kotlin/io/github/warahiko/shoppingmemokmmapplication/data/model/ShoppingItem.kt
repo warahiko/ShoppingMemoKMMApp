@@ -1,6 +1,6 @@
 package io.github.warahiko.shoppingmemokmmapplication.data.model
 
-import java.util.Date
+import kotlinx.datetime.LocalDate
 import java.util.UUID
 
 data class ShoppingItem(
@@ -8,7 +8,7 @@ data class ShoppingItem(
     val name: String,
     val count: Int,
     val status: Status,
-    val doneDate: Date?,
+    val doneDate: LocalDate?,
     val memo: String,
     val tag: Tag?,
 ) {
@@ -32,7 +32,7 @@ data class ShoppingItem(
             name: String,
             count: Int,
             status: Status,
-            doneDate: Date?,
+            doneDate: LocalDate?,
             memo: String,
             tag: Tag?,
         ): ShoppingItem {
@@ -46,7 +46,7 @@ data class ShoppingItemEditable(
     val name: String,
     val count: String,
     val status: Status,
-    val doneDate: Date?,
+    val doneDate: LocalDate?,
     val memo: String,
     val tag: Tag?,
 ) {
