@@ -8,6 +8,8 @@ plugins {
     kotlin("native.cocoapods")
     id("com.android.library")
     id("com.codingfeline.buildkonfig")
+    id("kotlin-kapt")
+    id("kotlinx-serialization")
 }
 
 version = "1.0"
@@ -38,6 +40,17 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation("io.insert-koin:koin-core:3.1.2")
+
+                implementation("io.ktor:ktor-client-core:1.6.4")
+                implementation("io.ktor:ktor-client-logging:1.6.4")
+                implementation("io.ktor:ktor-client-serialization:1.6.4")
+
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2-native-mt") {
+                    version {
+                        strictly("1.5.2-native-mt")
+                    }
+                }
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
             }
         }
         val commonTest by getting {
@@ -46,14 +59,22 @@ kotlin {
                 implementation(kotlin("test-annotations-common"))
             }
         }
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies {
+                implementation("io.ktor:ktor-client-android:1.6.4")
+            }
+        }
         val androidTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
                 implementation("junit:junit:4.13.2")
             }
         }
-        val iosMain by getting
+        val iosMain by getting {
+            dependencies {
+                implementation("io.ktor:ktor-client-ios:1.6.4")
+            }
+        }
         val iosTest by getting
     }
 }
@@ -73,32 +94,12 @@ buildkonfig {
     defaultConfigs {
         buildConfigField(STRING, "NOTION_BASE_URL", "https://api.notion.com/v1/")
         buildConfigField(STRING, "NOTION_TOKEN", notionProperties.getProperty("notionToken"))
-        buildConfigField(
-            STRING,
-            "NOTION_VERSION",
-            notionProperties.getProperty("notionVersion")
-        )
-        buildConfigField(
-            STRING,
-            "DATABASE_ID",
-            notionProperties.getProperty("databaseIdRelease")
-        )
-        buildConfigField(
-            STRING,
-            "TAG_DATABASE_ID",
-            notionProperties.getProperty("tagDatabaseIdRelease")
-        )
+        buildConfigField(STRING, "NOTION_VERSION", notionProperties.getProperty("notionVersion"))
+        buildConfigField(STRING, "DATABASE_ID", notionProperties.getProperty("databaseIdRelease"))
+        buildConfigField(STRING, "TAG_DATABASE_ID", notionProperties.getProperty("tagDatabaseIdRelease"))
     }
     defaultConfigs("dev") {
-        buildConfigField(
-            STRING,
-            "DATABASE_ID",
-            notionProperties.getProperty("databaseIdDebug")
-        )
-        buildConfigField(
-            STRING,
-            "TAG_DATABASE_ID",
-            notionProperties.getProperty("tagDatabaseIdDebug")
-        )
+        buildConfigField(STRING, "DATABASE_ID", notionProperties.getProperty("databaseIdDebug"))
+        buildConfigField(STRING, "TAG_DATABASE_ID", notionProperties.getProperty("tagDatabaseIdDebug"))
     }
 }
