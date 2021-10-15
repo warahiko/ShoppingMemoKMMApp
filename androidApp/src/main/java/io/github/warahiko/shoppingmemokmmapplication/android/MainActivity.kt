@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import io.github.warahiko.shoppingmemokmmapplication.data.repository.ShoppingItemListRepository
+import io.github.warahiko.shoppingmemokmmapplication.data.repository.ShoppingItemRepository
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
 
-    private val shoppingItemListRepository: ShoppingItemListRepository by inject()
+    private val shoppingItemRepository: ShoppingItemRepository by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             val tv: TextView = findViewById(R.id.text_view)
             tv.text =
-                shoppingItemListRepository.fetchShoppingItemList().take(5).fold("") { l, r ->
+                shoppingItemRepository.fetchShoppingItems().take(5).fold("") { l, r ->
                     "$l, $r"
                 }
         }

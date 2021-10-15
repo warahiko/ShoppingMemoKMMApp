@@ -3,6 +3,6 @@ package io.github.warahiko.shoppingmemokmmapplication.data.network.model
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class GetShoppingListRequest(
+data class GetShoppingItemsRequest(
     val filter: Filter? = null,
 )
