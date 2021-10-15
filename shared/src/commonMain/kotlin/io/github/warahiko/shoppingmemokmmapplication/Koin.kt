@@ -1,7 +1,9 @@
 package io.github.warahiko.shoppingmemokmmapplication
 
 import io.github.warahiko.shoppingmemokmmapplication.data.network.api.ShoppingItemListApi
+import io.github.warahiko.shoppingmemokmmapplication.data.network.api.TagListApi
 import io.github.warahiko.shoppingmemokmmapplication.data.repository.ShoppingItemListRepository
+import io.github.warahiko.shoppingmemokmmapplication.data.repository.TagListRepository
 import io.ktor.client.HttpClient
 import io.ktor.client.features.defaultRequest
 import io.ktor.client.features.json.JsonFeature
@@ -35,6 +37,9 @@ private val modules: Module = module {
 
     single { ShoppingItemListApi(get()) }
     single { ShoppingItemListRepository(get()) }
+
+    single { TagListApi(get()) }
+    single { TagListRepository(get()) }
 }
 
 private fun createHttpClient(): HttpClient {
@@ -67,4 +72,5 @@ fun initKoinIos() = initKoin {}
 @Suppress("unused")
 class InjectorIos : KoinComponent {
     val shoppingItemListRepository: ShoppingItemListRepository by inject()
+    val tagListRepository: TagListRepository by inject()
 }

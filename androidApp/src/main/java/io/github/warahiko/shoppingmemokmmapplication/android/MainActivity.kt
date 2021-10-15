@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import io.github.warahiko.shoppingmemokmmapplication.Greeting
 import io.github.warahiko.shoppingmemokmmapplication.data.repository.ShoppingItemListRepository
+import io.github.warahiko.shoppingmemokmmapplication.data.repository.TagListRepository
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
@@ -16,6 +17,7 @@ fun greet(): String {
 class MainActivity : AppCompatActivity() {
 
     private val shoppingItemListRepository: ShoppingItemListRepository by inject()
+    private val tagListRepository: TagListRepository by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +25,9 @@ class MainActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             val tv: TextView = findViewById(R.id.text_view)
-            tv.text = greet() + shoppingItemListRepository.fetchShoppingList().fold("") { l, r ->
+            tv.text = greet() + shoppingItemListRepository.fetchShoppingList().take(2).fold("") { l, r ->
+                "$l, $r"
+            } + tagListRepository.fetchTagList().take(2).fold("") { l, r ->
                 "$l, $r"
             }
         }
