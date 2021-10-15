@@ -3,12 +3,12 @@ package io.github.warahiko.shoppingmemokmmapplication.data.network.model
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ShoppingItemListResponse(
-    val results: List<ShoppingItemPage>,
+data class GetTagsResponse(
+    val results: List<TagPage>,
 )
 
 @Serializable
-data class ShoppingItemPage(
+data class TagPage(
     val id: String,
     val properties: Map<String, Property>,
 )

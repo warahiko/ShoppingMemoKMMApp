@@ -1,9 +1,9 @@
 package io.github.warahiko.shoppingmemokmmapplication
 
-import io.github.warahiko.shoppingmemokmmapplication.data.network.api.ShoppingItemListApi
-import io.github.warahiko.shoppingmemokmmapplication.data.network.api.TagListApi
-import io.github.warahiko.shoppingmemokmmapplication.data.repository.ShoppingItemListRepository
-import io.github.warahiko.shoppingmemokmmapplication.data.repository.TagListRepository
+import io.github.warahiko.shoppingmemokmmapplication.data.network.api.ShoppingItemApi
+import io.github.warahiko.shoppingmemokmmapplication.data.network.api.TagApi
+import io.github.warahiko.shoppingmemokmmapplication.data.repository.ShoppingItemRepository
+import io.github.warahiko.shoppingmemokmmapplication.data.repository.TagRepository
 import io.ktor.client.HttpClient
 import io.ktor.client.features.defaultRequest
 import io.ktor.client.features.json.JsonFeature
@@ -35,11 +35,11 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}): KoinApplication {
 private val modules: Module = module {
     single { createHttpClient() }
 
-    single { ShoppingItemListApi(get()) }
-    single { ShoppingItemListRepository(get()) }
+    single { ShoppingItemApi(get()) }
+    single { ShoppingItemRepository(get(), get()) }
 
-    single { TagListApi(get()) }
-    single { TagListRepository(get()) }
+    single { TagApi(get()) }
+    single { TagRepository(get()) }
 }
 
 private fun createHttpClient(): HttpClient {
@@ -71,6 +71,6 @@ fun initKoinIos() = initKoin {}
 
 @Suppress("unused")
 class InjectorIos : KoinComponent {
-    val shoppingItemListRepository: ShoppingItemListRepository by inject()
-    val tagListRepository: TagListRepository by inject()
+    val shoppingItemRepository: ShoppingItemRepository by inject()
+    val tagRepository: TagRepository by inject()
 }
