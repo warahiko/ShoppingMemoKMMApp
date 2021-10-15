@@ -5,12 +5,38 @@ plugins {
 
 dependencies {
     implementation(project(":shared"))
-    implementation("com.google.android.material:material:1.3.0")
-    implementation("androidx.appcompat:appcompat:1.2.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
 
-    implementation("io.insert-koin:koin-android:3.1.2")
+    implementation(Dependencies.androidMaterial)
+    implementation(Dependencies.swipeRefresh)
+    implementation(Dependencies.viewPager)
+    implementation(Dependencies.viewPagerIndicators)
+
+    implementation(Dependencies.AndroidX.coreKtx)
+    implementation(Dependencies.AndroidX.appCompat)
+    implementation(Dependencies.AndroidX.lifecycleRuntimeKtx)
+    implementation(Dependencies.AndroidX.lifecycleViewModelCompose)
+    implementation(Dependencies.AndroidX.activityCompose)
+    implementation(Dependencies.AndroidX.navigationFragmentKtx)
+    implementation(Dependencies.AndroidX.navigationUiKtx)
+    implementation(Dependencies.AndroidX.navigationCompose)
+    implementation(Dependencies.AndroidX.hiltNavigationCompose)
+    implementation(Dependencies.AndroidX.Compose.compiler)
+    implementation(Dependencies.AndroidX.Compose.ui)
+    implementation(Dependencies.AndroidX.Compose.material)
+    implementation(Dependencies.AndroidX.Compose.materialIconsExtended)
+    implementation(Dependencies.AndroidX.Compose.uiTooling)
+
+    // DI
+    implementation(Dependencies.koinAndroid)
+
+    // test
+    testImplementation(Dependencies.jUnit4)
+    androidTestImplementation(Dependencies.AndroidX.Test.extJUnit)
+    androidTestImplementation(Dependencies.AndroidX.Test.espressoCore)
+    androidTestImplementation(Dependencies.AndroidX.Compose.uiTestJUnit4)
+
+    // debug
+    implementation(Dependencies.timber)
 }
 
 android {

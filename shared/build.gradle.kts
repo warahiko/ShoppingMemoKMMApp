@@ -39,43 +39,43 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("io.insert-koin:koin-core:3.1.2")
+                implementation(Dependencies.koinCore)
 
-                implementation("io.ktor:ktor-client-core:1.6.4")
-                implementation("io.ktor:ktor-client-logging:1.6.4")
-                implementation("io.ktor:ktor-client-serialization:1.6.4")
+                implementation(Dependencies.ktorClientCore)
+                implementation(Dependencies.ktorClientLogging)
+                implementation(Dependencies.ktorClientSerialization)
 
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2-native-mt") {
+                implementation(Dependencies.KotlinX.coroutinesCore) {
                     version {
-                        strictly("1.5.2-native-mt")
+                        strictly(Versions.KotlinX.coroutines)
                     }
                 }
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
-                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.0")
+                implementation(Dependencies.KotlinX.serializationJson)
+                implementation(Dependencies.KotlinX.datetime)
 
-                implementation("com.benasher44:uuid:0.3.1")
+                implementation(Dependencies.uuid)
             }
         }
         val commonTest by getting {
             dependencies {
-                implementation(kotlin("test-common"))
-                implementation(kotlin("test-annotations-common"))
+                implementation(Dependencies.Kotlin.testCommon)
+                implementation(Dependencies.Kotlin.testAnnotationsCommon)
             }
         }
         val androidMain by getting {
             dependencies {
-                implementation("io.ktor:ktor-client-android:1.6.4")
+                implementation(Dependencies.ktorClientAndroid)
             }
         }
         val androidTest by getting {
             dependencies {
-                implementation(kotlin("test-junit"))
-                implementation("junit:junit:4.13.2")
+                implementation(Dependencies.Kotlin.testJUnit)
+                implementation(Dependencies.jUnit4)
             }
         }
         val iosMain by getting {
             dependencies {
-                implementation("io.ktor:ktor-client-ios:1.6.4")
+                implementation(Dependencies.ktorClientIos)
             }
         }
         val iosTest by getting
