@@ -4,15 +4,10 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import io.github.warahiko.shoppingmemokmmapplication.Greeting
 import io.github.warahiko.shoppingmemokmmapplication.data.repository.ShoppingItemListRepository
 import io.github.warahiko.shoppingmemokmmapplication.data.repository.TagListRepository
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
-
-fun greet(): String {
-    return Greeting().greeting()
-}
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             val tv: TextView = findViewById(R.id.text_view)
             tv.text =
-                greet() + shoppingItemListRepository.fetchShoppingList().take(2).fold("") { l, r ->
+                shoppingItemListRepository.fetchShoppingList().take(2).fold("") { l, r ->
                     "$l, $r"
                 } + tagListRepository.fetchTagList().take(2).fold("") { l, r ->
                     "$l, $r"
