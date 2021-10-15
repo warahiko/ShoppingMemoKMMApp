@@ -4,6 +4,7 @@ import com.benasher44.uuid.uuidFrom
 import io.github.warahiko.shoppingmemokmmapplication.data.ext.concatText
 import io.github.warahiko.shoppingmemokmmapplication.data.model.ShoppingItem
 import io.github.warahiko.shoppingmemokmmapplication.data.model.Status
+import io.github.warahiko.shoppingmemokmmapplication.data.model.Tag
 import io.github.warahiko.shoppingmemokmmapplication.data.network.model.Date
 import io.github.warahiko.shoppingmemokmmapplication.data.network.model.Property
 import io.github.warahiko.shoppingmemokmmapplication.data.network.model.Relation
@@ -23,6 +24,12 @@ fun ShoppingItemPage.toShoppingItem(): ShoppingItem {
         memo = checkNotNull(properties[ShoppingItemProperty.Memo.key]?.richTexts?.concatText()),
         tag = null,
     )
+}
+
+fun ShoppingItemPage.toShoppingItemWithTag(tags: List<Tag>): ShoppingItem {
+    val relationId = relations.first().id
+    val tag = tags.singleOrNull { it.id.toString() == relationId }
+    return this.toShoppingItem().copy(tag = tag)
 }
 
 val ShoppingItemPage.relations: List<Relation>
