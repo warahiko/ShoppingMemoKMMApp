@@ -36,7 +36,7 @@ private val modules: Module = module {
     single { createHttpClient() }
 
     single { ShoppingItemListApi(get()) }
-    single { ShoppingItemListRepository(get()) }
+    single { ShoppingItemListRepository(get(), get()) }
 
     single { TagListApi(get()) }
     single { TagListRepository(get()) }
