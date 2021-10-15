@@ -7,11 +7,10 @@ import io.github.warahiko.shoppingmemokmmapplication.data.network.model.Shopping
 import io.ktor.client.HttpClient
 import io.ktor.client.request.post
 import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 
-class ShoppingItemListApi : KoinComponent {
-
-    private val client: HttpClient by inject()
+class ShoppingItemListApi(
+    private val client: HttpClient,
+) : KoinComponent {
 
     suspend fun getShoppingList(request: GetShoppingListRequest): ShoppingItemListResponse {
         return client.post(baseUrl / "databases/${BuildKonfig.DATABASE_ID}/query") {

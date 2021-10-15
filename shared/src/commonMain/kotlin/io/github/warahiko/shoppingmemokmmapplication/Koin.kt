@@ -33,7 +33,7 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}): KoinApplication {
 private val modules: Module = module {
     single { createHttpClient() }
 
-    single { ShoppingItemListApi() }
+    single { ShoppingItemListApi(get()) }
     single { ShoppingItemListRepository(get()) }
 }
 
