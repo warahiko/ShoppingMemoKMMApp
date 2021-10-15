@@ -25,11 +25,12 @@ class MainActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             val tv: TextView = findViewById(R.id.text_view)
-            tv.text = greet() + shoppingItemListRepository.fetchShoppingList().take(2).fold("") { l, r ->
-                "$l, $r"
-            } + tagListRepository.fetchTagList().take(2).fold("") { l, r ->
-                "$l, $r"
-            }
+            tv.text =
+                greet() + shoppingItemListRepository.fetchShoppingList().take(2).fold("") { l, r ->
+                    "$l, $r"
+                } + tagListRepository.fetchTagList().take(2).fold("") { l, r ->
+                    "$l, $r"
+                }
         }
     }
 }

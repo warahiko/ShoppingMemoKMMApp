@@ -33,7 +33,11 @@ fun ShoppingItem.toProperties(): Map<String, Property> {
         ShoppingItemProperty.Name.key to Property(title = name.toRichTextList()),
         ShoppingItemProperty.Count.key to Property(number = count.toLong()),
         ShoppingItemProperty.Status.key to Property(select = Select(status.text)),
-        ShoppingItemProperty.DoneDate.key to Property(date = Date(start = doneDate?.toString() ?: "")),
+        ShoppingItemProperty.DoneDate.key to Property(
+            date = Date(
+                start = doneDate?.toString() ?: ""
+            )
+        ),
         ShoppingItemProperty.Memo.key to Property(richTexts = memo.toRichTextList()),
     ).let { map ->
         tag?.let { tag ->
