@@ -4,6 +4,7 @@ import shared
 struct ContentView: View {
 	let greet = Greeting().greeting()
     let repository = InjectorIos().shoppingItemListRepository
+    let tagRepository = InjectorIos().tagListRepository
     
     @State var text: String = ""
 
@@ -13,10 +14,18 @@ struct ContentView: View {
                 text = greet
                 repository.fetchShoppingList { (shoppingItems: [ShoppingItem]?, error: Error?) in
                     if let unwraped = shoppingItems {
-                        let itemDescriptions = unwraped.reduce("") { (left, right) -> String in
+                        let itemDescriptions = unwraped.prefix(2).reduce("") { (left, right) -> String in
                             left + right.description()
                         }
-                        text = itemDescriptions
+                        text = text + itemDescriptions
+                    }
+                }
+                tagRepository.fetchTagList { (tags: [Tag]?, error: Error?) in
+                    if let unwraped = tags {
+                        let tagDescriptions = unwraped.prefix(2).reduce("") { (left, right) -> String in
+                            left + right.description()
+                        }
+                        text = text + tagDescriptions
                     }
                 }
             }

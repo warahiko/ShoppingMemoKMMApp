@@ -72,4 +72,5 @@ fun initKoinIos() = initKoin {}
 @Suppress("unused")
 class InjectorIos : KoinComponent {
     val shoppingItemListRepository: ShoppingItemListRepository by inject()
+    val tagListRepository: TagListRepository by inject()
 }
