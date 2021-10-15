@@ -10,6 +10,7 @@ import kotlinx.coroutines.withContext
 class ShoppingItemListRepository constructor(
     private val shoppingItemListApi: ShoppingItemListApi,
 ) {
+
     suspend fun fetchShoppingList(): List<ShoppingItem> {
         val request = GetShoppingListRequest()
         val shoppingList = withContext(Dispatchers.Default) {

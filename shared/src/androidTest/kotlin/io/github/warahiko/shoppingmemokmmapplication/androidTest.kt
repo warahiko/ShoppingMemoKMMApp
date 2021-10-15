@@ -3,10 +3,11 @@ package io.github.warahiko.shoppingmemokmmapplication
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
-class AndroidGreetingTest {
+class AndroidTest {
 
     @Test
     fun testExample() {
-        assertTrue("Check Android is mentioned", Greeting().greeting().contains("Android"))
+        val x = 1 + 1
+        assertTrue("Check addition", x == 2)
     }
 }

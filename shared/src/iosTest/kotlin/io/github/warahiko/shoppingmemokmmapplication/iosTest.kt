@@ -3,10 +3,11 @@ package io.github.warahiko.shoppingmemokmmapplication
 import kotlin.test.Test
 import kotlin.test.assertTrue
 
-class IosGreetingTest {
+class IosTest {
 
     @Test
     fun testExample() {
-        assertTrue(Greeting().greeting().contains("iOS"), "Check iOS is mentioned")
+        val x = 1 + 1
+        assertTrue(x == 2, "Check addition")
     }
 }
