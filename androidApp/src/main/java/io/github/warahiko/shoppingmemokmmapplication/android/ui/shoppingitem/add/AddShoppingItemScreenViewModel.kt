@@ -7,7 +7,7 @@ import io.github.warahiko.shoppingmemokmmapplication.android.ui.common.ext.withL
 import io.github.warahiko.shoppingmemokmmapplication.data.model.ShoppingItem
 import io.github.warahiko.shoppingmemokmmapplication.data.model.Tag
 import io.github.warahiko.shoppingmemokmmapplication.data.repository.TagRepository
-import io.github.warahiko.shoppingmemokmmapplication.usecase.AddShoppingItemUseCase
+import io.github.warahiko.shoppingmemokmmapplication.usecase.shoppingitem.AddShoppingItemUseCase
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted

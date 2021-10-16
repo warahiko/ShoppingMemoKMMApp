@@ -4,7 +4,7 @@ import io.github.warahiko.shoppingmemokmmapplication.data.network.api.ShoppingIt
 import io.github.warahiko.shoppingmemokmmapplication.data.network.api.TagApi
 import io.github.warahiko.shoppingmemokmmapplication.data.repository.ShoppingItemRepository
 import io.github.warahiko.shoppingmemokmmapplication.data.repository.TagRepository
-import io.github.warahiko.shoppingmemokmmapplication.usecase.AddShoppingItemUseCase
+import io.github.warahiko.shoppingmemokmmapplication.usecase.shoppingitem.AddShoppingItemUseCase
 import io.ktor.client.HttpClient
 import io.ktor.client.features.defaultRequest
 import io.ktor.client.features.json.JsonFeature
