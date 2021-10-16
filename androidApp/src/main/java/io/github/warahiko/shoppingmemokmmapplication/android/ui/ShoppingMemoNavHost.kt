@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import io.github.warahiko.shoppingmemokmmapplication.android.ui.splash.SplashScreen
 
 @Composable
 fun ShoppingMemoNavHost() {
@@ -11,25 +12,21 @@ fun ShoppingMemoNavHost() {
 
     NavHost(
         navController = navController,
-//        startDestination = Screen.Splash.route,
-        startDestination = Screen.Contents.route,
+        startDestination = Screen.Splash.route,
     ) {
         composable(Screen.Splash.route) {
-//            SplashScreen()
+            SplashScreen(onNext = {
+                navController.navigate(Screen.Contents.route) {
+                    popUpTo(Screen.Splash.route) {
+                        inclusive = true
+                    }
+                }
+            })
         }
         composable(Screen.Contents.route) {
             BottomNavHost()
         }
     }
-
-//    LaunchedEffect(Unit) {
-//        viewModel.fetchShoppingItems().join()
-//        navController.navigate(Screen.Contents.route) {
-//            popUpTo(Screen.Splash.route) {
-//                inclusive = true
-//            }
-//        }
-//    }
 }
 
 private sealed class Screen(
