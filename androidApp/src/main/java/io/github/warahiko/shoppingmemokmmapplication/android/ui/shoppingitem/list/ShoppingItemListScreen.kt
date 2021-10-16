@@ -6,6 +6,8 @@ import androidx.compose.material.Tab
 import androidx.compose.material.TabRow
 import androidx.compose.material.TabRowDefaults
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -18,6 +20,8 @@ import com.google.accompanist.pager.pagerTabIndicatorOffset
 import com.google.accompanist.pager.rememberPagerState
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
+import io.github.warahiko.shoppingmemokmmapplication.android.R
+import io.github.warahiko.shoppingmemokmmapplication.android.ui.common.ShoppingMemoAppBar
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.getViewModel
 
@@ -35,12 +39,12 @@ fun ShoppingItemListScreen(
 //    val deleteEvent by viewModel.deleteEvent.collectAsState()
 
     Scaffold(
-//        topBar = {
-//            ShoppingMemoAppBar(
-//                title = stringResource(R.string.home_list_title),
-//                icon = Icons.Default.ShoppingCart,
-//            )
-//        },
+        topBar = {
+            ShoppingMemoAppBar(
+                title = stringResource(R.string.shopping_item_list_title),
+                icon = Icons.Default.ShoppingCart,
+            )
+        },
     ) {
         HomeListScreenContent(
             uiModel = uiModel,
