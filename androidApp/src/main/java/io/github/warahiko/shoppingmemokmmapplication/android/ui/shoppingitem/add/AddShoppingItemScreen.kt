@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
@@ -18,6 +20,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.warahiko.shoppingmemokmmapplication.android.R
+import io.github.warahiko.shoppingmemokmmapplication.android.ui.common.ShoppingMemoAppBar
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.common.compositionlocal.LocalTagMap
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.shoppingitem.common.ShoppingItemEditor
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.theme.ShoppingMemoAppTheme
@@ -34,13 +37,13 @@ fun AddShoppingItemScreen(
 //    val showProgress by viewModel.showProgress.collectAsState()
 
     Scaffold(
-//        topBar = {
-//            ShoppingMemoAppBar(
-//                title = stringResource(R.string.home_add_title),
-//                icon = Icons.Default.ArrowBack,
-//                onClickIcon = onBack,
-//            )
-//        },
+        topBar = {
+            ShoppingMemoAppBar(
+                title = stringResource(R.string.shopping_item_add_title),
+                icon = Icons.Default.ArrowBack,
+                onClickIcon = onBack,
+            )
+        },
     ) {
         CompositionLocalProvider(LocalTagMap provides uiModel.tagsGroupedByType) {
             AddShoppingItemScreenContent(onAdd = {
