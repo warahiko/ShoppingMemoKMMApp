@@ -58,10 +58,24 @@ class ShoppingItemRepository(
                 }
             }.awaitAll()
         }
-        val tagList = tagRepository.getTags()
-        val items = responses.map { it.toShoppingItemWithTag(tagList) }
+        val tags = tagRepository.getTags()
+        val items = responses.map { it.toShoppingItemWithTag(tags) }
         _shoppingItems.value = _shoppingItems.value?.map { shoppingItem ->
             items.singleOrNull { it.id == shoppingItem.id } ?: shoppingItem
+        }
+    }
+
+    suspend fun deleteCompletelyShoppingItem(vararg shoppingItems: ShoppingItem) {
+        val requests = List(shoppingItems.size) { UpdateItemRequest(isArchived = true) }
+        withContext(Dispatchers.Default) {
+            shoppingItems.zip(requests).map { (shoppingItem, request) ->
+                async {
+                    shoppingItemApi.updateShoppingItem(shoppingItem.id.toString(), request)
+                }
+            }.awaitAll()
+        }
+        _shoppingItems.value = _shoppingItems.value?.filter {
+            it !in shoppingItems
         }
     }
 }
