@@ -13,7 +13,7 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 
 val androidModules: Module = module {
-    viewModel { ShoppingItemListScreenViewModel(get(), get()) }
+    viewModel { ShoppingItemListScreenViewModel(get(), get(), get(), get(), get(), get(), get()) }
     viewModel { AddShoppingItemScreenViewModel(get(), get(), get()) }
     viewModel { EditShoppingItemScreenViewModel(get(), get(), get(), get()) }
 }
