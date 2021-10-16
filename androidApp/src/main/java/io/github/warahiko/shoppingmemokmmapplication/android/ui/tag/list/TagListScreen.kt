@@ -53,7 +53,7 @@ fun TagListScreen(
     viewModel: TagListScreenViewModel = getViewModel(),
 ) {
     val uiModel by viewModel.uiModel.collectAsState()
-//    val isRefreshing by viewModel.isRefreshing.collectAsState()
+    val isRefreshing by viewModel.isRefreshing.collectAsState()
 //    val deleteEvent by viewModel.deleteEvent.collectAsState()
 
     Scaffold(
@@ -76,8 +76,8 @@ fun TagListScreen(
     ) {
         TagListScreenContent(
             tags = uiModel.tagsGroupedByType,
-//            isRefreshing = isRefreshing,
-//            onRefresh = viewModel::fetchTags,
+            isRefreshing = isRefreshing,
+            onRefresh = viewModel::refreshTags,
 //            onEdit = onEdit,
 //            onDelete = viewModel::showDeleteTagConfirmationDialog,
         )
@@ -104,16 +104,14 @@ fun TagListScreen(
 private fun TagListScreenContent(
     tags: Map<String, List<Tag>>,
     modifier: Modifier = Modifier,
-//    isRefreshing: Boolean = false,
-//    onRefresh: () -> Unit = {},
+    isRefreshing: Boolean = false,
+    onRefresh: () -> Unit = {},
 //    onEdit: (tag: Tag) -> Unit = {},
 //    onDelete: (tag: Tag) -> Unit = {},
 ) {
     SwipeRefresh(
-//        state = rememberSwipeRefreshState(isRefreshing),
-//        onRefresh = onRefresh,
-        state = rememberSwipeRefreshState(false),
-        onRefresh = {}
+        state = rememberSwipeRefreshState(isRefreshing),
+        onRefresh = onRefresh,
     ) {
         if (tags.isEmpty()) {
             Box(

@@ -3,8 +3,11 @@ package io.github.warahiko.shoppingmemokmmapplication.android.ui.tag.list
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.github.warahiko.shoppingmemokmmapplication.android.error.LaunchSafe
+import io.github.warahiko.shoppingmemokmmapplication.android.ui.common.ext.withLoading
 import io.github.warahiko.shoppingmemokmmapplication.data.model.Tag
 import io.github.warahiko.shoppingmemokmmapplication.data.repository.TagRepository
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
@@ -20,16 +23,19 @@ class TagListScreenViewModel(
         .map { UiModel.from(it.orEmpty()) }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(1000), UiModel.EMPTY)
 
-//    private val _isRefreshing = MutableStateFlow(false)
-//    val isRefreshing: StateFlow<Boolean>
-//        get() = _isRefreshing
+    private val _isRefreshing = MutableStateFlow(false)
+    val isRefreshing: StateFlow<Boolean> get() = _isRefreshing
 //
 //    private val _deleteEvent = MutableStateFlow<DeleteEvent>(DeleteEvent.None)
 //    val deleteEvent: StateFlow<DeleteEvent> get() = _deleteEvent
-//
-//    fun fetchTags() = viewModelScope.launchSafe {
-//        tagListRepository.fetchTagList()
-//    }.withLoading(_isRefreshing)
+
+    fun refreshTags(): Job {
+        return viewModelScope
+            .launchSafe {
+                tagRepository.fetchTags()
+            }
+            .withLoading(_isRefreshing)
+    }
 //
 //    fun showDeleteTagConfirmationDialog(tag: Tag) {
 //        _deleteEvent.value = DeleteEvent.ShowConfirmationDialog(tag)

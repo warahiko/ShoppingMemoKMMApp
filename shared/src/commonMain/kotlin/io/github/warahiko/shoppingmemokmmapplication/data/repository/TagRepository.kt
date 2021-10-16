@@ -24,7 +24,7 @@ class TagRepository(
         return _tags.value ?: throw InternalError("Tag list has not been fetched yet")
     }
 
-    private suspend fun fetchTags(): List<Tag> {
+    suspend fun fetchTags(): List<Tag> {
         val result = withContext(Dispatchers.Default) {
             tagApi.getTags()
         }
