@@ -1,15 +1,24 @@
 package io.github.warahiko.shoppingmemokmmapplication.android.ui.shoppingitem.list
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Tab
+import androidx.compose.material.TabRow
+import androidx.compose.material.TabRowDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import com.google.accompanist.pager.HorizontalPager
+import com.google.accompanist.pager.pagerTabIndicatorOffset
+import com.google.accompanist.pager.rememberPagerState
+import com.google.accompanist.swiperefresh.SwipeRefresh
+import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
+import kotlinx.coroutines.launch
 import org.koin.androidx.compose.getViewModel
 
 @Composable
@@ -33,10 +42,8 @@ fun ShoppingItemListScreen(
 //            )
 //        },
     ) {
-//        HomeListScreenContent(
-//            mainShoppingItems = mainShoppingItems,
-//            archivedShoppingItems = archivedShoppingItems,
-//            deletedShoppingItems = deletedShoppingItems,
+        HomeListScreenContent(
+            uiModel = uiModel,
 //            isRefreshing = isRefreshing,
 //            onClickAddButton = onClickAddButton,
 //            onRefresh = viewModel::fetchShoppingList,
@@ -47,7 +54,7 @@ fun ShoppingItemListScreen(
 //            onRestore = viewModel::restoreShoppingItem,
 //            onArchiveAll = viewModel::archiveAllDone,
 //            onDeleteCompletely = viewModel::showDeleteCompletelyConfirmationDialog,
-//        )
+        )
     }
 
 //    when (deleteEvent) {
@@ -69,11 +76,9 @@ fun ShoppingItemListScreen(
     }
 }
 
-//@Composable
-//private fun HomeListScreenContent(
-//    mainShoppingItems: Map<String, List<ShoppingItem>>,
-//    archivedShoppingItems: Map<String, List<ShoppingItem>>,
-//    deletedShoppingItems: List<ShoppingItem>,
+@Composable
+private fun HomeListScreenContent(
+    uiModel: ShoppingItemListScreenViewModel.UiModel,
 //    isRefreshing: Boolean,
 //    onClickAddButton: () -> Unit,
 //    onRefresh: () -> Unit,
@@ -84,66 +89,68 @@ fun ShoppingItemListScreen(
 //    onRestore: (item: ShoppingItem) -> Unit,
 //    onArchiveAll: () -> Unit,
 //    onDeleteCompletely: () -> Unit,
-//) {
-//    val pagerState = rememberPagerState(pageCount = HomeListTabs.values().size, infiniteLoop = true)
-//    val composableScope = rememberCoroutineScope()
-//
-//    Column {
-//        TabRow(
-//            selectedTabIndex = pagerState.currentPage,
-//            indicator = { tabPositions ->
-//                TabRowDefaults.Indicator(
-//                    Modifier.pagerTabIndicatorOffset(pagerState, tabPositions)
-//                )
-//            }
-//        ) {
-//            HomeListTabs.values().forEachIndexed { index, tabs ->
-//                Tab(
-//                    selected = pagerState.currentPage == index,
-//                    onClick = {
-//                        composableScope.launch {
-//                            pagerState.animateScrollToPage(index)
-//                        }
-//                    },
-//                    text = {
-//                        Text(stringResource(tabs.titleResourceId))
-//                    }
-//                )
-//            }
-//        }
-//        HorizontalPager(state = pagerState) { page ->
-//            SwipeRefresh(
+) {
+    val pagerState = rememberPagerState(pageCount = ShoppingItemListTab.values().size, infiniteLoop = true)
+    val composableScope = rememberCoroutineScope()
+
+    Column {
+        TabRow(
+            selectedTabIndex = pagerState.currentPage,
+            indicator = { tabPositions ->
+                TabRowDefaults.Indicator(
+                    Modifier.pagerTabIndicatorOffset(pagerState, tabPositions)
+                )
+            }
+        ) {
+            ShoppingItemListTab.values().forEachIndexed { index, tabs ->
+                Tab(
+                    selected = pagerState.currentPage == index,
+                    onClick = {
+                        composableScope.launch {
+                            pagerState.animateScrollToPage(index)
+                        }
+                    },
+                    text = {
+                        Text(stringResource(tabs.titleResId))
+                    }
+                )
+            }
+        }
+        HorizontalPager(state = pagerState) { page ->
+            SwipeRefresh(
 //                state = rememberSwipeRefreshState(isRefreshing),
 //                onRefresh = onRefresh,
-//            ) {
-//                when (HomeListTabs.values()[page]) {
-//                    HomeListTabs.Main -> {
-//                        MainShoppingItemList(
-//                            shoppingItems = mainShoppingItems,
+                state = rememberSwipeRefreshState(isRefreshing = false),
+                onRefresh = {},
+            ) {
+                when (ShoppingItemListTab.values()[page]) {
+                    ShoppingItemListTab.Main -> {
+                        MainShoppingItemList(
+                            shoppingItems = uiModel.mainShoppingItems,
 //                            onClickAddButton = onClickAddButton,
 //                            onClickItemRow = onClickItemRow,
 //                            onEdit = onEdit,
 //                            onArchive = onArchive,
 //                            onDelete = onDelete,
 //                            onArchiveAll = onArchiveAll,
-//                        )
-//                    }
-//                    HomeListTabs.Archived -> {
+                        )
+                    }
+                    ShoppingItemListTab.Archived -> {
 //                        ArchivedShoppingItemList(
 //                            shoppingItems = archivedShoppingItems,
 //                            onRestore = onRestore,
 //                            onDelete = onDelete,
 //                        )
-//                    }
-//                    HomeListTabs.Deleted -> {
+                    }
+                    ShoppingItemListTab.Deleted -> {
 //                        DeletedShoppingItemList(
 //                            shoppingItems = deletedShoppingItems,
 //                            onRestore = onRestore,
 //                            onDeleteCompletely = onDeleteCompletely,
 //                        )
-//                    }
-//                }
-//            }
-//        }
-//    }
-//}
+                    }
+                }
+            }
+        }
+    }
+}
