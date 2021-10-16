@@ -8,6 +8,7 @@ import io.github.warahiko.shoppingmemokmmapplication.initKoin
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
+import timber.log.Timber
 
 class ShoppingMemoApplication : Application() {
 
@@ -22,11 +23,19 @@ class ShoppingMemoApplication : Application() {
             modules(androidModules, androidErrorHandlingModules)
         }
 
+        configureTimber()
+
         registerActivityLifecycleCallbacks(errorMonitor)
     }
 
     override fun onTerminate() {
         unregisterActivityLifecycleCallbacks(errorMonitor)
         super.onTerminate()
+    }
+
+    private fun configureTimber() {
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
     }
 }
