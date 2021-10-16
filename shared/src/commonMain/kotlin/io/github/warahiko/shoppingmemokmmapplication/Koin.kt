@@ -5,6 +5,7 @@ import io.github.warahiko.shoppingmemokmmapplication.data.network.api.TagApi
 import io.github.warahiko.shoppingmemokmmapplication.data.repository.ShoppingItemRepository
 import io.github.warahiko.shoppingmemokmmapplication.data.repository.TagRepository
 import io.github.warahiko.shoppingmemokmmapplication.usecase.shoppingitem.AddShoppingItemUseCase
+import io.github.warahiko.shoppingmemokmmapplication.usecase.shoppingitem.EditShoppingItemUseCase
 import io.ktor.client.HttpClient
 import io.ktor.client.features.defaultRequest
 import io.ktor.client.features.json.JsonFeature
@@ -45,6 +46,7 @@ private val repositoryModules: Module = module {
 
 private val useCaseModules: Module = module {
     single { AddShoppingItemUseCase(get()) }
+    single { EditShoppingItemUseCase(get()) }
 }
 
 private fun createHttpClient(): HttpClient {
