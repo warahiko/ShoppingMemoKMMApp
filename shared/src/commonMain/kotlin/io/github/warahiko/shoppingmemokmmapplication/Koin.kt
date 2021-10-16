@@ -4,6 +4,7 @@ import io.github.warahiko.shoppingmemokmmapplication.data.network.api.ShoppingIt
 import io.github.warahiko.shoppingmemokmmapplication.data.network.api.TagApi
 import io.github.warahiko.shoppingmemokmmapplication.data.repository.ShoppingItemRepository
 import io.github.warahiko.shoppingmemokmmapplication.data.repository.TagRepository
+import io.github.warahiko.shoppingmemokmmapplication.usecase.AddShoppingItemUseCase
 import io.ktor.client.HttpClient
 import io.ktor.client.features.defaultRequest
 import io.ktor.client.features.json.JsonFeature
@@ -28,11 +29,11 @@ import org.koin.dsl.module
 fun initKoin(appDeclaration: KoinAppDeclaration = {}): KoinApplication {
     return startKoin {
         appDeclaration()
-        modules(modules)
+        modules(repositoryModules, useCaseModules)
     }
 }
 
-private val modules: Module = module {
+private val repositoryModules: Module = module {
     single { createHttpClient() }
 
     single { ShoppingItemApi(get()) }
@@ -40,6 +41,10 @@ private val modules: Module = module {
 
     single { TagApi(get()) }
     single { TagRepository(get()) }
+}
+
+private val useCaseModules: Module = module {
+    single { AddShoppingItemUseCase(get()) }
 }
 
 private fun createHttpClient(): HttpClient {
