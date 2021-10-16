@@ -2,6 +2,7 @@ package io.github.warahiko.shoppingmemokmmapplication.android.error
 
 import io.github.warahiko.shoppingmemokmmapplication.android.common.Event
 import io.github.warahiko.shoppingmemokmmapplication.android.common.toEvent
+import io.github.warahiko.shoppingmemokmmapplication.error.AppError
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow

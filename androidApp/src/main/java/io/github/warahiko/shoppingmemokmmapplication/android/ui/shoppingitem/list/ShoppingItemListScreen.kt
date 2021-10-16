@@ -23,7 +23,7 @@ import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun ShoppingItemListScreen(
-//    onClickAddButton: () -> Unit,
+    onClickAddButton: () -> Unit,
 //    onEdit: (item: ShoppingItem) -> Unit,
     viewModel: ShoppingItemListScreenViewModel = getViewModel(),
 ) {
@@ -45,7 +45,7 @@ fun ShoppingItemListScreen(
         HomeListScreenContent(
             uiModel = uiModel,
 //            isRefreshing = isRefreshing,
-//            onClickAddButton = onClickAddButton,
+            onClickAddButton = onClickAddButton,
 //            onRefresh = viewModel::fetchShoppingList,
 //            onClickItemRow = viewModel::changeShoppingItemIsDone,
 //            onEdit = onEdit,
@@ -80,7 +80,7 @@ fun ShoppingItemListScreen(
 private fun HomeListScreenContent(
     uiModel: ShoppingItemListScreenViewModel.UiModel,
 //    isRefreshing: Boolean,
-//    onClickAddButton: () -> Unit,
+    onClickAddButton: () -> Unit = {},
 //    onRefresh: () -> Unit,
 //    onClickItemRow: (item: ShoppingItem) -> Unit,
 //    onEdit: (item: ShoppingItem) -> Unit,
@@ -127,7 +127,7 @@ private fun HomeListScreenContent(
                     ShoppingItemListTab.Main -> {
                         MainShoppingItemList(
                             shoppingItems = uiModel.mainShoppingItems,
-//                            onClickAddButton = onClickAddButton,
+                            onClickAddButton = onClickAddButton,
 //                            onClickItemRow = onClickItemRow,
 //                            onEdit = onEdit,
 //                            onArchive = onArchive,

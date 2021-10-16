@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import io.github.warahiko.shoppingmemokmmapplication.android.ui.shoppingitem.add.AddShoppingItemScreen
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.shoppingitem.list.ShoppingItemListScreen
 
 @Composable
@@ -13,14 +14,14 @@ fun ShoppingItemScreen() {
     NavHost(navController = navController, startDestination = Screen.ShoppingItems.route) {
         composable(Screen.ShoppingItems.route) {
             ShoppingItemListScreen(
-//                onClickAddButton = { navController.navigate(Screen.Add.route) },
+                onClickAddButton = { navController.navigate(Screen.Add.route) },
 //                onEdit = { navController.navigate(Screen.Edit.actualRoute(it.id.toString())) },
             )
         }
         composable(Screen.Add.route) {
-//            AddShoppingItemScreen(
-//                onBack = { navController.popBackStack() },
-//            )
+            AddShoppingItemScreen(
+                onBack = { navController.popBackStack() },
+            )
         }
         composable(Screen.Edit.route) { backStackEntry ->
 //            val itemId = backStackEntry.arguments?.getString(Screen.Edit.itemIdKey)

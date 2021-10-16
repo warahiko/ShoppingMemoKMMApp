@@ -7,6 +7,9 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
 import io.github.warahiko.shoppingmemokmmapplication.android.common.Event
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.common.ErrorDialogFragment
+import io.github.warahiko.shoppingmemokmmapplication.error.AppError
+import io.github.warahiko.shoppingmemokmmapplication.error.InternalError
+import io.github.warahiko.shoppingmemokmmapplication.error.NetworkError
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
