@@ -1,5 +1,6 @@
 package io.github.warahiko.shoppingmemokmmapplication.android.ui.shoppingitem.list
 
+import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -19,8 +20,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.warahiko.shoppingmemokmmapplication.android.R
+import io.github.warahiko.shoppingmemokmmapplication.android.ui.preview.ShoppingItemPreview
+import io.github.warahiko.shoppingmemokmmapplication.android.ui.theme.ShoppingMemoAppTheme
 import io.github.warahiko.shoppingmemokmmapplication.data.model.ShoppingItem
 
 @Composable
@@ -174,24 +178,20 @@ private fun ItemRow(
     }
 }
 
-//@Preview
-//@Composable
-//private fun ShoppingListPreview() {
-//    val items = ShoppingItem.getSampleMap()
-//    ShoppingMemoAppTheme {
-//        Surface {
-//            MainShoppingItemList(items)
-//        }
-//    }
-//}
-//
-//@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
-//@Composable
-//private fun ShoppingListDarkPreview() {
-//    val items = ShoppingItem.getSampleMap()
-//    ShoppingMemoAppTheme {
-//        Surface {
-//            MainShoppingItemList(items)
-//        }
-//    }
-//}
+@Preview(showBackground = true)
+@Composable
+private fun ShoppingListPreview() {
+    val items = ShoppingItemPreview.getSampleMap()
+    ShoppingMemoAppTheme {
+        MainShoppingItemList(items)
+    }
+}
+
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+private fun ShoppingListDarkPreview() {
+    val items = ShoppingItemPreview.getSampleMap()
+    ShoppingMemoAppTheme {
+        MainShoppingItemList(items)
+    }
+}
