@@ -19,10 +19,13 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Divider
 import androidx.compose.material.DropdownMenu
 import androidx.compose.material.DropdownMenuItem
+import androidx.compose.material.FloatingActionButton
+import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Label
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -48,7 +51,7 @@ import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun TagListScreen(
-//    onClickAddButton: () -> Unit,
+    onClickAddButton: () -> Unit,
 //    onEdit: (tag: Tag) -> Unit,
     viewModel: TagListScreenViewModel = getViewModel(),
 ) {
@@ -63,16 +66,16 @@ fun TagListScreen(
                 icon = Icons.Default.Label,
             )
         },
-//        floatingActionButton = {
-//            FloatingActionButton(
-//                onClick = onClickAddButton,
-//            ) {
-//                Icon(
-//                    imageVector = Icons.Default.Add,
-//                    contentDescription = null,
-//                )
-//            }
-//        }
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = onClickAddButton,
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Add,
+                    contentDescription = null,
+                )
+            }
+        }
     ) {
         TagListScreenContent(
             tags = uiModel.tagsGroupedByType,
