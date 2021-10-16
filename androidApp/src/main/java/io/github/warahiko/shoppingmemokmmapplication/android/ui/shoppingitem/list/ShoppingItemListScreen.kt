@@ -18,7 +18,7 @@ fun ShoppingItemListScreen(
 //    onEdit: (item: ShoppingItem) -> Unit,
     viewModel: ShoppingItemListScreenViewModel = getViewModel(),
 ) {
-    val shoppingItems by viewModel.shoppingItems.collectAsState()
+    val uiModel by viewModel.uiModel.collectAsState()
 //    val mainShoppingItems by viewModel.mainShoppingItems.collectAsState()
 //    val archivedShoppingItems by viewModel.archivedShoppingItems.collectAsState()
 //    val deletedShoppingItems by viewModel.deletedShoppingItems.collectAsState()
@@ -48,9 +48,6 @@ fun ShoppingItemListScreen(
 //            onArchiveAll = viewModel::archiveAllDone,
 //            onDeleteCompletely = viewModel::showDeleteCompletelyConfirmationDialog,
 //        )
-        Box(Modifier.fillMaxSize()) {
-            Text(shoppingItems, Modifier.align(Alignment.Center))
-        }
     }
 
 //    when (deleteEvent) {
