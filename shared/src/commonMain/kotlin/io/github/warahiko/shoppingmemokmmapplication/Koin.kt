@@ -12,6 +12,7 @@ import io.github.warahiko.shoppingmemokmmapplication.usecase.shoppingitem.Delete
 import io.github.warahiko.shoppingmemokmmapplication.usecase.shoppingitem.EditShoppingItemUseCase
 import io.github.warahiko.shoppingmemokmmapplication.usecase.shoppingitem.RestoreShoppingItemUseCase
 import io.github.warahiko.shoppingmemokmmapplication.usecase.tag.AddTagUseCase
+import io.github.warahiko.shoppingmemokmmapplication.usecase.tag.DeleteTagUseCase
 import io.github.warahiko.shoppingmemokmmapplication.usecase.tag.EditTagUseCase
 import io.ktor.client.HttpClient
 import io.ktor.client.features.defaultRequest
@@ -62,6 +63,7 @@ private val useCaseModules: Module = module {
 
     single { AddTagUseCase(get()) }
     single { EditTagUseCase(get()) }
+    single { DeleteTagUseCase(get()) }
 }
 
 private fun createHttpClient(): HttpClient {

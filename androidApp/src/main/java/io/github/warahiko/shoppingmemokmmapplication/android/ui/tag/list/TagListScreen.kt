@@ -45,6 +45,7 @@ import androidx.compose.ui.unit.dp
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import io.github.warahiko.shoppingmemokmmapplication.android.R
+import io.github.warahiko.shoppingmemokmmapplication.android.ui.common.LoadingDialog
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.common.ShoppingMemoAppBar
 import io.github.warahiko.shoppingmemokmmapplication.data.model.Tag
 import org.koin.androidx.compose.getViewModel
@@ -57,7 +58,7 @@ fun TagListScreen(
 ) {
     val uiModel by viewModel.uiModel.collectAsState()
     val isRefreshing by viewModel.isRefreshing.collectAsState()
-//    val deleteEvent by viewModel.deleteEvent.collectAsState()
+    val deleteEvent by viewModel.deleteEvent.collectAsState()
 
     Scaffold(
         topBar = {
@@ -82,25 +83,25 @@ fun TagListScreen(
             isRefreshing = isRefreshing,
             onRefresh = viewModel::refreshTags,
             onEdit = onEdit,
-//            onDelete = viewModel::showDeleteTagConfirmationDialog,
+            onDelete = viewModel::showDeleteTagConfirmationDialog,
         )
     }
 
-//    @Suppress("UnnecessaryVariable")
-//    when (val event = deleteEvent) {
-//        TagListScreenViewModel.DeleteEvent.ShowProgressDialog -> {
-//            LoadingDialog(isLoading = true)
-//        }
-//        is TagListScreenViewModel.DeleteEvent.ShowConfirmationDialog -> {
-//            DeleteTagConfirmationDialog(
-//                showDialog = true,
-//                tag = event.tag,
-//                onConfirm = viewModel::deleteTag,
-//                onDismiss = { viewModel.dismissDeleteTagConfirmationDialog() },
-//            )
-//        }
-//        else -> Unit
-//    }
+    @Suppress("UnnecessaryVariable")
+    when (val event = deleteEvent) {
+        TagListScreenViewModel.DeleteEvent.ShowProgressDialog -> {
+            LoadingDialog(isLoading = true)
+        }
+        is TagListScreenViewModel.DeleteEvent.ShowConfirmationDialog -> {
+            DeleteTagConfirmationDialog(
+                showDialog = true,
+                tag = event.tag,
+                onConfirm = viewModel::deleteTag,
+                onDismiss = { viewModel.dismissDeleteTagConfirmationDialog() },
+            )
+        }
+        null -> Unit
+    }
 }
 
 @Composable
@@ -110,7 +111,7 @@ private fun TagListScreenContent(
     isRefreshing: Boolean = false,
     onRefresh: () -> Unit = {},
     onEdit: (tag: Tag) -> Unit = {},
-//    onDelete: (tag: Tag) -> Unit = {},
+    onDelete: (tag: Tag) -> Unit = {},
 ) {
     SwipeRefresh(
         state = rememberSwipeRefreshState(isRefreshing),
@@ -157,7 +158,7 @@ private fun TagListScreenContent(
                         tag = item,
                         modifier = Modifier.padding(start = 16.dp),
                         onEdit = onEdit,
-//                        onDelete = onDelete,
+                        onDelete = onDelete,
                     )
                     if (index < list.size - 1) {
                         Divider(
@@ -177,7 +178,7 @@ private fun ItemRow(
     tag: Tag,
     modifier: Modifier = Modifier,
     onEdit: (tag: Tag) -> Unit = {},
-//    onDelete: (tag: Tag) -> Unit = {},
+    onDelete: (tag: Tag) -> Unit = {},
 ) {
     var showOperation by remember { mutableStateOf(false) }
     var dropdownOffset by remember { mutableStateOf(Offset.Zero) }
@@ -227,9 +228,9 @@ private fun ItemRow(
             DropdownMenuItem(onClick = { onEdit(tag) }) {
                 Text(stringResource(R.string.tag_list_operation_edit))
             }
-//            DropdownMenuItem(onClick = { onDelete(tag) }) {
-//                Text(stringResource(R.string.tag_list_operation_delete))
-//            }
+            DropdownMenuItem(onClick = { onDelete(tag) }) {
+                Text(stringResource(R.string.tag_list_operation_delete))
+            }
             Divider()
             DropdownMenuItem(onClick = { showOperation = false }) {
                 Text(stringResource(R.string.cancel))
