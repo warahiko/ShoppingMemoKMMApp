@@ -42,7 +42,7 @@ fun ShoppingItem.toProperties(): Map<String, Property> {
         ShoppingItemProperty.Status.key to Property(select = Select(status.text)),
         ShoppingItemProperty.DoneDate.key to Property(
             date = Date(
-                start = doneDate?.toString() ?: ""
+                start = doneDate?.toString().orEmpty()
             )
         ),
         ShoppingItemProperty.Memo.key to Property(richTexts = memo.toRichTextList()),
