@@ -6,6 +6,7 @@ import io.github.warahiko.shoppingmemokmmapplication.android.error.LaunchSafe
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.common.ext.withLoading
 import io.github.warahiko.shoppingmemokmmapplication.data.model.Tag
 import io.github.warahiko.shoppingmemokmmapplication.data.repository.TagRepository
+import io.github.warahiko.shoppingmemokmmapplication.usecase.tag.DeleteTagUseCase
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -15,7 +16,7 @@ import kotlinx.coroutines.flow.stateIn
 
 class TagListScreenViewModel(
     private val tagRepository: TagRepository,
-//    private val deleteTagUseCase: DeleteTagUseCase,
+    private val deleteTagUseCase: DeleteTagUseCase,
     launchSafe: LaunchSafe,
 ) : ViewModel(), LaunchSafe by launchSafe {
 
@@ -25,9 +26,9 @@ class TagListScreenViewModel(
 
     private val _isRefreshing = MutableStateFlow(false)
     val isRefreshing: StateFlow<Boolean> get() = _isRefreshing
-//
-//    private val _deleteEvent = MutableStateFlow<DeleteEvent>(DeleteEvent.None)
-//    val deleteEvent: StateFlow<DeleteEvent> get() = _deleteEvent
+
+    private val _deleteEvent = MutableStateFlow<DeleteEvent?>(null)
+    val deleteEvent: StateFlow<DeleteEvent?> get() = _deleteEvent
 
     fun refreshTags(): Job {
         return viewModelScope
@@ -36,20 +37,20 @@ class TagListScreenViewModel(
             }
             .withLoading(_isRefreshing)
     }
-//
-//    fun showDeleteTagConfirmationDialog(tag: Tag) {
-//        _deleteEvent.value = DeleteEvent.ShowConfirmationDialog(tag)
-//    }
-//
-//    fun dismissDeleteTagConfirmationDialog() {
-//        _deleteEvent.value = DeleteEvent.None
-//    }
-//
-//    fun deleteTag(tag: Tag) = viewModelScope.launchSafe {
-//        _deleteEvent.value = DeleteEvent.ShowProgressDialog
-//        deleteTagUseCase(tag)
-//        _deleteEvent.value = DeleteEvent.None
-//    }
+
+    fun showDeleteTagConfirmationDialog(tag: Tag) {
+        _deleteEvent.value = DeleteEvent.ShowConfirmationDialog(tag)
+    }
+
+    fun dismissDeleteTagConfirmationDialog() {
+        _deleteEvent.value = null
+    }
+
+    fun deleteTag(tag: Tag) = viewModelScope.launchSafe {
+        _deleteEvent.value = DeleteEvent.ShowProgressDialog
+        deleteTagUseCase(tag)
+        _deleteEvent.value = null
+    }
 
     data class UiModel(
         val tagsGroupedByType: Map<String, List<Tag>>
@@ -69,10 +70,9 @@ class TagListScreenViewModel(
             }
         }
     }
-//
-//    sealed class DeleteEvent {
-//        object None : DeleteEvent()
-//        data class ShowConfirmationDialog(val tag: Tag) : DeleteEvent()
-//        object ShowProgressDialog : DeleteEvent()
-//    }
+
+    sealed class DeleteEvent {
+        data class ShowConfirmationDialog(val tag: Tag) : DeleteEvent()
+        object ShowProgressDialog : DeleteEvent()
+    }
 }

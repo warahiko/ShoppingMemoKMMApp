@@ -20,7 +20,7 @@ val androidModules: Module = module {
     viewModel { AddShoppingItemScreenViewModel(get(), get(), get()) }
     viewModel { EditShoppingItemScreenViewModel(get(), get(), get(), get()) }
 
-    viewModel { TagListScreenViewModel(get(), get()) }
+    viewModel { TagListScreenViewModel(get(), get(), get()) }
     viewModel { AddTagScreenViewModel(get(), get(), get()) }
     viewModel { EditTagScreenViewModel(get(), get(), get()) }
 }
