@@ -19,6 +19,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.shoppingitem.ShoppingItemScreen
+import io.github.warahiko.shoppingmemokmmapplication.android.ui.tag.TagScreen
 
 @Composable
 fun BottomNavHost() {
@@ -57,7 +58,7 @@ fun BottomNavHost() {
                 ShoppingItemScreen()
             }
             composable(BottomNavScreen.Tags.route) {
-//                TagScreen()
+                TagScreen()
             }
         }
     }
