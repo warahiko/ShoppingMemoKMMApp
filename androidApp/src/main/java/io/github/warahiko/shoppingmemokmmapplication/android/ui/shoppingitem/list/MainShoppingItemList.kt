@@ -6,11 +6,13 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Button
 import androidx.compose.material.Divider
 import androidx.compose.material.DropdownMenu
 import androidx.compose.material.DropdownMenuItem
@@ -45,15 +47,15 @@ fun MainShoppingItemList(
     shoppingItems: Map<String, List<ShoppingItem>>,
     modifier: Modifier = Modifier,
     onClickAddButton: () -> Unit = {},
-//    onClickItemRow: (item: ShoppingItem) -> Unit = {},
+    onClickItemRow: (item: ShoppingItem) -> Unit = {},
     onEdit: (item: ShoppingItem) -> Unit = {},
-//    onArchive: (item: ShoppingItem) -> Unit = {},
-//    onDelete: (item: ShoppingItem) -> Unit = {},
-//    onArchiveAll: () -> Unit = {},
+    onArchive: (item: ShoppingItem) -> Unit = {},
+    onDelete: (item: ShoppingItem) -> Unit = {},
+    onArchiveAll: () -> Unit = {},
 ) {
-//    val isAnyItemDone = remember(shoppingItems) {
-//        shoppingItems.values.flatten().any { it.isDone }
-//    }
+    val isAnyItemDone = remember(shoppingItems) {
+        shoppingItems.values.flatten().any { it.isDone }
+    }
 
     Scaffold(
         floatingActionButton = {
@@ -108,10 +110,10 @@ fun MainShoppingItemList(
                     ItemRow(
                         item = item,
                         modifier = Modifier.padding(start = 16.dp),
-//                        onClickItemRow = { onClickItemRow(item) },
+                        onClickItemRow = { onClickItemRow(item) },
                         onEdit = { onEdit(item) },
-//                        onArchive = { onArchive(item) },
-//                        onDelete = { onDelete(item) },
+                        onArchive = { onArchive(item) },
+                        onDelete = { onDelete(item) },
                     )
                     if (index < items.size - 1) {
                         Divider(
@@ -122,24 +124,24 @@ fun MainShoppingItemList(
                     }
                 }
             }
-//            item {
-//                Box(
-//                    modifier = Modifier
-//                        .fillMaxWidth()
-//                        .padding(16.dp),
-//                ) {
-//                    Button(
-//                        onClick = onArchiveAll,
-//                        enabled = isAnyItemDone,
-//                        modifier = Modifier
-//                            .fillMaxSize()
-//                            .height(60.dp)
-//                            .padding(8.dp),
-//                    ) {
-//                        Text(stringResource(R.string.home_list_archive_button))
-//                    }
-//                }
-//            }
+            item {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
+                ) {
+                    Button(
+                        onClick = onArchiveAll,
+                        enabled = isAnyItemDone,
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .height(60.dp)
+                            .padding(8.dp),
+                    ) {
+                        Text(stringResource(R.string.shopping_item_list_archive_button))
+                    }
+                }
+            }
         }
     }
 }
@@ -148,10 +150,10 @@ fun MainShoppingItemList(
 private fun ItemRow(
     item: ShoppingItem,
     modifier: Modifier = Modifier,
-//    onClickItemRow: () -> Unit = {},
+    onClickItemRow: () -> Unit = {},
     onEdit: () -> Unit = {},
-//    onArchive: () -> Unit = {},
-//    onDelete: () -> Unit = {},
+    onArchive: () -> Unit = {},
+    onDelete: () -> Unit = {},
 ) {
     var showOperation by remember { mutableStateOf(false) }
     var dropdownOffset by remember { mutableStateOf(Offset.Zero) }
@@ -159,7 +161,7 @@ private fun ItemRow(
     Box(modifier = modifier) {
         ShoppingItemRow(
             shoppingItem = item,
-//            onClick = onClickItemRow,
+            onClick = onClickItemRow,
             onLongPress = { offset ->
                 showOperation = true
                 dropdownOffset = offset
@@ -175,14 +177,14 @@ private fun ItemRow(
             DropdownMenuItem(onClick = onEdit) {
                 Text(stringResource(R.string.shopping_item_list_operation_edit))
             }
-//            if (item.isDone) {
-//                DropdownMenuItem(onClick = onArchive) {
-//                    Text(stringResource(R.string.home_operation_archive))
-//                }
-//            }
-//            DropdownMenuItem(onClick = onDelete) {
-//                Text(stringResource(R.string.home_operation_delete))
-//            }
+            if (item.isDone) {
+                DropdownMenuItem(onClick = onArchive) {
+                    Text(stringResource(R.string.shopping_item_list_operation_archive))
+                }
+            }
+            DropdownMenuItem(onClick = onDelete) {
+                Text(stringResource(R.string.shopping_item_list_operation_delete))
+            }
             Divider()
             DropdownMenuItem(onClick = { showOperation = false }) {
                 Text(stringResource(R.string.cancel))

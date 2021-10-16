@@ -21,6 +21,7 @@ import com.google.accompanist.pager.rememberPagerState
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import io.github.warahiko.shoppingmemokmmapplication.android.R
+import io.github.warahiko.shoppingmemokmmapplication.android.ui.common.LoadingDialog
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.common.ShoppingMemoAppBar
 import io.github.warahiko.shoppingmemokmmapplication.data.model.ShoppingItem
 import kotlinx.coroutines.launch
@@ -33,11 +34,8 @@ fun ShoppingItemListScreen(
     viewModel: ShoppingItemListScreenViewModel = getViewModel(),
 ) {
     val uiModel by viewModel.uiModel.collectAsState()
-//    val mainShoppingItems by viewModel.mainShoppingItems.collectAsState()
-//    val archivedShoppingItems by viewModel.archivedShoppingItems.collectAsState()
-//    val deletedShoppingItems by viewModel.deletedShoppingItems.collectAsState()
-//    val isRefreshing by viewModel.isRefreshing.collectAsState()
-//    val deleteEvent by viewModel.deleteEvent.collectAsState()
+    val isRefreshing by viewModel.isRefreshing.collectAsState()
+    val deleteEvent by viewModel.deleteEvent.collectAsState()
 
     Scaffold(
         topBar = {
@@ -49,32 +47,32 @@ fun ShoppingItemListScreen(
     ) {
         HomeListScreenContent(
             uiModel = uiModel,
-//            isRefreshing = isRefreshing,
+            isRefreshing = isRefreshing,
             onClickAddButton = onClickAddButton,
-//            onRefresh = viewModel::fetchShoppingList,
-//            onClickItemRow = viewModel::changeShoppingItemIsDone,
+            onRefresh = viewModel::refreshShoppingItems,
+            onClickItemRow = viewModel::changeShoppingItemIsDone,
             onEdit = onEdit,
-//            onArchive = viewModel::archiveShoppingItem,
-//            onDelete = viewModel::deleteShoppingItem,
-//            onRestore = viewModel::restoreShoppingItem,
-//            onArchiveAll = viewModel::archiveAllDone,
-//            onDeleteCompletely = viewModel::showDeleteCompletelyConfirmationDialog,
+            onArchive = viewModel::archiveShoppingItem,
+            onDelete = viewModel::deleteShoppingItem,
+            onRestore = viewModel::restoreShoppingItem,
+            onArchiveAll = viewModel::archiveAllDone,
+            onDeleteCompletely = viewModel::showDeleteCompletelyConfirmationDialog,
         )
     }
 
-//    when (deleteEvent) {
-//        HomeListScreenViewModel.DeleteEvent.ShowProgressDialog -> {
-//            LoadingDialog(isLoading = true)
-//        }
-//        HomeListScreenViewModel.DeleteEvent.ShowConfirmationDialog -> {
-//            DeleteCompletelyDialog(
-//                showDialog = true,
-//                onConfirm = viewModel::deleteCompletelyShoppingItems,
-//                onDismiss = viewModel::dismissDeleteCompletelyConfirmationDialog,
-//            )
-//        }
-//        else -> Unit
-//    }
+    when (deleteEvent) {
+        ShoppingItemListScreenViewModel.DeleteEvent.ShowProgressDialog -> {
+            LoadingDialog(isLoading = true)
+        }
+        ShoppingItemListScreenViewModel.DeleteEvent.ShowConfirmationDialog -> {
+            DeleteCompletelyDialog(
+                showDialog = true,
+                onConfirm = viewModel::deleteCompletelyShoppingItems,
+                onDismiss = viewModel::dismissDeleteCompletelyConfirmationDialog,
+            )
+        }
+        null -> Unit
+    }
 
     LaunchedEffect(Unit) {
         viewModel.fetchShoppingItems()
@@ -84,16 +82,16 @@ fun ShoppingItemListScreen(
 @Composable
 private fun HomeListScreenContent(
     uiModel: ShoppingItemListScreenViewModel.UiModel,
-//    isRefreshing: Boolean,
+    isRefreshing: Boolean = false,
     onClickAddButton: () -> Unit = {},
-//    onRefresh: () -> Unit,
-//    onClickItemRow: (item: ShoppingItem) -> Unit,
+    onRefresh: () -> Unit = {},
+    onClickItemRow: (item: ShoppingItem) -> Unit = {},
     onEdit: (item: ShoppingItem) -> Unit = {},
-//    onArchive: (item: ShoppingItem) -> Unit,
-//    onDelete: (item: ShoppingItem) -> Unit,
-//    onRestore: (item: ShoppingItem) -> Unit,
-//    onArchiveAll: () -> Unit,
-//    onDeleteCompletely: () -> Unit,
+    onArchive: (item: ShoppingItem) -> Unit = {},
+    onDelete: (item: ShoppingItem) -> Unit = {},
+    onRestore: (item: ShoppingItem) -> Unit = {},
+    onArchiveAll: () -> Unit = {},
+    onDeleteCompletely: () -> Unit = {},
 ) {
     val pagerState = rememberPagerState(pageCount = ShoppingItemListTab.values().size, infiniteLoop = true)
     val composableScope = rememberCoroutineScope()
@@ -123,35 +121,33 @@ private fun HomeListScreenContent(
         }
         HorizontalPager(state = pagerState) { page ->
             SwipeRefresh(
-//                state = rememberSwipeRefreshState(isRefreshing),
-//                onRefresh = onRefresh,
-                state = rememberSwipeRefreshState(isRefreshing = false),
-                onRefresh = {},
+                state = rememberSwipeRefreshState(isRefreshing),
+                onRefresh = onRefresh,
             ) {
                 when (ShoppingItemListTab.values()[page]) {
                     ShoppingItemListTab.Main -> {
                         MainShoppingItemList(
                             shoppingItems = uiModel.mainShoppingItems,
                             onClickAddButton = onClickAddButton,
-//                            onClickItemRow = onClickItemRow,
+                            onClickItemRow = onClickItemRow,
                             onEdit = onEdit,
-//                            onArchive = onArchive,
-//                            onDelete = onDelete,
-//                            onArchiveAll = onArchiveAll,
+                            onArchive = onArchive,
+                            onDelete = onDelete,
+                            onArchiveAll = onArchiveAll,
                         )
                     }
                     ShoppingItemListTab.Archived -> {
                         ArchivedShoppingItemList(
                             shoppingItems = uiModel.archivedShoppingItems,
-//                            onRestore = onRestore,
-//                            onDelete = onDelete,
+                            onRestore = onRestore,
+                            onDelete = onDelete,
                         )
                     }
                     ShoppingItemListTab.Deleted -> {
                         DeletedShoppingItemList(
                             shoppingItems = uiModel.deletedShoppingItems,
-//                            onRestore = onRestore,
-//                            onDeleteCompletely = onDeleteCompletely,
+                            onRestore = onRestore,
+                            onDeleteCompletely = onDeleteCompletely,
                         )
                     }
                 }
