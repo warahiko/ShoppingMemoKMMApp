@@ -8,6 +8,7 @@ import io.github.warahiko.shoppingmemokmmapplication.android.error.LaunchSafeImp
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.shoppingitem.add.AddShoppingItemScreenViewModel
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.shoppingitem.edit.EditShoppingItemScreenViewModel
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.shoppingitem.list.ShoppingItemListScreenViewModel
+import io.github.warahiko.shoppingmemokmmapplication.android.ui.tag.add.AddTagScreenViewModel
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.tag.list.TagListScreenViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
@@ -19,6 +20,7 @@ val androidModules: Module = module {
     viewModel { EditShoppingItemScreenViewModel(get(), get(), get(), get()) }
 
     viewModel { TagListScreenViewModel(get(), get()) }
+    viewModel { AddTagScreenViewModel(get(), get(), get()) }
 }
 
 val androidErrorHandlingModules: Module = module {
