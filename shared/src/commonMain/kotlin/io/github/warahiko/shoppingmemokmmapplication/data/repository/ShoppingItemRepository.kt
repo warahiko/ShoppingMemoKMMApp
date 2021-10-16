@@ -1,8 +1,10 @@
 package io.github.warahiko.shoppingmemokmmapplication.data.repository
 
+import io.github.warahiko.shoppingmemokmmapplication.data.mapper.toProperties
 import io.github.warahiko.shoppingmemokmmapplication.data.mapper.toShoppingItemWithTag
 import io.github.warahiko.shoppingmemokmmapplication.data.model.ShoppingItem
 import io.github.warahiko.shoppingmemokmmapplication.data.network.api.ShoppingItemApi
+import io.github.warahiko.shoppingmemokmmapplication.data.network.model.AddShoppingItemRequest
 import io.github.warahiko.shoppingmemokmmapplication.data.network.model.GetShoppingItemsRequest
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -30,5 +32,15 @@ class ShoppingItemRepository(
             .also {
                 _shoppingItems.value = it
             }
+    }
+
+    suspend fun addShoppingItem(shoppingItem: ShoppingItem) {
+        val requestBody = shoppingItem.toProperties()
+        val request = AddShoppingItemRequest(requestBody)
+        val response = withContext(Dispatchers.Default) {
+            shoppingItemApi.addShoppingItem(request)
+        }
+        val item = response.toShoppingItemWithTag(tagRepository.getTags())
+        _shoppingItems.value = _shoppingItems.value.orEmpty().plus(item)
     }
 }
