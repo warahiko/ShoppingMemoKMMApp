@@ -1,5 +1,7 @@
 package io.github.warahiko.shoppingmemokmmapplication.android.error
 
+import io.github.warahiko.shoppingmemokmmapplication.error.AppError
+import io.github.warahiko.shoppingmemokmmapplication.error.NetworkError
 import kotlinx.coroutines.CoroutineExceptionHandler
 import java.net.SocketException
 import java.net.SocketTimeoutException
