@@ -83,6 +83,8 @@ object Dependencies {
         "io.insert-koin:koin-core:${Versions.koin}"
     const val koinAndroid =
         "io.insert-koin:koin-android:${Versions.koin}"
+    const val koinAndroidXCompose =
+        "io.insert-koin:koin-androidx-compose:${Versions.koin}"
 
     // build config
     const val buildKonfigGradlePlugin =
