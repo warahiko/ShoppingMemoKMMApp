@@ -12,9 +12,13 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Divider
+import androidx.compose.material.FloatingActionButton
+import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -31,7 +35,7 @@ import io.github.warahiko.shoppingmemokmmapplication.data.model.ShoppingItem
 fun MainShoppingItemList(
     shoppingItems: Map<String, List<ShoppingItem>>,
     modifier: Modifier = Modifier,
-//    onClickAddButton: () -> Unit = {},
+    onClickAddButton: () -> Unit = {},
 //    onClickItemRow: (item: ShoppingItem) -> Unit = {},
 //    onEdit: (item: ShoppingItem) -> Unit = {},
 //    onArchive: (item: ShoppingItem) -> Unit = {},
@@ -43,16 +47,16 @@ fun MainShoppingItemList(
 //    }
 
     Scaffold(
-//        floatingActionButton = {
-//            FloatingActionButton(
-//                onClick = onClickAddButton,
-//            ) {
-//                Icon(
-//                    imageVector = Icons.Default.Add,
-//                    contentDescription = null,
-//                )
-//            }
-//        },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = onClickAddButton,
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Add,
+                    contentDescription = null,
+                )
+            }
+        },
     ) {
         if (shoppingItems.isEmpty()) {
             Box(
