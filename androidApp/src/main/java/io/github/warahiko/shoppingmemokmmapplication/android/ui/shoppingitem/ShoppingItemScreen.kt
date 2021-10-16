@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.shoppingitem.add.AddShoppingItemScreen
+import io.github.warahiko.shoppingmemokmmapplication.android.ui.shoppingitem.edit.EditShoppingItemScreen
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.shoppingitem.list.ShoppingItemListScreen
 
 @Composable
@@ -15,7 +16,7 @@ fun ShoppingItemScreen() {
         composable(Screen.ShoppingItems.route) {
             ShoppingItemListScreen(
                 onClickAddButton = { navController.navigate(Screen.Add.route) },
-//                onEdit = { navController.navigate(Screen.Edit.actualRoute(it.id.toString())) },
+                onEdit = { navController.navigate(Screen.Edit.actualRoute(it.id.toString())) },
             )
         }
         composable(Screen.Add.route) {
@@ -24,15 +25,15 @@ fun ShoppingItemScreen() {
             )
         }
         composable(Screen.Edit.route) { backStackEntry ->
-//            val itemId = backStackEntry.arguments?.getString(Screen.Edit.itemIdKey)
-//                ?: run {
-//                    navController.popBackStack()
-//                    return@composable
-//                }
-//            EditShoppingItemScreen(
-//                defaultShoppingItemId = itemId,
-//                onBack = { navController.popBackStack() },
-//            )
+            val itemId = backStackEntry.arguments?.getString(Screen.Edit.itemIdKey)
+                ?: run {
+                    navController.popBackStack()
+                    return@composable
+                }
+            EditShoppingItemScreen(
+                defaultShoppingItemId = itemId,
+                onBack = { navController.popBackStack() },
+            )
         }
     }
 }
