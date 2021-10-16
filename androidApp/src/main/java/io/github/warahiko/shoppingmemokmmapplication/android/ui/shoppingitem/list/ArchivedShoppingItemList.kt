@@ -12,14 +12,23 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Divider
+import androidx.compose.material.DropdownMenu
+import androidx.compose.material.DropdownMenuItem
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import io.github.warahiko.shoppingmemokmmapplication.android.R
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.preview.ShoppingItemPreview
@@ -30,8 +39,8 @@ import io.github.warahiko.shoppingmemokmmapplication.data.model.ShoppingItem
 fun ArchivedShoppingItemList(
     shoppingItems: Map<String, List<ShoppingItem>>,
     modifier: Modifier = Modifier,
-//    onRestore: (item: ShoppingItem) -> Unit = {},
-//    onDelete: (item: ShoppingItem) -> Unit = {},
+    onRestore: (item: ShoppingItem) -> Unit = {},
+    onDelete: (item: ShoppingItem) -> Unit = {},
 ) {
     if (shoppingItems.isEmpty()) {
         Box(
@@ -73,8 +82,8 @@ fun ArchivedShoppingItemList(
                 ItemRow(
                     item = item,
                     modifier = Modifier.padding(start = 16.dp),
-//                    onRestore = onRestore,
-//                    onDelete = onDelete,
+                    onRestore = onRestore,
+                    onDelete = onDelete,
                 )
                 if (index < items.size - 1) {
                     Divider(
@@ -92,39 +101,39 @@ fun ArchivedShoppingItemList(
 private fun ItemRow(
     item: ShoppingItem,
     modifier: Modifier = Modifier,
-//    onRestore: (item: ShoppingItem) -> Unit = {},
-//    onDelete: (item: ShoppingItem) -> Unit = {},
+    onRestore: (item: ShoppingItem) -> Unit = {},
+    onDelete: (item: ShoppingItem) -> Unit = {},
 ) {
-//    var showOperation by remember { mutableStateOf(false) }
-//    var dropdownOffset by remember { mutableStateOf(Offset.Zero) }
+    var showOperation by remember { mutableStateOf(false) }
+    var dropdownOffset by remember { mutableStateOf(Offset.Zero) }
 
     Box(modifier = modifier) {
         ShoppingItemRow(
             shoppingItem = item,
             checkBoxIsVisible = false,
-//            onLongPress = { offset ->
-//                showOperation = true
-//                dropdownOffset = offset
-//            },
+            onLongPress = { offset ->
+                showOperation = true
+                dropdownOffset = offset
+            },
         )
-//        DropdownMenu(
-//            expanded = showOperation,
-//            onDismissRequest = { showOperation = false },
-//            offset = LocalDensity.current.run {
-//                DpOffset(dropdownOffset.x.toDp(), 0.dp)
-//            },
-//        ) {
-//            DropdownMenuItem(onClick = { onRestore(item) }) {
-//                Text(stringResource(R.string.home_operation_restore))
-//            }
-//            DropdownMenuItem(onClick = { onDelete(item) }) {
-//                Text(stringResource(R.string.home_operation_delete))
-//            }
-//            Divider()
-//            DropdownMenuItem(onClick = { showOperation = false }) {
-//                Text(stringResource(R.string.cancel))
-//            }
-//        }
+        DropdownMenu(
+            expanded = showOperation,
+            onDismissRequest = { showOperation = false },
+            offset = LocalDensity.current.run {
+                DpOffset(dropdownOffset.x.toDp(), 0.dp)
+            },
+        ) {
+            DropdownMenuItem(onClick = { onRestore(item) }) {
+                Text(stringResource(R.string.shopping_item_list_operation_restore))
+            }
+            DropdownMenuItem(onClick = { onDelete(item) }) {
+                Text(stringResource(R.string.shopping_item_list_operation_delete))
+            }
+            Divider()
+            DropdownMenuItem(onClick = { showOperation = false }) {
+                Text(stringResource(R.string.cancel))
+            }
+        }
     }
 }
 
