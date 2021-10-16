@@ -5,7 +5,12 @@ import io.github.warahiko.shoppingmemokmmapplication.data.network.api.TagApi
 import io.github.warahiko.shoppingmemokmmapplication.data.repository.ShoppingItemRepository
 import io.github.warahiko.shoppingmemokmmapplication.data.repository.TagRepository
 import io.github.warahiko.shoppingmemokmmapplication.usecase.shoppingitem.AddShoppingItemUseCase
+import io.github.warahiko.shoppingmemokmmapplication.usecase.shoppingitem.ArchiveShoppingItemUseCase
+import io.github.warahiko.shoppingmemokmmapplication.usecase.shoppingitem.ChangeShoppingItemIsDoneUseCase
+import io.github.warahiko.shoppingmemokmmapplication.usecase.shoppingitem.DeleteCompletelyShoppingItemUseCase
+import io.github.warahiko.shoppingmemokmmapplication.usecase.shoppingitem.DeleteShoppingItemUseCase
 import io.github.warahiko.shoppingmemokmmapplication.usecase.shoppingitem.EditShoppingItemUseCase
+import io.github.warahiko.shoppingmemokmmapplication.usecase.shoppingitem.RestoreShoppingItemUseCase
 import io.ktor.client.HttpClient
 import io.ktor.client.features.defaultRequest
 import io.ktor.client.features.json.JsonFeature
@@ -47,6 +52,11 @@ private val repositoryModules: Module = module {
 private val useCaseModules: Module = module {
     single { AddShoppingItemUseCase(get()) }
     single { EditShoppingItemUseCase(get()) }
+    single { ArchiveShoppingItemUseCase(get()) }
+    single { ChangeShoppingItemIsDoneUseCase(get()) }
+    single { DeleteCompletelyShoppingItemUseCase(get()) }
+    single { DeleteShoppingItemUseCase(get()) }
+    single { RestoreShoppingItemUseCase(get()) }
 }
 
 private fun createHttpClient(): HttpClient {
