@@ -52,7 +52,7 @@ import org.koin.androidx.compose.getViewModel
 @Composable
 fun TagListScreen(
     onClickAddButton: () -> Unit,
-//    onEdit: (tag: Tag) -> Unit,
+    onEdit: (tag: Tag) -> Unit,
     viewModel: TagListScreenViewModel = getViewModel(),
 ) {
     val uiModel by viewModel.uiModel.collectAsState()
@@ -81,7 +81,7 @@ fun TagListScreen(
             tags = uiModel.tagsGroupedByType,
             isRefreshing = isRefreshing,
             onRefresh = viewModel::refreshTags,
-//            onEdit = onEdit,
+            onEdit = onEdit,
 //            onDelete = viewModel::showDeleteTagConfirmationDialog,
         )
     }
@@ -109,7 +109,7 @@ private fun TagListScreenContent(
     modifier: Modifier = Modifier,
     isRefreshing: Boolean = false,
     onRefresh: () -> Unit = {},
-//    onEdit: (tag: Tag) -> Unit = {},
+    onEdit: (tag: Tag) -> Unit = {},
 //    onDelete: (tag: Tag) -> Unit = {},
 ) {
     SwipeRefresh(
@@ -156,7 +156,7 @@ private fun TagListScreenContent(
                     ItemRow(
                         tag = item,
                         modifier = Modifier.padding(start = 16.dp),
-//                        onEdit = onEdit,
+                        onEdit = onEdit,
 //                        onDelete = onDelete,
                     )
                     if (index < list.size - 1) {
@@ -176,7 +176,7 @@ private fun TagListScreenContent(
 private fun ItemRow(
     tag: Tag,
     modifier: Modifier = Modifier,
-//    onEdit: (tag: Tag) -> Unit = {},
+    onEdit: (tag: Tag) -> Unit = {},
 //    onDelete: (tag: Tag) -> Unit = {},
 ) {
     var showOperation by remember { mutableStateOf(false) }
@@ -224,9 +224,9 @@ private fun ItemRow(
                 DpOffset(dropdownOffset.x.toDp(), 0.dp)
             },
         ) {
-//            DropdownMenuItem(onClick = { onEdit(tag) }) {
-//                Text(stringResource(R.string.tag_list_operation_edit))
-//            }
+            DropdownMenuItem(onClick = { onEdit(tag) }) {
+                Text(stringResource(R.string.tag_list_operation_edit))
+            }
 //            DropdownMenuItem(onClick = { onDelete(tag) }) {
 //                Text(stringResource(R.string.tag_list_operation_delete))
 //            }

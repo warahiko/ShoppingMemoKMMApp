@@ -9,6 +9,7 @@ import io.github.warahiko.shoppingmemokmmapplication.android.ui.shoppingitem.add
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.shoppingitem.edit.EditShoppingItemScreenViewModel
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.shoppingitem.list.ShoppingItemListScreenViewModel
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.tag.add.AddTagScreenViewModel
+import io.github.warahiko.shoppingmemokmmapplication.android.ui.tag.edit.EditTagScreenViewModel
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.tag.list.TagListScreenViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
@@ -21,6 +22,7 @@ val androidModules: Module = module {
 
     viewModel { TagListScreenViewModel(get(), get()) }
     viewModel { AddTagScreenViewModel(get(), get(), get()) }
+    viewModel { EditTagScreenViewModel(get(), get(), get()) }
 }
 
 val androidErrorHandlingModules: Module = module {

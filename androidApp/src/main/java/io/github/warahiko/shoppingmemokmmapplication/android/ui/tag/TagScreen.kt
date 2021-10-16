@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.tag.add.AddTagScreen
+import io.github.warahiko.shoppingmemokmmapplication.android.ui.tag.edit.EditTagScreen
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.tag.list.TagListScreen
 
 @Composable
@@ -17,9 +18,9 @@ fun TagScreen() {
                 onClickAddButton = {
                     navController.navigate(Screen.Add.route)
                 },
-//                onEdit = {
-//                    navController.navigate(Screen.Edit.actualRoute(it.id.toString()))
-//                }
+                onEdit = {
+                    navController.navigate(Screen.Edit.actualRoute(it.id.toString()))
+                }
             )
         }
         composable(Screen.Add.route) {
@@ -28,15 +29,15 @@ fun TagScreen() {
             )
         }
         composable(Screen.Edit.route) { backStackEntry ->
-//            val tagId = backStackEntry.arguments?.getString(Screen.Edit.itemKey)
-//                ?: run {
-//                    navController.popBackStack()
-//                    return@composable
-//                }
-//            EditTagScreen(
-//                defaultTagId = tagId,
-//                onBack = { navController.popBackStack() },
-//            )
+            val tagId = backStackEntry.arguments?.getString(Screen.Edit.itemKey)
+                ?: run {
+                    navController.popBackStack()
+                    return@composable
+                }
+            EditTagScreen(
+                defaultTagId = tagId,
+                onBack = { navController.popBackStack() },
+            )
         }
     }
 }
