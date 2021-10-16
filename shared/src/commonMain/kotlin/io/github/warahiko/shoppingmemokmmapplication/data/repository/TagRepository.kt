@@ -1,8 +1,10 @@
 package io.github.warahiko.shoppingmemokmmapplication.data.repository
 
+import io.github.warahiko.shoppingmemokmmapplication.data.mapper.toProperties
 import io.github.warahiko.shoppingmemokmmapplication.data.mapper.toTag
 import io.github.warahiko.shoppingmemokmmapplication.data.model.Tag
 import io.github.warahiko.shoppingmemokmmapplication.data.network.api.TagApi
+import io.github.warahiko.shoppingmemokmmapplication.data.network.model.AddTagRequest
 import io.github.warahiko.shoppingmemokmmapplication.error.InternalError
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -33,5 +35,15 @@ class TagRepository(
             .also {
                 _tags.value = it
             }
+    }
+
+    suspend fun addTag(tag: Tag) {
+        val requestBody = tag.toProperties()
+        val request = AddTagRequest(requestBody)
+        val response = withContext(Dispatchers.Default) {
+            tagApi.addTag(request)
+        }
+        val item = response.toTag()
+        _tags.value = _tags.value.orEmpty().plus(item)
     }
 }
