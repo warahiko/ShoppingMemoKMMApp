@@ -22,13 +22,14 @@ import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import io.github.warahiko.shoppingmemokmmapplication.android.R
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.common.ShoppingMemoAppBar
+import io.github.warahiko.shoppingmemokmmapplication.data.model.ShoppingItem
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun ShoppingItemListScreen(
     onClickAddButton: () -> Unit,
-//    onEdit: (item: ShoppingItem) -> Unit,
+    onEdit: (item: ShoppingItem) -> Unit,
     viewModel: ShoppingItemListScreenViewModel = getViewModel(),
 ) {
     val uiModel by viewModel.uiModel.collectAsState()
@@ -52,7 +53,7 @@ fun ShoppingItemListScreen(
             onClickAddButton = onClickAddButton,
 //            onRefresh = viewModel::fetchShoppingList,
 //            onClickItemRow = viewModel::changeShoppingItemIsDone,
-//            onEdit = onEdit,
+            onEdit = onEdit,
 //            onArchive = viewModel::archiveShoppingItem,
 //            onDelete = viewModel::deleteShoppingItem,
 //            onRestore = viewModel::restoreShoppingItem,
@@ -87,7 +88,7 @@ private fun HomeListScreenContent(
     onClickAddButton: () -> Unit = {},
 //    onRefresh: () -> Unit,
 //    onClickItemRow: (item: ShoppingItem) -> Unit,
-//    onEdit: (item: ShoppingItem) -> Unit,
+    onEdit: (item: ShoppingItem) -> Unit = {},
 //    onArchive: (item: ShoppingItem) -> Unit,
 //    onDelete: (item: ShoppingItem) -> Unit,
 //    onRestore: (item: ShoppingItem) -> Unit,
@@ -133,7 +134,7 @@ private fun HomeListScreenContent(
                             shoppingItems = uiModel.mainShoppingItems,
                             onClickAddButton = onClickAddButton,
 //                            onClickItemRow = onClickItemRow,
-//                            onEdit = onEdit,
+                            onEdit = onEdit,
 //                            onArchive = onArchive,
 //                            onDelete = onDelete,
 //                            onArchiveAll = onArchiveAll,
