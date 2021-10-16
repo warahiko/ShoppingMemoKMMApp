@@ -25,6 +25,8 @@ dependencies {
     implementation(Dependencies.AndroidX.Compose.materialIconsExtended)
     implementation(Dependencies.AndroidX.Compose.uiTooling)
 
+    implementation(Dependencies.KotlinX.datetime)
+
     // DI
     implementation(Dependencies.koinAndroid)
     implementation(Dependencies.koinAndroidXCompose)
@@ -59,4 +61,11 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = Versions.AndroidX.compose
     }
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions.freeCompilerArgs += listOf(
+        "-Xuse-experimental=com.google.accompanist.pager.ExperimentalPagerApi",
+        "-Xuse-experimental=androidx.compose.foundation.ExperimentalFoundationApi",
+    )
 }
