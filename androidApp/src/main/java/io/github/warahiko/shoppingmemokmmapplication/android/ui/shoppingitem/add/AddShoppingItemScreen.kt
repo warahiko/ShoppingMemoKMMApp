@@ -20,6 +20,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.warahiko.shoppingmemokmmapplication.android.R
+import io.github.warahiko.shoppingmemokmmapplication.android.ui.common.LoadingDialog
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.common.ShoppingMemoAppBar
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.common.compositionlocal.LocalTagMap
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.shoppingitem.common.ShoppingItemEditor
@@ -34,7 +35,7 @@ fun AddShoppingItemScreen(
     viewModel: AddShoppingItemScreenViewModel = getViewModel(),
 ) {
     val uiModel by viewModel.uiModel.collectAsState()
-//    val showProgress by viewModel.showProgress.collectAsState()
+    val showProgress by viewModel.showProgress.collectAsState()
 
     Scaffold(
         topBar = {
@@ -55,7 +56,7 @@ fun AddShoppingItemScreen(
         }
     }
 
-//    LoadingDialog(isLoading = showProgress)
+    LoadingDialog(isLoading = showProgress)
 }
 
 @Composable
