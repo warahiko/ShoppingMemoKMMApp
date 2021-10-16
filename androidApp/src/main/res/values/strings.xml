@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">買い物メモ</string>
+
+    <string name="bottom_navigation_shopping_item">買い物リスト</string>
+    <string name="bottom_navigation_tag">タグ</string>
+
+    <string name="ok">OK</string>
+    <string name="cancel">キャンセル</string>
+
+    <string name="error_dialog_title">エラー</string>
+    <string name="error_dialog_network_message">通信時にエラーが発生しました</string>
+
+    <string name="shopping_item_list_title">@string/app_name</string>
+    <string name="shopping_item_list_tab_main">Main</string>
+    <string name="shopping_item_list_tab_archived">Archived</string>
+    <string name="shopping_item_list_tab_deleted">Deleted</string>
+    <string name="shopping_item_list_archive_button">完了済をアーカイブ</string>
+    <string name="shopping_item_list_empty">アイテムが存在しません</string>
+    <string name="shopping_item_list_delete_completely_button">完全に削除する</string>
+    <string name="shopping_item_list_operation_edit">編集</string>
+    <string name="shopping_item_list_operation_archive">アーカイブ</string>
+    <string name="shopping_item_list_operation_delete">削除</string>
+    <string name="shopping_item_list_operation_restore">戻す</string>
+    <string name="shopping_item_list_delete_completely_dialog_title">完全に削除する</string>
+    <string name="shopping_item_list_delete_completely_dialog_message">元には戻せません</string>
+    <string name="shopping_item_list_delete_completely_dialog_ok">削除</string>
+
+    <string name="shopping_item_add_title">アイテムを追加</string>
+    <string name="shopping_item_add_button">追加</string>
+
+    <string name="shopping_item_edit_title">アイテムを編集</string>
+    <string name="shopping_item_edit_button">編集</string>
+
+    <string name="shopping_item_tag_label">タグ</string>
+    <string name="shopping_item_count_label">数量</string>
+    <string name="shopping_item_memo_label">メモ</string>
+
+    <string name="tag_list_title">タグ</string>
+    <string name="tag_list_operation_edit">編集</string>
+    <string name="tag_list_operation_delete">削除</string>
+    <string name="tag_list_empty">タグが存在しません</string>
+
+    <string name="tag_add_title">タグを追加</string>
+    <string name="tag_add_button">追加</string>
+
+    <string name="tag_edit_title">タグを編集</string>
+    <string name="tag_edit_button">編集</string>
+
+    <string name="tag_type_label">タイプ</string>
+    <string name="tag_name_label">名前</string>
+
+    <string name="tag_delete_dialog_title">タグを削除</string>
+    <string name="tag_delete_dialog_message">%1$sを削除します</string>
+    <string name="tag_delete_dialog_ok">削除</string>
+</resources>
