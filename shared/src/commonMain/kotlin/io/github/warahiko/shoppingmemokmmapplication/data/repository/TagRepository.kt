@@ -58,4 +58,12 @@ class TagRepository(
             if (it.id == item.id) item else it
         }
     }
+
+    suspend fun deleteTag(tag: Tag) {
+        val requestBody = UpdateItemRequest(isArchived = true)
+        withContext(Dispatchers.Default) {
+            tagApi.updateTag(tag.id.toString(), requestBody)
+        }
+        _tags.value = _tags.value?.filter { it.id != tag.id }
+    }
 }
