@@ -5,7 +5,9 @@ import io.github.warahiko.shoppingmemokmmapplication.data.network.baseUrl
 import io.github.warahiko.shoppingmemokmmapplication.data.network.model.AddTagRequest
 import io.github.warahiko.shoppingmemokmmapplication.data.network.model.GetTagsResponse
 import io.github.warahiko.shoppingmemokmmapplication.data.network.model.TagPage
+import io.github.warahiko.shoppingmemokmmapplication.data.network.model.UpdateItemRequest
 import io.ktor.client.HttpClient
+import io.ktor.client.request.patch
 import io.ktor.client.request.post
 
 class TagApi(
@@ -18,6 +20,12 @@ class TagApi(
 
     suspend fun addTag(request: AddTagRequest): TagPage {
         return client.post(baseUrl / "pages") {
+            body = request
+        }
+    }
+
+    suspend fun updateTag(pageId: String, request: UpdateItemRequest): TagPage {
+        return client.patch(baseUrl / "pages/$pageId") {
             body = request
         }
     }

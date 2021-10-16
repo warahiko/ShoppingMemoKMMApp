@@ -5,6 +5,7 @@ import io.github.warahiko.shoppingmemokmmapplication.data.mapper.toTag
 import io.github.warahiko.shoppingmemokmmapplication.data.model.Tag
 import io.github.warahiko.shoppingmemokmmapplication.data.network.api.TagApi
 import io.github.warahiko.shoppingmemokmmapplication.data.network.model.AddTagRequest
+import io.github.warahiko.shoppingmemokmmapplication.data.network.model.UpdateItemRequest
 import io.github.warahiko.shoppingmemokmmapplication.error.InternalError
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -45,5 +46,16 @@ class TagRepository(
         }
         val item = response.toTag()
         _tags.value = _tags.value.orEmpty().plus(item)
+    }
+
+    suspend fun updateTag(tag: Tag) {
+        val requestBody = UpdateItemRequest(tag.toProperties())
+        val response = withContext(Dispatchers.Default) {
+            tagApi.updateTag(tag.id.toString(), requestBody)
+        }
+        val item = response.toTag()
+        _tags.value = _tags.value?.map {
+            if (it.id == item.id) item else it
+        }
     }
 }
