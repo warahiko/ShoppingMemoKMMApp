@@ -47,7 +47,6 @@ object Dependencies {
             "androidx.hilt:hilt-navigation-compose:${Versions.AndroidX.hiltNavigationCompose}"
 
         object Compose {
-            const val version = Versions.AndroidX.compose
             const val compiler =
                 "androidx.compose.compiler:compiler:${Versions.AndroidX.compose}"
             const val ui =
@@ -134,7 +133,7 @@ object Versions {
         const val navigation = "2.3.5"
         const val navigationCompose = "2.4.0-alpha06"
         const val hiltNavigationCompose = "1.0.0-alpha03"
-        const val compose = "1.0.1"
+        const val compose = "1.0.4"
 
         object Test {
             const val extJUnit = "1.1.3"
