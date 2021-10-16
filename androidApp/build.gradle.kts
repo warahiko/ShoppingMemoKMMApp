@@ -28,6 +28,7 @@ dependencies {
 
     // DI
     implementation(Dependencies.koinAndroid)
+    implementation(Dependencies.koinAndroidXCompose)
 
     // test
     testImplementation(Dependencies.jUnit4)
