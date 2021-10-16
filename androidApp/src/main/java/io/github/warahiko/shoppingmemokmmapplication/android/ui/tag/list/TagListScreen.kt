@@ -8,6 +8,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.PressInteraction
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -168,6 +169,10 @@ private fun TagListScreenContent(
                         )
                     }
                 }
+            }
+            item {
+                // FAB の上端までマージンを取る
+                Spacer(modifier = Modifier.height(72.dp))
             }
         }
     }

@@ -4,6 +4,7 @@ import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -141,6 +142,10 @@ fun MainShoppingItemList(
                         Text(stringResource(R.string.shopping_item_list_archive_button))
                     }
                 }
+            }
+            item {
+                // FAB の上端までマージンを取る
+                Spacer(modifier = Modifier.height(72.dp))
             }
         }
     }
