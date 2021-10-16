@@ -29,6 +29,8 @@ object Dependencies {
     object AndroidX {
         const val coreKtx =
             "androidx.core:core-ktx:${Versions.AndroidX.coreKtx}"
+        const val annotation =
+            "androidx.annotation:annotation:${Versions.AndroidX.annotation}"
         const val appCompat =
             "com.google.android.material:material:${Versions.AndroidX.appCompat}"
         const val lifecycleRuntimeKtx =
@@ -126,6 +128,7 @@ object Versions {
 
     object AndroidX {
         const val coreKtx = "1.6.0"
+        const val annotation = "1.2.0"
         const val appCompat = "1.4.0"
         const val lifecycle = "2.3.1"
         const val lifecycleViewModelCompose = "1.0.0-alpha07"

@@ -64,6 +64,7 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
+                implementation(Dependencies.AndroidX.annotation)
                 implementation(Dependencies.ktorClientAndroid)
             }
         }
