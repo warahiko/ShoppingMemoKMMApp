@@ -136,18 +136,18 @@ private fun HomeListScreenContent(
                         )
                     }
                     ShoppingItemListTab.Archived -> {
-//                        ArchivedShoppingItemList(
-//                            shoppingItems = archivedShoppingItems,
+                        ArchivedShoppingItemList(
+                            shoppingItems = uiModel.archivedShoppingItems,
 //                            onRestore = onRestore,
 //                            onDelete = onDelete,
-//                        )
+                        )
                     }
                     ShoppingItemListTab.Deleted -> {
-//                        DeletedShoppingItemList(
-//                            shoppingItems = deletedShoppingItems,
+                        DeletedShoppingItemList(
+                            shoppingItems = uiModel.deletedShoppingItems,
 //                            onRestore = onRestore,
 //                            onDeleteCompletely = onDeleteCompletely,
-//                        )
+                        )
                     }
                 }
             }
