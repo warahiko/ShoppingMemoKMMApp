@@ -35,8 +35,8 @@ class ShoppingItemListScreenViewModel(
     private val _isRefreshing = MutableStateFlow(false)
     val isRefreshing: StateFlow<Boolean> get() = _isRefreshing
 
-    private val _deleteEvent = MutableStateFlow(DeleteEvent.None)
-    val deleteEvent: StateFlow<DeleteEvent> get() = _deleteEvent
+    private val _deleteEvent = MutableStateFlow<DeleteEvent?>(null)
+    val deleteEvent: StateFlow<DeleteEvent?> get() = _deleteEvent
 
     fun fetchShoppingItems(): Job {
         return viewModelScope.launchSafe {
@@ -84,13 +84,13 @@ class ShoppingItemListScreenViewModel(
     }
 
     fun dismissDeleteCompletelyConfirmationDialog() {
-        _deleteEvent.value = DeleteEvent.None
+        _deleteEvent.value = null
     }
 
     fun deleteCompletelyShoppingItems() = viewModelScope.launchSafe {
         _deleteEvent.value = DeleteEvent.ShowProgressDialog
         deleteCompletelyShoppingItemUseCase(*uiModel.value.deletedShoppingItems.toTypedArray())
-        _deleteEvent.value = DeleteEvent.None
+        _deleteEvent.value = null
     }
 
     data class UiModel(
@@ -128,7 +128,6 @@ class ShoppingItemListScreenViewModel(
     }
 
     enum class DeleteEvent {
-        None,
         ShowConfirmationDialog,
         ShowProgressDialog,
     }

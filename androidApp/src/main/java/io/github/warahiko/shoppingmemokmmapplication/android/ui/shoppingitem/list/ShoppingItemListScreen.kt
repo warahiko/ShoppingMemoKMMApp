@@ -71,7 +71,7 @@ fun ShoppingItemListScreen(
                 onDismiss = viewModel::dismissDeleteCompletelyConfirmationDialog,
             )
         }
-        else -> Unit
+        null -> Unit
     }
 
     LaunchedEffect(Unit) {
