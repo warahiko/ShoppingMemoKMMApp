@@ -78,6 +78,9 @@ object Dependencies {
     const val viewPagerIndicators =
         "com.google.accompanist:accompanist-pager-indicators:${Versions.viewPager}"
 
+    const val shimmer =
+        "com.valentinilk.shimmer:compose-shimmer:${Versions.shimmer}"
+
     // DI
     const val koinCore =
         "io.insert-koin:koin-core:${Versions.koin}"
@@ -146,6 +149,8 @@ object Versions {
     const val androidMaterial = "1.4.0"
     const val swipeRefresh = "0.11.1"
     const val viewPager = "0.17.0"
+
+    const val shimmer = "1.0.0"
 
     // DI
     const val koin = "3.1.2"

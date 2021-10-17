@@ -11,6 +11,8 @@ dependencies {
     implementation(Dependencies.viewPager)
     implementation(Dependencies.viewPagerIndicators)
 
+    implementation(Dependencies.shimmer)
+
     implementation(Dependencies.AndroidX.coreKtx)
     implementation(Dependencies.AndroidX.appCompat)
     implementation(Dependencies.AndroidX.lifecycleRuntimeKtx)
