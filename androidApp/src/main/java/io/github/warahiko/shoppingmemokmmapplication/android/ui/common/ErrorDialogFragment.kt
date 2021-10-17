@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.DialogFragment
+import io.github.warahiko.shoppingmemokmmapplication.android.ui.theme.ShoppingMemoAppTheme
 
 class ErrorDialogFragment : DialogFragment() {
 
@@ -19,12 +20,14 @@ class ErrorDialogFragment : DialogFragment() {
         savedInstanceState: Bundle?,
     ): View = ComposeView(requireContext()).apply {
         setContent {
-            ErrorDialog(
-                message = errorMessage,
-                onDismiss = {
-                    this@ErrorDialogFragment.dismiss()
-                },
-            )
+            ShoppingMemoAppTheme {
+                ErrorDialog(
+                    message = errorMessage,
+                    onDismiss = {
+                        this@ErrorDialogFragment.dismiss()
+                    },
+                )
+            }
         }
     }
 

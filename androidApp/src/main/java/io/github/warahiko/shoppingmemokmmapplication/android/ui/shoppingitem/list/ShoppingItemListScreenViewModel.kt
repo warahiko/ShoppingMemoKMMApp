@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.stateIn
 
 class ShoppingItemListScreenViewModel(
@@ -28,10 +29,15 @@ class ShoppingItemListScreenViewModel(
     launchSafe: LaunchSafe,
 ) : ViewModel(), LaunchSafe by launchSafe {
 
-    val uiModel = shoppingItemRepository.shoppingItems
-        .combine(shoppingItemRepository.isFetching) { shoppingItems, isFetching ->
-            UiModel.from(shoppingItems, isFetching)
-        }
+    val uiModel = combine(
+        shoppingItemRepository.shoppingItems,
+        // すぐに失敗した場合にチラつくのを防ぐため、500ms 以内で失敗したらそのまま失敗画面を出す
+        shoppingItemRepository.isFetching.debounce { isFetching ->
+            if (isFetching) 500 else 0
+        },
+    ) { shoppingItems, isFetching ->
+        UiModel.from(shoppingItems, isFetching)
+    }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(1000), UiModel.EMPTY)
 
     private val _isRefreshing = MutableStateFlow(false)
