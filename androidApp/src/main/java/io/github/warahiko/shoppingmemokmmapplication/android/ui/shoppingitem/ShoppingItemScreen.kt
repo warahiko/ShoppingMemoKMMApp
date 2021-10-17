@@ -45,6 +45,6 @@ private sealed class Screen(
     object Add : Screen("shopping-item/add")
     object Edit : Screen("shopping-item/edit/{itemId}") {
         const val itemIdKey = "itemId"
-        fun actualRoute(itemId: String): String = "shopping-item/edit/${itemId}"
+        fun actualRoute(itemId: String): String = "shopping-item/edit/$itemId"
     }
 }

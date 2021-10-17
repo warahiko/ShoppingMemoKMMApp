@@ -8,9 +8,10 @@ import kotlin.native.concurrent.ThreadLocal
 internal value class BaseUrl(private val value: String) {
 
     operator fun div(relativePath: String): String {
-        return "$value/$relativePath"
+        val baseUrl = value.trimEnd('/')
+        return "$baseUrl/$relativePath"
     }
 }
 
 @ThreadLocal
-internal val baseUrl = BaseUrl(BuildKonfig.NOTION_BASE_URL.trimEnd('/'))
+internal val baseUrl = BaseUrl(BuildKonfig.NOTION_BASE_URL)

@@ -28,7 +28,7 @@ class ShoppingItemApi(
     }
 
     suspend fun updateShoppingItem(pageId: String, request: UpdateItemRequest): ShoppingItemPage {
-        return client.patch(baseUrl / "pages/${pageId}") {
+        return client.patch(baseUrl / "pages/$pageId") {
             body = request
         }
     }

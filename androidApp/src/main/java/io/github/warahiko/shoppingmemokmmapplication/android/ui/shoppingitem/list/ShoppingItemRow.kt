@@ -33,6 +33,7 @@ import androidx.compose.material.icons.filled.Description
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -182,7 +183,13 @@ private fun MemoIcon(
     val memoIconAlpha by isExpandedTransition.animateFloat(label = "memoIconAlpha") {
         if (it) 0f else 1f
     }
-    val iconTint = if (memoExists) MaterialTheme.colors.secondary else Color.Gray
+    // Composable はremember 内では呼べないが、skips as much as possible なのでこれでよさそう
+    val secondaryColor = MaterialTheme.colors.secondary
+    val iconTint by remember(memoExists) {
+        derivedStateOf {
+            if (memoExists) secondaryColor else Color.Gray
+        }
+    }
 
     BoxWithConstraints(
         modifier = modifier
