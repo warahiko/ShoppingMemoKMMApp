@@ -1,5 +1,8 @@
 package io.github.warahiko.shoppingmemokmmapplication.android.ui.shoppingitem.list
 
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,6 +16,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -20,6 +25,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.valentinilk.shimmer.LocalShimmerTheme
+import com.valentinilk.shimmer.defaultShimmerTheme
 import com.valentinilk.shimmer.shimmer
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.theme.ShoppingMemoAppTheme
 
@@ -27,22 +34,35 @@ import io.github.warahiko.shoppingmemokmmapplication.android.ui.theme.ShoppingMe
 fun ShoppingItemListLoading(
     modifier: Modifier = Modifier,
 ) {
-    Column(
-        modifier
-            .background(color = MaterialTheme.colors.background)
-            .fillMaxWidth()
-            .shimmer(),
-    ) {
-        repeat(2) {
-            LoadingHeader()
+    val shimmerTheme = remember {
+        defaultShimmerTheme.copy(
+            animationSpec = infiniteRepeatable(
+                animation = tween(
+                    durationMillis = 1000,
+                    delayMillis = 0,
+                    easing = LinearEasing,
+                )
+            )
+        )
+    }
+    CompositionLocalProvider(LocalShimmerTheme provides shimmerTheme) {
+        Column(
+            modifier
+                .background(color = MaterialTheme.colors.background)
+                .fillMaxWidth()
+                .shimmer(),
+        ) {
             repeat(2) {
-                LoadingRow(Modifier.padding(start = 16.dp))
-                if (it < 1) {
-                    Divider(
-                        color = MaterialTheme.colors.onBackground,
-                        startIndent = 16.dp,
-                        modifier = Modifier.alpha(0.5f),
-                    )
+                LoadingHeader()
+                repeat(2) {
+                    LoadingRow(Modifier.padding(start = 16.dp))
+                    if (it < 1) {
+                        Divider(
+                            color = MaterialTheme.colors.onBackground,
+                            startIndent = 16.dp,
+                            modifier = Modifier.alpha(0.5f),
+                        )
+                    }
                 }
             }
         }
