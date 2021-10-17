@@ -5,6 +5,7 @@ import io.github.warahiko.shoppingmemokmmapplication.android.error.ErrorHolder
 import io.github.warahiko.shoppingmemokmmapplication.android.error.ErrorMonitor
 import io.github.warahiko.shoppingmemokmmapplication.android.error.LaunchSafe
 import io.github.warahiko.shoppingmemokmmapplication.android.error.LaunchSafeImpl
+import io.github.warahiko.shoppingmemokmmapplication.android.ui.BottomNavHostViewModel
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.common.ExternalScope
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.shoppingitem.add.AddShoppingItemScreenViewModel
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.shoppingitem.edit.EditShoppingItemScreenViewModel
@@ -19,6 +20,8 @@ import org.koin.dsl.module
 
 val androidModules: Module = module {
     single { ExternalScope(get()) }
+
+    viewModel { BottomNavHostViewModel(get(), get()) }
 
     viewModel { SplashScreenViewModel(get(), get(), get()) }
 
