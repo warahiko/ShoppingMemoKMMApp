@@ -11,6 +11,7 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -64,8 +65,11 @@ private fun AddShoppingItemScreenContent(
     onAdd: (item: ShoppingItem) -> Unit = {},
 ) {
     val (shoppingItem, setShoppingItem) = remember { mutableStateOf(ShoppingItemEditable.newInstanceToAdd()) }
-    val buttonEnabled =
-        shoppingItem.tag != null && shoppingItem.count.let { it.isNotBlank() && it.toInt() > 0 }
+    val buttonEnabled by remember(shoppingItem) {
+        derivedStateOf {
+            shoppingItem.tag != null && shoppingItem.count.let { it.isNotBlank() && it.toInt() > 0 }
+        }
+    }
 
     Column(
         modifier = Modifier
