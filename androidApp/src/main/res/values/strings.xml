@@ -24,6 +24,8 @@
     <string name="shopping_item_list_delete_completely_dialog_title">完全に削除する</string>
     <string name="shopping_item_list_delete_completely_dialog_message">元には戻せません</string>
     <string name="shopping_item_list_delete_completely_dialog_ok">削除</string>
+    <string name="shopping_item_list_error">アイテムを取得できませんでした</string>
+    <string name="shopping_item_list_error_button">リトライ</string>
 
     <string name="shopping_item_add_title">アイテムを追加</string>
     <string name="shopping_item_add_button">追加</string>
