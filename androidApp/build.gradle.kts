@@ -59,6 +59,9 @@ android {
             isMinifyEnabled = false
             signingConfig = signingConfigs.getByName("release")
         }
+        getByName("debug") {
+            applicationIdSuffix = ".debug"
+        }
     }
     buildFeatures {
         compose = true
