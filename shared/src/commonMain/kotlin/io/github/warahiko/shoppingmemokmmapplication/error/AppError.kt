@@ -1,6 +1,6 @@
 package io.github.warahiko.shoppingmemokmmapplication.error
 
-sealed class AppError : Exception()
+expect sealed class AppError() : Exception
 
 data class InternalError(override val message: String) : AppError()
 
