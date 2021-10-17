@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">買い物メモ</string>
+    <string name="app_name">K買い物メモ</string>
 
     <string name="bottom_navigation_shopping_item">買い物リスト</string>
     <string name="bottom_navigation_tag">タグ</string>
