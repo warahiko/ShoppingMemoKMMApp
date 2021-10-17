@@ -1,6 +1,10 @@
 package io.github.warahiko.shoppingmemokmmapplication.android.ui.shoppingitem.list
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Tab
 import androidx.compose.material.TabRow
@@ -11,9 +15,11 @@ import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.pagerTabIndicatorOffset
 import com.google.accompanist.pager.rememberPagerState
@@ -47,6 +53,7 @@ fun ShoppingItemListScreen(
         HomeListScreenContent(
             uiModel = uiModel,
             isRefreshing = isRefreshing,
+            onClickRetry = viewModel::fetchShoppingItems,
             onClickAddButton = onClickAddButton,
             onRefresh = viewModel::refreshShoppingItems,
             onClickItemRow = viewModel::changeShoppingItemIsDone,
@@ -78,6 +85,7 @@ fun ShoppingItemListScreen(
 private fun HomeListScreenContent(
     uiModel: ShoppingItemListScreenViewModel.UiModel,
     isRefreshing: Boolean = false,
+    onClickRetry: () -> Unit = {},
     onClickAddButton: () -> Unit = {},
     onRefresh: () -> Unit = {},
     onClickItemRow: (item: ShoppingItem) -> Unit = {},
@@ -90,6 +98,9 @@ private fun HomeListScreenContent(
 ) {
     val pagerState = rememberPagerState(pageCount = ShoppingItemListTab.values().size, infiniteLoop = true)
     val composableScope = rememberCoroutineScope()
+    val tabEnabled = remember(uiModel) {
+        !uiModel.isInitialLoading && !uiModel.wasFailedToFetch
+    }
 
     Column {
         TabRow(
@@ -103,6 +114,7 @@ private fun HomeListScreenContent(
             ShoppingItemListTab.values().forEachIndexed { index, tabs ->
                 Tab(
                     selected = pagerState.currentPage == index,
+                    enabled = tabEnabled,
                     onClick = {
                         composableScope.launch {
                             pagerState.animateScrollToPage(index)
@@ -114,11 +126,27 @@ private fun HomeListScreenContent(
                 )
             }
         }
-        HorizontalPager(state = pagerState) { page ->
+        HorizontalPager(
+            state = pagerState,
+            dragEnabled = tabEnabled,
+        ) { page ->
             SwipeRefresh(
                 state = rememberSwipeRefreshState(isRefreshing),
                 onRefresh = onRefresh,
             ) {
+                if (uiModel.isInitialLoading) {
+                    ShoppingItemListLoading(
+                        modifier = Modifier
+                            .padding(8.dp)
+                            .fillMaxSize()
+                            .verticalScroll(rememberScrollState())
+                    )
+                    return@SwipeRefresh
+                }
+                if (uiModel.wasFailedToFetch) {
+                    ShoppingItemListFailed(onClickRetry = onClickRetry)
+                    return@SwipeRefresh
+                }
                 when (ShoppingItemListTab.values()[page]) {
                     ShoppingItemListTab.Main -> {
                         MainShoppingItemList(

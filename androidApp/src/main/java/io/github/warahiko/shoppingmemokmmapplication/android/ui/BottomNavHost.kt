@@ -11,6 +11,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Label
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -24,10 +25,14 @@ import androidx.navigation.compose.rememberNavController
 import io.github.warahiko.shoppingmemokmmapplication.android.R
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.shoppingitem.ShoppingItemScreen
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.tag.TagScreen
+import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun BottomNavHost() {
+fun BottomNavHost(
+    viewModel: BottomNavHostViewModel = getViewModel(),
+) {
     val navController = rememberNavController()
+    val bottomTabIsEnabled by viewModel.bottomTabIsEnabled.collectAsState()
 
     Scaffold(
         bottomBar = {
@@ -39,6 +44,7 @@ fun BottomNavHost() {
                         icon = { Icon(screen.navigationIcon, contentDescription = null) },
                         label = { Text(stringResource(screen.navigationTextResourceId)) },
                         selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
+                        enabled = bottomTabIsEnabled,
                         onClick = {
                             navController.navigate(screen.route) {
                                 popUpTo(navController.graph.findStartDestination().id) {

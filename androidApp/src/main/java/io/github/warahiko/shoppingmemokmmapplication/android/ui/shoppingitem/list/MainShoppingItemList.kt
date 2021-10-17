@@ -101,6 +101,7 @@ fun MainShoppingItemList(
                             type,
                             style = MaterialTheme.typography.h6,
                             modifier = Modifier
+                                .height(48.dp)
                                 .padding(vertical = 8.dp)
                                 .padding(start = 16.dp),
                         )
