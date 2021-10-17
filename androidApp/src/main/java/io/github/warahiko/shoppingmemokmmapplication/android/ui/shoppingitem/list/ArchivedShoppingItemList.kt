@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -72,6 +73,7 @@ fun ArchivedShoppingItemList(
                         date,
                         style = MaterialTheme.typography.h6,
                         modifier = Modifier
+                            .height(48.dp)
                             .padding(vertical = 8.dp)
                             .padding(start = 16.dp),
                     )
