@@ -11,3 +11,4 @@
 local.properties
 
 notion.properties
+androidApp/signingConfigs.gradle

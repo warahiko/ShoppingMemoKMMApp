@@ -43,6 +43,10 @@ dependencies {
 
 android {
     compileSdkVersion(30)
+
+    // signing configs
+    apply(from = "signingConfigs.gradle", to = android)
+
     defaultConfig {
         applicationId = "io.github.warahiko.shoppingmemokmmapplication.android"
         minSdkVersion(28)
@@ -53,6 +57,10 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("release")
+        }
+        getByName("debug") {
+            applicationIdSuffix = ".debug"
         }
     }
     buildFeatures {
