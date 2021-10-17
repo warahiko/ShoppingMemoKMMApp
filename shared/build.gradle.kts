@@ -99,11 +99,13 @@ buildkonfig {
         buildConfigField(STRING, "NOTION_BASE_URL", "https://api.notion.com/v1/")
         buildConfigField(STRING, "NOTION_TOKEN", notionProperties.getProperty("notionToken"))
         buildConfigField(STRING, "NOTION_VERSION", notionProperties.getProperty("notionVersion"))
-        buildConfigField(STRING, "DATABASE_ID", notionProperties.getProperty("databaseIdRelease"))
-        buildConfigField(STRING, "TAG_DATABASE_ID", notionProperties.getProperty("tagDatabaseIdRelease"))
     }
     defaultConfigs("dev") {
         buildConfigField(STRING, "DATABASE_ID", notionProperties.getProperty("databaseIdDebug"))
         buildConfigField(STRING, "TAG_DATABASE_ID", notionProperties.getProperty("tagDatabaseIdDebug"))
+    }
+    defaultConfigs("release") {
+        buildConfigField(STRING, "DATABASE_ID", notionProperties.getProperty("databaseIdRelease"))
+        buildConfigField(STRING, "TAG_DATABASE_ID", notionProperties.getProperty("tagDatabaseIdRelease"))
     }
 }
