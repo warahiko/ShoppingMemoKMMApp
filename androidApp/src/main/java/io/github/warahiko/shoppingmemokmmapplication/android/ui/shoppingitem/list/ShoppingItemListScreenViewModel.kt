@@ -29,7 +29,7 @@ class ShoppingItemListScreenViewModel(
 ) : ViewModel(), LaunchSafe by launchSafe {
 
     val uiModel = shoppingItemRepository.shoppingItems
-        .map { UiModel.from(it.orEmpty()) }
+        .map(UiModel::from)
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(1000), UiModel.EMPTY)
 
     private val _isRefreshing = MutableStateFlow(false)
@@ -94,35 +94,38 @@ class ShoppingItemListScreenViewModel(
     }
 
     data class UiModel(
+        val isInitialLoading: Boolean,
         val mainShoppingItems: Map<String, List<ShoppingItem>>,
         val archivedShoppingItems: Map<String, List<ShoppingItem>>,
         val deletedShoppingItems: List<ShoppingItem>,
     ) {
         companion object {
-            val EMPTY = UiModel(emptyMap(), emptyMap(), emptyList())
+            val EMPTY = UiModel(true, emptyMap(), emptyMap(), emptyList())
 
-            fun from(shoppingItems: List<ShoppingItem>): UiModel {
+            fun from(shoppingItems: List<ShoppingItem>?): UiModel {
+                val isInitialLoading = shoppingItems == null
                 val mainShoppingItems = shoppingItems
+                    .orEmpty()
                     .filter { it.status in ShoppingItemListTab.Main.statusList }
                     .groupBy { it.tag?.type.orEmpty() }
                     .toSortedMap()
                     .mapValues { map ->
                         map.value.sortedBy { it.name }
                     }
-
                 val archivedShoppingItems = shoppingItems
+                    .orEmpty()
                     .filter { it.status in ShoppingItemListTab.Archived.statusList }
                     .groupBy { it.doneDate?.toString().orEmpty() }
                     .toSortedMap(compareByDescending { it })
                     .mapValues { map ->
                         map.value.sortedBy { it.name }
                     }
-
                 val deletedShoppingItems = shoppingItems
+                    .orEmpty()
                     .filter { it.status in ShoppingItemListTab.Deleted.statusList }
                     .sortedBy { it.name }
 
-                return UiModel(mainShoppingItems, archivedShoppingItems, deletedShoppingItems)
+                return UiModel(isInitialLoading, mainShoppingItems, archivedShoppingItems, deletedShoppingItems)
             }
         }
     }

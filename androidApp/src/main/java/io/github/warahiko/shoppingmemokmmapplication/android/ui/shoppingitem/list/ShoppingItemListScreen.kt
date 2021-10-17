@@ -1,6 +1,10 @@
 package io.github.warahiko.shoppingmemokmmapplication.android.ui.shoppingitem.list
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Tab
 import androidx.compose.material.TabRow
@@ -14,6 +18,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.pagerTabIndicatorOffset
 import com.google.accompanist.pager.rememberPagerState
@@ -119,6 +124,15 @@ private fun HomeListScreenContent(
                 state = rememberSwipeRefreshState(isRefreshing),
                 onRefresh = onRefresh,
             ) {
+                if (uiModel.isInitialLoading) {
+                    ShoppingItemListLoading(
+                        modifier = Modifier
+                            .padding(8.dp)
+                            .fillMaxSize()
+                            .verticalScroll(rememberScrollState())
+                    )
+                    return@SwipeRefresh
+                }
                 when (ShoppingItemListTab.values()[page]) {
                     ShoppingItemListTab.Main -> {
                         MainShoppingItemList(
