@@ -98,7 +98,7 @@ private fun HomeListScreenContent(
 ) {
     val pagerState = rememberPagerState(pageCount = ShoppingItemListTab.values().size, infiniteLoop = true)
     val composableScope = rememberCoroutineScope()
-    val pagerDragEnabled = remember(uiModel) {
+    val tabEnabled = remember(uiModel) {
         !uiModel.isInitialLoading && !uiModel.wasFailedToFetch
     }
 
@@ -114,6 +114,7 @@ private fun HomeListScreenContent(
             ShoppingItemListTab.values().forEachIndexed { index, tabs ->
                 Tab(
                     selected = pagerState.currentPage == index,
+                    enabled = tabEnabled,
                     onClick = {
                         composableScope.launch {
                             pagerState.animateScrollToPage(index)
@@ -127,7 +128,7 @@ private fun HomeListScreenContent(
         }
         HorizontalPager(
             state = pagerState,
-            dragEnabled = pagerDragEnabled,
+            dragEnabled = tabEnabled,
         ) { page ->
             SwipeRefresh(
                 state = rememberSwipeRefreshState(isRefreshing),
