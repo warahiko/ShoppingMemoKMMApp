@@ -119,7 +119,10 @@ private fun HomeListScreenContent(
                 )
             }
         }
-        HorizontalPager(state = pagerState) { page ->
+        HorizontalPager(
+            state = pagerState,
+            dragEnabled = !uiModel.isInitialLoading,
+        ) { page ->
             SwipeRefresh(
                 state = rememberSwipeRefreshState(isRefreshing),
                 onRefresh = onRefresh,
