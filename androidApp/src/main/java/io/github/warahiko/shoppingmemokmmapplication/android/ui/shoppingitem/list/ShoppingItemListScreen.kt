@@ -15,6 +15,7 @@ import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -52,6 +53,7 @@ fun ShoppingItemListScreen(
         HomeListScreenContent(
             uiModel = uiModel,
             isRefreshing = isRefreshing,
+            onClickRetry = viewModel::fetchShoppingItems,
             onClickAddButton = onClickAddButton,
             onRefresh = viewModel::refreshShoppingItems,
             onClickItemRow = viewModel::changeShoppingItemIsDone,
@@ -83,6 +85,7 @@ fun ShoppingItemListScreen(
 private fun HomeListScreenContent(
     uiModel: ShoppingItemListScreenViewModel.UiModel,
     isRefreshing: Boolean = false,
+    onClickRetry: () -> Unit = {},
     onClickAddButton: () -> Unit = {},
     onRefresh: () -> Unit = {},
     onClickItemRow: (item: ShoppingItem) -> Unit = {},
@@ -95,6 +98,9 @@ private fun HomeListScreenContent(
 ) {
     val pagerState = rememberPagerState(pageCount = ShoppingItemListTab.values().size, infiniteLoop = true)
     val composableScope = rememberCoroutineScope()
+    val pagerDragEnabled = remember(uiModel) {
+        !uiModel.isInitialLoading && !uiModel.wasFailedToFetch
+    }
 
     Column {
         TabRow(
@@ -121,7 +127,7 @@ private fun HomeListScreenContent(
         }
         HorizontalPager(
             state = pagerState,
-            dragEnabled = !uiModel.isInitialLoading,
+            dragEnabled = pagerDragEnabled,
         ) { page ->
             SwipeRefresh(
                 state = rememberSwipeRefreshState(isRefreshing),
@@ -134,6 +140,10 @@ private fun HomeListScreenContent(
                             .fillMaxSize()
                             .verticalScroll(rememberScrollState())
                     )
+                    return@SwipeRefresh
+                }
+                if (uiModel.wasFailedToFetch) {
+                    ShoppingItemListFailed(onClickRetry = onClickRetry)
                     return@SwipeRefresh
                 }
                 when (ShoppingItemListTab.values()[page]) {

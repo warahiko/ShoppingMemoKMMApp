@@ -12,7 +12,9 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.job
 import kotlinx.coroutines.withContext
+import kotlin.coroutines.coroutineContext
 
 class ShoppingItemRepository(
     private val shoppingItemApi: ShoppingItemApi,
@@ -22,7 +24,12 @@ class ShoppingItemRepository(
     private val _shoppingItems: MutableStateFlow<List<ShoppingItem>?> = MutableStateFlow(null)
     val shoppingItems: StateFlow<List<ShoppingItem>?> get() = _shoppingItems
 
+    private val _isFetching = MutableStateFlow(false)
+    val isFetching: StateFlow<Boolean> = _isFetching
+
     suspend fun fetchShoppingItems(): List<ShoppingItem> {
+        _isFetching.value = true
+        coroutineContext.job.invokeOnCompletion { _isFetching.value = false }
         val request = GetShoppingItemsRequest()
         val (shoppingItems, tags) = withContext(Dispatchers.Default) {
             val shoppingItemsAsync = async { shoppingItemApi.getShoppingItems(request) }

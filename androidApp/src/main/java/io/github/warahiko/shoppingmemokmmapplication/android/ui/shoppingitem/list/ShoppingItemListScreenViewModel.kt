@@ -15,7 +15,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 
 class ShoppingItemListScreenViewModel(
@@ -29,7 +29,9 @@ class ShoppingItemListScreenViewModel(
 ) : ViewModel(), LaunchSafe by launchSafe {
 
     val uiModel = shoppingItemRepository.shoppingItems
-        .map(UiModel::from)
+        .combine(shoppingItemRepository.isFetching) { shoppingItems, isFetching ->
+            UiModel.from(shoppingItems, isFetching)
+        }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(1000), UiModel.EMPTY)
 
     private val _isRefreshing = MutableStateFlow(false)
@@ -95,15 +97,23 @@ class ShoppingItemListScreenViewModel(
 
     data class UiModel(
         val isInitialLoading: Boolean,
+        val wasFailedToFetch: Boolean,
         val mainShoppingItems: Map<String, List<ShoppingItem>>,
         val archivedShoppingItems: Map<String, List<ShoppingItem>>,
         val deletedShoppingItems: List<ShoppingItem>,
     ) {
         companion object {
-            val EMPTY = UiModel(true, emptyMap(), emptyMap(), emptyList())
+            val EMPTY = UiModel(
+                isInitialLoading = true,
+                wasFailedToFetch = false,
+                mainShoppingItems = emptyMap(),
+                archivedShoppingItems = emptyMap(),
+                deletedShoppingItems = emptyList(),
+            )
 
-            fun from(shoppingItems: List<ShoppingItem>?): UiModel {
-                val isInitialLoading = shoppingItems == null
+            fun from(shoppingItems: List<ShoppingItem>?, isFetching: Boolean): UiModel {
+                val isInitialLoading = shoppingItems == null && isFetching
+                val wasFailedToFetch = shoppingItems == null && !isFetching
                 val mainShoppingItems = shoppingItems
                     .orEmpty()
                     .filter { it.status in ShoppingItemListTab.Main.statusList }
@@ -125,7 +135,13 @@ class ShoppingItemListScreenViewModel(
                     .filter { it.status in ShoppingItemListTab.Deleted.statusList }
                     .sortedBy { it.name }
 
-                return UiModel(isInitialLoading, mainShoppingItems, archivedShoppingItems, deletedShoppingItems)
+                return UiModel(
+                    isInitialLoading = isInitialLoading,
+                    wasFailedToFetch = wasFailedToFetch,
+                    mainShoppingItems = mainShoppingItems,
+                    archivedShoppingItems = archivedShoppingItems,
+                    deletedShoppingItems = deletedShoppingItems,
+                )
             }
         }
     }
