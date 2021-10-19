@@ -2,15 +2,15 @@ import SwiftUI
 import shared
 
 struct ContentView: View {
-    let repository = InjectorIos().shoppingItemListRepository
-    let tagRepository = InjectorIos().tagListRepository
+    let repository = InjectorIos().shoppingItemRepository
+    let tagRepository = InjectorIos().tagRepository
 
     @State var text: String = ""
 
 	var body: some View {
         Text(text)
             .onAppear {
-                repository.fetchShoppingList { (shoppingItems: [ShoppingItem]?, error: Error?) in
+                repository.fetchShoppingItems { (shoppingItems: [ShoppingItem]?, error: Error?) in
                     if let unwraped = shoppingItems {
                         let itemDescriptions = unwraped.prefix(2).reduce("") { (left, right) -> String in
                             left + right.description()
@@ -18,7 +18,7 @@ struct ContentView: View {
                         text = text + itemDescriptions
                     }
                 }
-                tagRepository.fetchTagList { (tags: [Tag]?, error: Error?) in
+                tagRepository.fetchTags { (tags: [Tag]?, error: Error?) in
                     if let unwraped = tags {
                         let tagDescriptions = unwraped.prefix(2).reduce("") { (left, right) -> String in
                             left + right.description()

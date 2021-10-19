@@ -7,14 +7,13 @@ import io.github.warahiko.shoppingmemokmmapplication.data.network.api.ShoppingIt
 import io.github.warahiko.shoppingmemokmmapplication.data.network.model.AddShoppingItemRequest
 import io.github.warahiko.shoppingmemokmmapplication.data.network.model.GetShoppingItemsRequest
 import io.github.warahiko.shoppingmemokmmapplication.data.network.model.UpdateItemRequest
+import io.ktor.utils.io.errors.IOException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.job
 import kotlinx.coroutines.withContext
-import kotlin.coroutines.coroutineContext
 
 class ShoppingItemRepository(
     private val shoppingItemApi: ShoppingItemApi,
@@ -29,18 +28,23 @@ class ShoppingItemRepository(
 
     suspend fun fetchShoppingItems(): List<ShoppingItem> {
         _isFetching.value = true
-        coroutineContext.job.invokeOnCompletion { _isFetching.value = false }
-        val request = GetShoppingItemsRequest()
-        val (shoppingItems, tags) = withContext(Dispatchers.Default) {
-            val shoppingItemsAsync = async { shoppingItemApi.getShoppingItems(request) }
-            val tagsAsync = async { tagRepository.getOrFetchTags() }
-            shoppingItemsAsync.await() to tagsAsync.await()
-        }
-        return shoppingItems.results
-            .map { it.toShoppingItemWithTag(tags) }
-            .also {
-                _shoppingItems.value = it
+        try {
+            val request = GetShoppingItemsRequest()
+            val (shoppingItems, tags) = withContext(Dispatchers.Default) {
+                val shoppingItemsAsync = async { shoppingItemApi.getShoppingItems(request) }
+                val tagsAsync = async { tagRepository.getOrFetchTags() }
+                shoppingItemsAsync.await() to tagsAsync.await()
             }
+            return shoppingItems.results
+                .map { it.toShoppingItemWithTag(tags) }
+                .also {
+                    _shoppingItems.value = it
+                    _isFetching.value = false
+                }
+        } catch (e: IOException) {
+            _isFetching.value = false
+            throw e
+        }
     }
 
     suspend fun addShoppingItem(shoppingItem: ShoppingItem) {
