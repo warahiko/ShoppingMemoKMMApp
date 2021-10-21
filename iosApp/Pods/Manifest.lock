@@ -1,8 +1,14 @@
 PODS:
   - shared (1.0)
+  - SwiftUIPager (2.3.1)
 
 DEPENDENCIES:
   - shared (from `../shared`)
+  - SwiftUIPager (= 2.3.1)
+
+SPEC REPOS:
+  trunk:
+    - SwiftUIPager
 
 EXTERNAL SOURCES:
   shared:
@@ -10,7 +16,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   shared: 7e5bb3963fe6bd4de6f2c4da301b5f6251f84201
+  SwiftUIPager: 273cbaec55a03784d5fbec30f57d8b8974e60450
 
-PODFILE CHECKSUM: f282da88f39e69507b0a255187c8a6b644477756
+PODFILE CHECKSUM: fa817563518812b4345d6869de61657a5c69005c
 
 COCOAPODS: 1.11.2
