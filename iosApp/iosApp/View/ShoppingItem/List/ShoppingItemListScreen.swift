@@ -9,7 +9,7 @@
 import SwiftUI
 import shared
 
-struct ShoppingItemListView: View {
+struct ShoppingItemListScreen: View {
     @ObservedObject private(set) var viewModel: ViewModel
     
     var body: some View {
@@ -22,7 +22,7 @@ private struct ShoppingItemListContentView: View {
     
     var body: some View {
         List(shoppingItems) { shoppingItem in
-            ShoppingItemRowView(shoppingItem: shoppingItem)
+            ShoppingItemRow(shoppingItem: shoppingItem)
         }
     }
 }

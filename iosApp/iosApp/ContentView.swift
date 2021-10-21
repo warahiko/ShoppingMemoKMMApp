@@ -3,6 +3,6 @@ import shared
 
 struct ContentView: View {
 	var body: some View {
-        ShoppingItemListView(viewModel: .init())
+        ShoppingItemListScreen(viewModel: .init())
 	}
 }
