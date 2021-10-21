@@ -30,9 +30,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import io.github.warahiko.shoppingmemokmmapplication.android.R
-import io.github.warahiko.shoppingmemokmmapplication.android.ui.preview.ShoppingItemPreview
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.theme.ShoppingMemoAppTheme
 import io.github.warahiko.shoppingmemokmmapplication.data.model.ShoppingItem
+import io.github.warahiko.shoppingmemokmmapplication.data.model.preview.ShoppingItemPreview
 
 @Composable
 fun DeletedShoppingItemList(
@@ -131,7 +131,7 @@ private fun ItemRow(
 @Preview(showBackground = true)
 @Composable
 private fun DeletedShoppingItemListPreview() {
-    val items = ShoppingItemPreview.getSampleList()
+    val items = ShoppingItemPreview.samples
     ShoppingMemoAppTheme {
         DeletedShoppingItemList(items)
     }
@@ -140,7 +140,7 @@ private fun DeletedShoppingItemListPreview() {
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun DeletedShoppingItemListDarkPreview() {
-    val items = ShoppingItemPreview.getSampleList()
+    val items = ShoppingItemPreview.samples
     ShoppingMemoAppTheme {
         DeletedShoppingItemList(items)
     }
