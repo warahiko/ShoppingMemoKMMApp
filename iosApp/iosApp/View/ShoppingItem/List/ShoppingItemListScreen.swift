@@ -38,5 +38,6 @@ private struct ShoppingItemListContentView: View {
                 DeletedShoppingItemList()
             }
         }
+        .loopPages()
     }
 }
