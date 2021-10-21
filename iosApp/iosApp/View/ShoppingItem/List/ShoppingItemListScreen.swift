@@ -7,38 +7,36 @@
 //
 
 import SwiftUI
+import SwiftUIPager
 import shared
 
 struct ShoppingItemListScreen: View {
     @ObservedObject private(set) var viewModel: ViewModel
-    
+
+    @ObservedObject private(set) var page: Page = .first()
+
     var body: some View {
-        ShoppingItemListContentView(shoppingItems: viewModel.shoppingItems)
+        ShoppingItemListContentView(
+            shoppingItems: viewModel.shoppingItems,
+            page: page
+        )
     }
 }
 
 private struct ShoppingItemListContentView: View {
     let shoppingItems: [ShoppingItem]
-    
-    var body: some View {
-        List(shoppingItems) { shoppingItem in
-            ShoppingItemRow(shoppingItem: shoppingItem)
-        }
-    }
-}
+    let page: Page
 
-struct ShoppingItemListView_Previews: PreviewProvider {
-    static var previews: some View {
-        ShoppingItemListContentView(shoppingItems: ShoppingItemPreview.shared.samples)
-            .previewLayout(PreviewLayout.sizeThatFits)
-            .padding()
-            .previewDisplayName("Light")
-        
-        ShoppingItemListContentView(shoppingItems: ShoppingItemPreview.shared.samples)
-            .previewLayout(PreviewLayout.sizeThatFits)
-            .padding()
-            .background(Color(.systemBackground))
-            .environment(\.colorScheme, .dark)
-            .previewDisplayName("Dark")
+    var body: some View {
+        Pager(page: page, data: ShoppingItemListTab.allCases) { tab in
+            switch tab {
+            case .main:
+                MainShoppingItemList(shoppingItems: shoppingItems)
+            case .archived:
+                ArchivedShoppingItemList()
+            case .deleted:
+                DeletedShoppingItemList()
+            }
+        }
     }
 }

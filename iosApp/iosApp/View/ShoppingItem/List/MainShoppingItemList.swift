@@ -7,15 +7,31 @@
 //
 
 import SwiftUI
+import shared
 
 struct MainShoppingItemList: View {
+    let shoppingItems: [ShoppingItem]
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List(shoppingItems) { shoppingItem in
+            ShoppingItemRow(shoppingItem: shoppingItem)
+        }
     }
 }
 
 struct MainShoppingItemList_Previews: PreviewProvider {
     static var previews: some View {
-        MainShoppingItemList()
+        MainShoppingItemList(shoppingItems: ShoppingItemPreview.shared.samples)
+            .previewLayout(PreviewLayout.sizeThatFits)
+            .padding()
+            .previewDisplayName("Light")
+        
+        
+        MainShoppingItemList(shoppingItems: ShoppingItemPreview.shared.samples)
+            .previewLayout(PreviewLayout.sizeThatFits)
+            .padding()
+            .background(Color(.systemBackground))
+            .environment(\.colorScheme, .dark)
+            .previewDisplayName("Dark")
     }
 }
