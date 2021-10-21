@@ -23,10 +23,10 @@ import io.github.warahiko.shoppingmemokmmapplication.android.R
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.common.LoadingDialog
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.common.ShoppingMemoAppBar
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.common.compositionlocal.LocalTagMap
-import io.github.warahiko.shoppingmemokmmapplication.android.ui.preview.ShoppingItemPreview
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.shoppingitem.common.ShoppingItemEditor
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.theme.ShoppingMemoAppTheme
 import io.github.warahiko.shoppingmemokmmapplication.data.model.ShoppingItem
+import io.github.warahiko.shoppingmemokmmapplication.data.model.preview.ShoppingItemPreview
 import org.koin.androidx.compose.getViewModel
 
 @Composable
@@ -102,7 +102,7 @@ private fun EditShoppingItemScreenContent(
 @Preview(showBackground = true)
 @Composable
 fun EditShoppingItemScreenPreview() {
-    val shoppingItem = ShoppingItemPreview.getSample()
+    val shoppingItem = ShoppingItemPreview.sample
     ShoppingMemoAppTheme {
         EditShoppingItemScreenContent(shoppingItem)
     }

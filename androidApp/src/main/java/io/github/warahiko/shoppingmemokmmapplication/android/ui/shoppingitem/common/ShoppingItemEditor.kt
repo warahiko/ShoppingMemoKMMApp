@@ -33,10 +33,10 @@ import androidx.compose.ui.unit.dp
 import io.github.warahiko.shoppingmemokmmapplication.android.R
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.common.compositionlocal.LocalTagMap
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.common.ext.toSingleLine
-import io.github.warahiko.shoppingmemokmmapplication.android.ui.preview.ShoppingItemPreview
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.theme.ShoppingMemoAppTheme
 import io.github.warahiko.shoppingmemokmmapplication.data.model.ShoppingItemEditable
 import io.github.warahiko.shoppingmemokmmapplication.data.model.Tag
+import io.github.warahiko.shoppingmemokmmapplication.data.model.preview.ShoppingItemPreview
 
 @Composable
 fun ShoppingItemEditor(
@@ -153,7 +153,7 @@ private fun TagSelector(
 @Preview(showBackground = true)
 @Composable
 private fun EditingShoppingItemContentPreview() {
-    val item = ShoppingItemPreview.getSample()
+    val item = ShoppingItemPreview.sample
     ShoppingMemoAppTheme {
         ShoppingItemEditor(item.toEditable())
     }

@@ -1,4 +1,4 @@
-package io.github.warahiko.shoppingmemokmmapplication.android.ui.preview
+package io.github.warahiko.shoppingmemokmmapplication.data.model.preview
 
 import io.github.warahiko.shoppingmemokmmapplication.data.model.ShoppingItem
 import io.github.warahiko.shoppingmemokmmapplication.data.model.Status
@@ -7,7 +7,7 @@ import kotlinx.datetime.toLocalDate
 
 object ShoppingItemPreview {
 
-    fun getSample() = ShoppingItem.newInstance(
+    val sample = ShoppingItem.newInstance(
         name = "にんじん",
         count = 1,
         status = Status.DONE,
@@ -16,7 +16,7 @@ object ShoppingItemPreview {
         tag = Tag.newInstance(name = "にんじん", type = "野菜"),
     )
 
-    fun getSampleList() = listOf(
+    val samples = listOf(
         ShoppingItem.newInstance(
             name = "にんじん",
             count = 1,
@@ -53,9 +53,10 @@ object ShoppingItemPreview {
         it.name
     }
 
-    fun getSampleMap() = getSampleList()
+    // SortedMap はkotlin にはないため使えない
+    val sampleMap = samples
+        .sortedBy { it.tag?.type }
         .groupBy { it.tag?.type.orEmpty() }
-        .toSortedMap()
         .mapValues { map ->
             map.value.sortedBy { it.name }
         }

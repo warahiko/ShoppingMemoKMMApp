@@ -48,9 +48,9 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import io.github.warahiko.shoppingmemokmmapplication.android.ui.preview.ShoppingItemPreview
 import io.github.warahiko.shoppingmemokmmapplication.android.ui.theme.ShoppingMemoAppTheme
 import io.github.warahiko.shoppingmemokmmapplication.data.model.ShoppingItem
+import io.github.warahiko.shoppingmemokmmapplication.data.model.preview.ShoppingItemPreview
 
 @Composable
 fun ShoppingItemRow(
@@ -230,7 +230,7 @@ private fun MemoIcon(
 @Preview(showBackground = true)
 @Composable
 private fun ShoppingItemRowPreview() {
-    val item = ShoppingItemPreview.getSample()
+    val item = ShoppingItemPreview.sample
     ShoppingMemoAppTheme {
         ShoppingItemRowContent(item, isExpanded = false)
     }
@@ -239,7 +239,7 @@ private fun ShoppingItemRowPreview() {
 @Preview(showBackground = true)
 @Composable
 private fun ShoppingItemRowCheckBoxInvisiblePreview() {
-    val item = ShoppingItemPreview.getSample()
+    val item = ShoppingItemPreview.sample
     ShoppingMemoAppTheme {
         ShoppingItemRowContent(item, isExpanded = false, checkBoxIsVisible = false)
     }
@@ -248,7 +248,7 @@ private fun ShoppingItemRowCheckBoxInvisiblePreview() {
 @Preview(showBackground = true)
 @Composable
 private fun ShoppingItemRowExpandedPreview() {
-    val item = ShoppingItemPreview.getSample()
+    val item = ShoppingItemPreview.sample
     ShoppingMemoAppTheme {
         ShoppingItemRowContent(item, isExpanded = true)
     }
@@ -257,7 +257,7 @@ private fun ShoppingItemRowExpandedPreview() {
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun ShoppingItemRowExpandedDarkPreview() {
-    val item = ShoppingItemPreview.getSample()
+    val item = ShoppingItemPreview.sample
     ShoppingMemoAppTheme {
         ShoppingItemRowContent(item, isExpanded = true)
     }
