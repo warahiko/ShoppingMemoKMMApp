@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,12 @@
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 		C74E79822715DC61006AF830 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74E79812715DC61006AF830 /* AppDelegate.swift */; };
+		C796029D2721921F00AA511F /* ShoppingItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C796029C2721921F00AA511F /* ShoppingItemExtension.swift */; };
+		C796029F2721937B00AA511F /* ShoppingItemListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C796029E2721937B00AA511F /* ShoppingItemListViewModel.swift */; };
+		C7E10855271F16C20006F3D8 /* ShoppingItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E10854271F16C20006F3D8 /* ShoppingItemListView.swift */; };
+		C7E10857271F16FB0006F3D8 /* ShoppingItemRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E10856271F16FB0006F3D8 /* ShoppingItemRowView.swift */; };
+		C7E1085A271F18110006F3D8 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E10859271F18110006F3D8 /* CheckBox.swift */; };
+		C7E1085D271F19A00006F3D8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E1085C271F19A00006F3D8 /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +28,12 @@
 		7664E5C3156C6597DCF1EEEF /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
 		7D852068720E887A1A13006B /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C74E79812715DC61006AF830 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C796029C2721921F00AA511F /* ShoppingItemExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemExtension.swift; sourceTree = "<group>"; };
+		C796029E2721937B00AA511F /* ShoppingItemListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemListViewModel.swift; sourceTree = "<group>"; };
+		C7E10854271F16C20006F3D8 /* ShoppingItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemListView.swift; sourceTree = "<group>"; };
+		C7E10856271F16FB0006F3D8 /* ShoppingItemRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemRowView.swift; sourceTree = "<group>"; };
+		C7E10859271F18110006F3D8 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		C7E1085C271F19A00006F3D8 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +69,10 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				C796029A272191D600AA511F /* Model */,
+				C7E1084A271F16340006F3D8 /* Error */,
+				C7E10849271F162F0006F3D8 /* Common */,
+				C7E10848271F162A0006F3D8 /* View */,
 				7555FF82242A565900829871 /* ContentView.swift */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
@@ -72,6 +88,128 @@
 				7664E5C3156C6597DCF1EEEF /* Pods-iosApp.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C796029A272191D600AA511F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C796029B2721920A00AA511F /* Extension */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C796029B2721920A00AA511F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C796029C2721921F00AA511F /* ShoppingItemExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		C7E10848271F162A0006F3D8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C7E1085B271F198B0006F3D8 /* Theme */,
+				C7E10858271F18030006F3D8 /* Common */,
+				C7E1084B271F163B0006F3D8 /* ShoppingItem */,
+				C7E10850271F16720006F3D8 /* Tag */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C7E10849271F162F0006F3D8 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		C7E1084A271F16340006F3D8 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		C7E1084B271F163B0006F3D8 /* ShoppingItem */ = {
+			isa = PBXGroup;
+			children = (
+				C7E1084F271F166D0006F3D8 /* Edit */,
+				C7E1084E271F16670006F3D8 /* Add */,
+				C7E1084D271F165F0006F3D8 /* List */,
+			);
+			path = ShoppingItem;
+			sourceTree = "<group>";
+		};
+		C7E1084D271F165F0006F3D8 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				C7E10854271F16C20006F3D8 /* ShoppingItemListView.swift */,
+				C7E10856271F16FB0006F3D8 /* ShoppingItemRowView.swift */,
+				C796029E2721937B00AA511F /* ShoppingItemListViewModel.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		C7E1084E271F16670006F3D8 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		C7E1084F271F166D0006F3D8 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
+		C7E10850271F16720006F3D8 /* Tag */ = {
+			isa = PBXGroup;
+			children = (
+				C7E10853271F168E0006F3D8 /* Edit */,
+				C7E10852271F16880006F3D8 /* Add */,
+				C7E10851271F16810006F3D8 /* List */,
+			);
+			path = Tag;
+			sourceTree = "<group>";
+		};
+		C7E10851271F16810006F3D8 /* List */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		C7E10852271F16880006F3D8 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		C7E10853271F168E0006F3D8 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
+		C7E10858271F18030006F3D8 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C7E10859271F18110006F3D8 /* CheckBox.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		C7E1085B271F198B0006F3D8 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				C7E1085C271F19A00006F3D8 /* Color.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 		F21DBF5584EAF3159986C41A /* Frameworks */ = {
@@ -93,6 +231,7 @@
 				7555FF77242A565900829871 /* Sources */,
 				7555FF79242A565900829871 /* Resources */,
 				6D3C92200ACD920F78AA01EC /* Frameworks */,
+				C4B6F7881D22E61A7ABDBC01 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -169,6 +308,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C4B6F7881D22E61A7ABDBC01 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iosApp/Pods-iosApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iosApp/Pods-iosApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iosApp/Pods-iosApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -177,8 +333,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C74E79822715DC61006AF830 /* AppDelegate.swift in Sources */,
+				C796029F2721937B00AA511F /* ShoppingItemListViewModel.swift in Sources */,
+				C7E1085A271F18110006F3D8 /* CheckBox.swift in Sources */,
+				C796029D2721921F00AA511F /* ShoppingItemExtension.swift in Sources */,
+				C7E1085D271F19A00006F3D8 /* Color.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				C7E10857271F16FB0006F3D8 /* ShoppingItemRowView.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
+				C7E10855271F16C20006F3D8 /* ShoppingItemListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
