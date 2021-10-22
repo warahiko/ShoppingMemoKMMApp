@@ -15,4 +15,15 @@ enum ShoppingItemListTab: Int, CaseIterable, Identifiable {
     var id: Int {
         return self.rawValue
     }
+    
+    var title: String {
+        switch self {
+        case .main:
+            return "Main"
+        case .archived:
+            return "Archived"
+        case .deleted:
+            return "Deleted"
+        }
+    }
 }
