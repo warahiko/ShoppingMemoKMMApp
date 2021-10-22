@@ -9,7 +9,7 @@
 import SwiftUI
 import shared
 
-struct ShoppingItemRowView: View {
+struct ShoppingItemRow: View {
     let shoppingItem: ShoppingItem
     
     var body: some View {
@@ -29,12 +29,12 @@ struct ShoppingItemRowView: View {
 
 struct ShoppingItemRowView_Previews: PreviewProvider {
     static var previews: some View {
-        ShoppingItemRowView(shoppingItem: ShoppingItemPreview.shared.sample)
+        ShoppingItemRow(shoppingItem: ShoppingItemPreview.shared.sample)
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
             .previewDisplayName("Light")
         
-        ShoppingItemRowView(shoppingItem: ShoppingItemPreview.shared.sample)
+        ShoppingItemRow(shoppingItem: ShoppingItemPreview.shared.sample)
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
             .background(Color(.systemBackground))

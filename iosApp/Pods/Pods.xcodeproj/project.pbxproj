@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -21,47 +21,113 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		648F16425FEF89525AE0325F5A984B86 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		8749C8E8DC500B064FA0BC7A78C38A2A /* Pods-iosApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 54DC7F9924F99FEE67A9AD3BEE09A10C /* Pods-iosApp-dummy.m */; };
-		8801CBFD38B946597BD07145B2EEFC9F /* Pods-iosApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F87A626222A8D9B26448A9FEB04FD0DF /* Pods-iosApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		02E0144304501155F1984812B9BD7BCA /* OnDeactivateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1403EB431956040B71AA60739D9A41F3 /* OnDeactivateModifier.swift */; };
+		0DDC5FDF80FE968D74A028962BF78898 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		138E38F1517A270599E5823A39DFED55 /* PagingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937BE1BFC37E20903864A8919FBA23B7 /* PagingAnimation.swift */; };
+		1E77045D8164AADFCE91B281C604AF7F /* SwipeInteractionArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E75EC6528A16764C0B369F89A220B07 /* SwipeInteractionArea.swift */; };
+		1F85C387A8ED2F0989455193BF3376D9 /* SwiftUIPager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 13FBC4301838366161DDAA14FBE60478 /* SwiftUIPager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		280977636CEAA213BB94A614D7CB5B83 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EC93547A610D4EECB448D57B890D53 /* Page.swift */; };
+		470F37287204077F05C6C3448EE4244B /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06669429A8060F9C0A17DDF036E445AA /* PositionAlignment.swift */; };
+		493CD21AAD3A513FE04FE1B4D1A5E56A /* PagerContent+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED987EB87158B05FD16299D150511C7F /* PagerContent+Helper.swift */; };
+		543ECD2B814BECA9C9F4D23B7DEF479A /* PaginationSensitivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B46768809661DA8A0A260F65BE5108D /* PaginationSensitivity.swift */; };
+		629E81809E836F9336998E7797837AAD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		735F0E14EED5D71E31A65280E1266E4C /* PagerContent+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E2103428FCB91F4045D4C5F840FFCF /* PagerContent+Buildable.swift */; };
+		774CE5D44E8239A87FC096F94FF0112D /* SwipeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1FCA8D53D1C6EA27315F46EAD38591 /* SwipeDirection.swift */; };
+		7C109B53B722F9F6F1D63BCF1A007E6E /* View+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6FBB898FB65B98D13F6FABC9E48C5A /* View+Helper.swift */; };
+		90CFE6CB47C41D10C5357F18DE7F9B89 /* SwiftUIPager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CB1B1DF737BD4CA668F1BA6F8D1883 /* SwiftUIPager-dummy.m */; };
+		944ABB3D63E590C898412B499A358031 /* GesturePriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD92A204138290DBD3A894B4DC50875 /* GesturePriority.swift */; };
+		AC6610BA94ADD83BCA8155F98509AF03 /* Pods-iosApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F87A626222A8D9B26448A9FEB04FD0DF /* Pods-iosApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B016B5DFD4296D236E7C4E27738AFF04 /* Pager+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D94125BCB2ABF4D3E9F379AABF57089 /* Pager+Buildable.swift */; };
+		B139CF153D16F75BF27CE8D16165BD84 /* CGPoint+Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA36A5D72220451E07D9CF36D0813D /* CGPoint+Angle.swift */; };
+		CC5EC7F332FF8FB4DFF02BAAED771B67 /* PageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02EF69EC76E1055A14B2B7678472694 /* PageTransition.swift */; };
+		D15B277F61A5161E4EBE72B1107D18C1 /* ContentLoadingPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E601CC7C50A5CD428F3A43EF647A8C4 /* ContentLoadingPolicy.swift */; };
+		DFD0D7B9EE3342733F6F9B1409F2E266 /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C52C0A75CB49559632158189655DA8 /* Pager.swift */; };
+		E081B6EBBEAF6B9F0C2E8F822F8A308E /* Pods-iosApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 54DC7F9924F99FEE67A9AD3BEE09A10C /* Pods-iosApp-dummy.m */; };
+		E41CA9D6304E994B45BEAFBAEC5F7E21 /* Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C217A11B08BD154228466F357F67E9C1 /* Buildable.swift */; };
+		ECF4076A204F61181C6EE4FE2BA1DA97 /* PageWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81E576CDEA3BB6EE286754731DBBF3F /* PageWrapper.swift */; };
+		F1462BF6022AEABFD52CDCC14692417A /* PagerContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC631F681F97DE9CC11C4D12D7D3728F /* PagerContent.swift */; };
+		F2B9E8171E3C1CE4CE3851477ECA633F /* OnAnimationCompletedModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD50596B0661BDD6770D2018DC5D7E6 /* OnAnimationCompletedModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C1E4F2F8101E860063100BCC8448BC3B /* PBXContainerItemProxy */ = {
+		13A1E536880DC764580A9F4E593A0636 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 8777C9F6889E59EFFD631D80AEE9048B;
 			remoteInfo = shared;
 		};
+		79C2434777DC20ED073B4C02EFD7E504 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7EDD561B01B453B33504B0EACB2107CC;
+			remoteInfo = SwiftUIPager;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		009069A386B0A5A8DB76D61AE1586630 /* shared.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = shared.debug.xcconfig; sourceTree = "<group>"; };
 		0187F135D5F61750CD24C3E04B6E8B64 /* Pods-iosApp-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-iosApp-frameworks.sh"; sourceTree = "<group>"; };
+		06669429A8060F9C0A17DDF036E445AA /* PositionAlignment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PositionAlignment.swift; path = Sources/SwiftUIPager/PageConfiguration/PositionAlignment.swift; sourceTree = "<group>"; };
+		13FBC4301838366161DDAA14FBE60478 /* SwiftUIPager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftUIPager-umbrella.h"; sourceTree = "<group>"; };
+		13FF45B318333126A606607852D59C5D /* SwiftUIPager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftUIPager.debug.xcconfig; sourceTree = "<group>"; };
+		1403EB431956040B71AA60739D9A41F3 /* OnDeactivateModifier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OnDeactivateModifier.swift; path = Sources/SwiftUIPager/Helpers/OnDeactivateModifier.swift; sourceTree = "<group>"; };
+		22DA36A5D72220451E07D9CF36D0813D /* CGPoint+Angle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CGPoint+Angle.swift"; path = "Sources/SwiftUIPager/Helpers/CGPoint+Angle.swift"; sourceTree = "<group>"; };
+		2B46768809661DA8A0A260F65BE5108D /* PaginationSensitivity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaginationSensitivity.swift; path = Sources/SwiftUIPager/PageConfiguration/PaginationSensitivity.swift; sourceTree = "<group>"; };
 		3F64BADB16C311E9D09DAD0116F684F4 /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
+		45CB1B1DF737BD4CA668F1BA6F8D1883 /* SwiftUIPager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftUIPager-dummy.m"; sourceTree = "<group>"; };
+		49E2103428FCB91F4045D4C5F840FFCF /* PagerContent+Buildable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "PagerContent+Buildable.swift"; path = "Sources/SwiftUIPager/PagerContent+Buildable.swift"; sourceTree = "<group>"; };
+		4E601CC7C50A5CD428F3A43EF647A8C4 /* ContentLoadingPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContentLoadingPolicy.swift; path = Sources/SwiftUIPager/PageConfiguration/ContentLoadingPolicy.swift; sourceTree = "<group>"; };
 		54DC7F9924F99FEE67A9AD3BEE09A10C /* Pods-iosApp-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-iosApp-dummy.m"; sourceTree = "<group>"; };
+		57C52C0A75CB49559632158189655DA8 /* Pager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Pager.swift; path = Sources/SwiftUIPager/Pager.swift; sourceTree = "<group>"; };
 		5AC974169B09D4545F741E9A2147610E /* Pods-iosApp-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-iosApp-Info.plist"; sourceTree = "<group>"; };
+		5AD50596B0661BDD6770D2018DC5D7E6 /* OnAnimationCompletedModifier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OnAnimationCompletedModifier.swift; path = Sources/SwiftUIPager/Helpers/OnAnimationCompletedModifier.swift; sourceTree = "<group>"; };
+		5F83E5B3BB1F51586A8A4630D791D536 /* SwiftUIPager-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftUIPager-Info.plist"; sourceTree = "<group>"; };
+		61EC93547A610D4EECB448D57B890D53 /* Page.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Page.swift; path = Sources/SwiftUIPager/Page.swift; sourceTree = "<group>"; };
 		70D6E483B23F0B0627D6EE7BD5E32B58 /* shared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = shared.framework; path = build/cocoapods/framework/shared.framework; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		734A7EB7736A65B8A61B7858DBED0A43 /* shared.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = shared.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		7E75EC6528A16764C0B369F89A220B07 /* SwipeInteractionArea.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeInteractionArea.swift; path = Sources/SwiftUIPager/PageConfiguration/SwipeInteractionArea.swift; sourceTree = "<group>"; };
+		7FE58681860217814990E5C2BBAA652B /* SwiftUIPager-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftUIPager-prefix.pch"; sourceTree = "<group>"; };
 		8B524AABE529FB8A2D151B05321336E0 /* Pods-iosApp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-iosApp.modulemap"; sourceTree = "<group>"; };
+		8D94125BCB2ABF4D3E9F379AABF57089 /* Pager+Buildable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Pager+Buildable.swift"; path = "Sources/SwiftUIPager/Pager+Buildable.swift"; sourceTree = "<group>"; };
+		937BE1BFC37E20903864A8919FBA23B7 /* PagingAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PagingAnimation.swift; path = Sources/SwiftUIPager/PageConfiguration/PagingAnimation.swift; sourceTree = "<group>"; };
 		9BB0B8B698D4C35D4F9A07EF70910170 /* Pods-iosApp-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-iosApp-acknowledgements.plist"; sourceTree = "<group>"; };
+		9CD92A204138290DBD3A894B4DC50875 /* GesturePriority.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GesturePriority.swift; path = Sources/SwiftUIPager/PageConfiguration/GesturePriority.swift; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9F1FFC8B10F4D7D4F37606E8959B3F29 /* Pods-iosApp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-iosApp-acknowledgements.markdown"; sourceTree = "<group>"; };
 		9FECCB5AFF87D121F15BA01E683C7932 /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
 		B097DD7534E741D5C41838011D755842 /* Pods-iosApp */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-iosApp"; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B81E576CDEA3BB6EE286754731DBBF3F /* PageWrapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PageWrapper.swift; path = Sources/SwiftUIPager/PageWrapper.swift; sourceTree = "<group>"; };
+		C217A11B08BD154228466F357F67E9C1 /* Buildable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Buildable.swift; path = Sources/SwiftUIPager/Helpers/Buildable.swift; sourceTree = "<group>"; };
+		C2F51D127F5DB32D3F442D2522C2B44A /* SwiftUIPager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftUIPager.modulemap; sourceTree = "<group>"; };
+		C45D354D2C1008D419027BAE6DBFFE2E /* SwiftUIPager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftUIPager.release.xcconfig; sourceTree = "<group>"; };
+		CC631F681F97DE9CC11C4D12D7D3728F /* PagerContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PagerContent.swift; path = Sources/SwiftUIPager/PagerContent.swift; sourceTree = "<group>"; };
 		E23ED8A03974E9F66764D2E6B0853DA2 /* shared.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = shared.release.xcconfig; sourceTree = "<group>"; };
 		E65A04D83A11443156A141A6DC9578F0 /* shared-copy-dsyms.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "shared-copy-dsyms.sh"; sourceTree = "<group>"; };
+		ED1FCA8D53D1C6EA27315F46EAD38591 /* SwipeDirection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeDirection.swift; path = Sources/SwiftUIPager/PageConfiguration/SwipeDirection.swift; sourceTree = "<group>"; };
+		ED987EB87158B05FD16299D150511C7F /* PagerContent+Helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "PagerContent+Helper.swift"; path = "Sources/SwiftUIPager/PagerContent+Helper.swift"; sourceTree = "<group>"; };
+		EE18735978C1FD3A42D4D3D0356F3CA6 /* SwiftUIPager */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftUIPager; path = SwiftUIPager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F02EF69EC76E1055A14B2B7678472694 /* PageTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PageTransition.swift; path = Sources/SwiftUIPager/PageTransition.swift; sourceTree = "<group>"; };
 		F87A626222A8D9B26448A9FEB04FD0DF /* Pods-iosApp-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-iosApp-umbrella.h"; sourceTree = "<group>"; };
+		FD6FBB898FB65B98D13F6FABC9E48C5A /* View+Helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "View+Helper.swift"; path = "Sources/SwiftUIPager/Helpers/View+Helper.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		CC3CD5459C4A5476C5A93268587E63E7 /* Frameworks */ = {
+		108FE77D015BACC76563059EEDD4835B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				648F16425FEF89525AE0325F5A984B86 /* Foundation.framework in Frameworks */,
+				629E81809E836F9336998E7797837AAD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		734851542F634C10602E077B84F104AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DDC5FDF80FE968D74A028962BF78898 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,14 +140,6 @@
 				52A898E555C2DBD7D25A7E44754C3FC6 /* Pods-iosApp */,
 			);
 			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		1F86AA6785DF34AFD5A71790761717DE /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				B097DD7534E741D5C41838011D755842 /* Pods-iosApp */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		301E7E01BDCE486E3B1785C9B8188C70 /* Frameworks */ = {
@@ -98,6 +156,14 @@
 				D8A02EC6C8DF3366897E8E9AFF0F6E82 /* shared */,
 			);
 			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		3C0A61FC7DA5E08A66AE352EF1578968 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7DB12359FFFE0E296DE521BD0F82994E /* SwiftUIPager */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		52A898E555C2DBD7D25A7E44754C3FC6 /* Pods-iosApp */ = {
@@ -133,6 +199,35 @@
 			name = Pod;
 			sourceTree = "<group>";
 		};
+		7DB12359FFFE0E296DE521BD0F82994E /* SwiftUIPager */ = {
+			isa = PBXGroup;
+			children = (
+				C217A11B08BD154228466F357F67E9C1 /* Buildable.swift */,
+				22DA36A5D72220451E07D9CF36D0813D /* CGPoint+Angle.swift */,
+				4E601CC7C50A5CD428F3A43EF647A8C4 /* ContentLoadingPolicy.swift */,
+				9CD92A204138290DBD3A894B4DC50875 /* GesturePriority.swift */,
+				5AD50596B0661BDD6770D2018DC5D7E6 /* OnAnimationCompletedModifier.swift */,
+				1403EB431956040B71AA60739D9A41F3 /* OnDeactivateModifier.swift */,
+				61EC93547A610D4EECB448D57B890D53 /* Page.swift */,
+				57C52C0A75CB49559632158189655DA8 /* Pager.swift */,
+				8D94125BCB2ABF4D3E9F379AABF57089 /* Pager+Buildable.swift */,
+				CC631F681F97DE9CC11C4D12D7D3728F /* PagerContent.swift */,
+				49E2103428FCB91F4045D4C5F840FFCF /* PagerContent+Buildable.swift */,
+				ED987EB87158B05FD16299D150511C7F /* PagerContent+Helper.swift */,
+				F02EF69EC76E1055A14B2B7678472694 /* PageTransition.swift */,
+				B81E576CDEA3BB6EE286754731DBBF3F /* PageWrapper.swift */,
+				2B46768809661DA8A0A260F65BE5108D /* PaginationSensitivity.swift */,
+				937BE1BFC37E20903864A8919FBA23B7 /* PagingAnimation.swift */,
+				06669429A8060F9C0A17DDF036E445AA /* PositionAlignment.swift */,
+				ED1FCA8D53D1C6EA27315F46EAD38591 /* SwipeDirection.swift */,
+				7E75EC6528A16764C0B369F89A220B07 /* SwipeInteractionArea.swift */,
+				FD6FBB898FB65B98D13F6FABC9E48C5A /* View+Helper.swift */,
+				99E8570F24CBD105E2687FE3EBB7E01E /* Support Files */,
+			);
+			name = SwiftUIPager;
+			path = SwiftUIPager;
+			sourceTree = "<group>";
+		};
 		956A655F6D8CFE14847D80D0455A890F /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,13 +239,29 @@
 			path = "../iosApp/Pods/Target Support Files/shared";
 			sourceTree = "<group>";
 		};
+		99E8570F24CBD105E2687FE3EBB7E01E /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				C2F51D127F5DB32D3F442D2522C2B44A /* SwiftUIPager.modulemap */,
+				45CB1B1DF737BD4CA668F1BA6F8D1883 /* SwiftUIPager-dummy.m */,
+				5F83E5B3BB1F51586A8A4630D791D536 /* SwiftUIPager-Info.plist */,
+				7FE58681860217814990E5C2BBAA652B /* SwiftUIPager-prefix.pch */,
+				13FBC4301838366161DDAA14FBE60478 /* SwiftUIPager-umbrella.h */,
+				13FF45B318333126A606607852D59C5D /* SwiftUIPager.debug.xcconfig */,
+				C45D354D2C1008D419027BAE6DBFFE2E /* SwiftUIPager.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftUIPager";
+			sourceTree = "<group>";
+		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				313FE5FE915A4A924C55AAC02A910D61 /* Development Pods */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				1F86AA6785DF34AFD5A71790761717DE /* Products */,
+				3C0A61FC7DA5E08A66AE352EF1578968 /* Pods */,
+				D40C403C5386331AB6A34C6BAA317C3F /* Products */,
 				11C970DEAE48C6D0282DFE54684F53F1 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -161,6 +272,15 @@
 				578452D2E740E91742655AC8F1636D1F /* iOS */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D40C403C5386331AB6A34C6BAA317C3F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B097DD7534E741D5C41838011D755842 /* Pods-iosApp */,
+				EE18735978C1FD3A42D4D3D0356F3CA6 /* SwiftUIPager */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		D8A02EC6C8DF3366897E8E9AFF0F6E82 /* shared */ = {
@@ -177,30 +297,57 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		DA71CB665A4F7860DB550FAA48FB6AD2 /* Headers */ = {
+		23178A58C1168C7EAD2635DFB8E262FF /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8801CBFD38B946597BD07145B2EEFC9F /* Pods-iosApp-umbrella.h in Headers */,
+				1F85C387A8ED2F0989455193BF3376D9 /* SwiftUIPager-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF9ACB8D72A20994CB125767EE87CDE1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC6610BA94ADD83BCA8155F98509AF03 /* Pods-iosApp-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		ED39C638569286489CD697A6C8964146 /* Pods-iosApp */ = {
+		7EDD561B01B453B33504B0EACB2107CC /* SwiftUIPager */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9F1E85ECB672A0CC96333A6C6DF60EE6 /* Build configuration list for PBXNativeTarget "Pods-iosApp" */;
+			buildConfigurationList = 7C8E453BA9658806BE1DB5E53C606B5C /* Build configuration list for PBXNativeTarget "SwiftUIPager" */;
 			buildPhases = (
-				DA71CB665A4F7860DB550FAA48FB6AD2 /* Headers */,
-				EB28A529759E3D2117E28CE3CB8387D3 /* Sources */,
-				CC3CD5459C4A5476C5A93268587E63E7 /* Frameworks */,
-				0EC1C62FF9B25EAB2D236D122EAF4C98 /* Resources */,
+				23178A58C1168C7EAD2635DFB8E262FF /* Headers */,
+				28AEFACE8A939BA17EE49ECFDC129631 /* Sources */,
+				734851542F634C10602E077B84F104AD /* Frameworks */,
+				977F0EEBBD052BADE068E7201F4D591C /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				4A9525469F8E46F3883CC6599FCCFEDB /* PBXTargetDependency */,
+			);
+			name = SwiftUIPager;
+			productName = SwiftUIPager;
+			productReference = EE18735978C1FD3A42D4D3D0356F3CA6 /* SwiftUIPager */;
+			productType = "com.apple.product-type.framework";
+		};
+		ED39C638569286489CD697A6C8964146 /* Pods-iosApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B0EDCC76F90A0C2F9C2D79B0F156B5CB /* Build configuration list for PBXNativeTarget "Pods-iosApp" */;
+			buildPhases = (
+				DF9ACB8D72A20994CB125767EE87CDE1 /* Headers */,
+				F4D501249DB4F142EF5294FD2A157946 /* Sources */,
+				108FE77D015BACC76563059EEDD4835B /* Frameworks */,
+				651F76F73E29171BE3C9CBBED1984949 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4CC09413F21AD6F497A863AABC5B91E2 /* PBXTargetDependency */,
+				4055E240738F977AF51D35AA6131955C /* PBXTargetDependency */,
 			);
 			name = "Pods-iosApp";
 			productName = Pods_iosApp;
@@ -217,7 +364,7 @@
 				LastUpgradeCheck = 1240;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -225,18 +372,26 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 1F86AA6785DF34AFD5A71790761717DE /* Products */;
+			productRefGroup = D40C403C5386331AB6A34C6BAA317C3F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				ED39C638569286489CD697A6C8964146 /* Pods-iosApp */,
 				8777C9F6889E59EFFD631D80AEE9048B /* shared */,
+				7EDD561B01B453B33504B0EACB2107CC /* SwiftUIPager */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		0EC1C62FF9B25EAB2D236D122EAF4C98 /* Resources */ = {
+		651F76F73E29171BE3C9CBBED1984949 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		977F0EEBBD052BADE068E7201F4D591C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -276,31 +431,64 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		EB28A529759E3D2117E28CE3CB8387D3 /* Sources */ = {
+		28AEFACE8A939BA17EE49ECFDC129631 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8749C8E8DC500B064FA0BC7A78C38A2A /* Pods-iosApp-dummy.m in Sources */,
+				E41CA9D6304E994B45BEAFBAEC5F7E21 /* Buildable.swift in Sources */,
+				B139CF153D16F75BF27CE8D16165BD84 /* CGPoint+Angle.swift in Sources */,
+				D15B277F61A5161E4EBE72B1107D18C1 /* ContentLoadingPolicy.swift in Sources */,
+				944ABB3D63E590C898412B499A358031 /* GesturePriority.swift in Sources */,
+				F2B9E8171E3C1CE4CE3851477ECA633F /* OnAnimationCompletedModifier.swift in Sources */,
+				02E0144304501155F1984812B9BD7BCA /* OnDeactivateModifier.swift in Sources */,
+				280977636CEAA213BB94A614D7CB5B83 /* Page.swift in Sources */,
+				DFD0D7B9EE3342733F6F9B1409F2E266 /* Pager.swift in Sources */,
+				B016B5DFD4296D236E7C4E27738AFF04 /* Pager+Buildable.swift in Sources */,
+				F1462BF6022AEABFD52CDCC14692417A /* PagerContent.swift in Sources */,
+				735F0E14EED5D71E31A65280E1266E4C /* PagerContent+Buildable.swift in Sources */,
+				493CD21AAD3A513FE04FE1B4D1A5E56A /* PagerContent+Helper.swift in Sources */,
+				CC5EC7F332FF8FB4DFF02BAAED771B67 /* PageTransition.swift in Sources */,
+				ECF4076A204F61181C6EE4FE2BA1DA97 /* PageWrapper.swift in Sources */,
+				543ECD2B814BECA9C9F4D23B7DEF479A /* PaginationSensitivity.swift in Sources */,
+				138E38F1517A270599E5823A39DFED55 /* PagingAnimation.swift in Sources */,
+				470F37287204077F05C6C3448EE4244B /* PositionAlignment.swift in Sources */,
+				90CFE6CB47C41D10C5357F18DE7F9B89 /* SwiftUIPager-dummy.m in Sources */,
+				774CE5D44E8239A87FC096F94FF0112D /* SwipeDirection.swift in Sources */,
+				1E77045D8164AADFCE91B281C604AF7F /* SwipeInteractionArea.swift in Sources */,
+				7C109B53B722F9F6F1D63BCF1A007E6E /* View+Helper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4D501249DB4F142EF5294FD2A157946 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E081B6EBBEAF6B9F0C2E8F822F8A308E /* Pods-iosApp-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4A9525469F8E46F3883CC6599FCCFEDB /* PBXTargetDependency */ = {
+		4055E240738F977AF51D35AA6131955C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = shared;
 			target = 8777C9F6889E59EFFD631D80AEE9048B /* shared */;
-			targetProxy = C1E4F2F8101E860063100BCC8448BC3B /* PBXContainerItemProxy */;
+			targetProxy = 13A1E536880DC764580A9F4E593A0636 /* PBXContainerItemProxy */;
+		};
+		4CC09413F21AD6F497A863AABC5B91E2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftUIPager;
+			target = 7EDD561B01B453B33504B0EACB2107CC /* SwiftUIPager */;
+			targetProxy = 79C2434777DC20ED073B4C02EFD7E504 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		02DDCCED053337F381DEBAFDEC6F354F /* Release */ = {
+		439428C1714B5C583DB08D12489EA67F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9FECCB5AFF87D121F15BA01E683C7932 /* Pods-iosApp.release.xcconfig */;
+			baseConfigurationReference = C45D354D2C1008D419027BAE6DBFFE2E /* SwiftUIPager.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -310,29 +498,63 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-iosApp/Pods-iosApp-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftUIPager/SwiftUIPager-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftUIPager/SwiftUIPager-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-iosApp/Pods-iosApp.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				MODULEMAP_FILE = "Target Support Files/SwiftUIPager/SwiftUIPager.modulemap";
+				PRODUCT_MODULE_NAME = SwiftUIPager;
+				PRODUCT_NAME = SwiftUIPager;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		501F44348DFD20A8DCC7E804EC9A59DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13FF45B318333126A606607852D59C5D /* SwiftUIPager.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftUIPager/SwiftUIPager-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftUIPager/SwiftUIPager-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwiftUIPager/SwiftUIPager.modulemap";
+				PRODUCT_MODULE_NAME = SwiftUIPager;
+				PRODUCT_NAME = SwiftUIPager;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		593F10BFFA94DAC7D6E17FB8A7F32D72 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -412,6 +634,81 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
+		};
+		82A417C8B90167E9F29D9C6A54B5EDF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3F64BADB16C311E9D09DAD0116F684F4 /* Pods-iosApp.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-iosApp/Pods-iosApp-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-iosApp/Pods-iosApp.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8C91D9D7ED73100E8380E43AEF7F48FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FECCB5AFF87D121F15BA01E683C7932 /* Pods-iosApp.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-iosApp/Pods-iosApp-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-iosApp/Pods-iosApp.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		9AF5566B6056A03590F26C7558E42608 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -497,43 +794,6 @@
 			};
 			name = Debug;
 		};
-		AF088B6CD92A52AC4DCB62DEEC871231 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3F64BADB16C311E9D09DAD0116F684F4 /* Pods-iosApp.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-iosApp/Pods-iosApp-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-iosApp/Pods-iosApp.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -546,11 +806,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9F1E85ECB672A0CC96333A6C6DF60EE6 /* Build configuration list for PBXNativeTarget "Pods-iosApp" */ = {
+		7C8E453BA9658806BE1DB5E53C606B5C /* Build configuration list for PBXNativeTarget "SwiftUIPager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AF088B6CD92A52AC4DCB62DEEC871231 /* Debug */,
-				02DDCCED053337F381DEBAFDEC6F354F /* Release */,
+				501F44348DFD20A8DCC7E804EC9A59DE /* Debug */,
+				439428C1714B5C583DB08D12489EA67F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B0EDCC76F90A0C2F9C2D79B0F156B5CB /* Build configuration list for PBXNativeTarget "Pods-iosApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82A417C8B90167E9F29D9C6A54B5EDF9 /* Debug */,
+				8C91D9D7ED73100E8380E43AEF7F48FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

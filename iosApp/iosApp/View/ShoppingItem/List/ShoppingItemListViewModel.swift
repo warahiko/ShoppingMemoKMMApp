@@ -8,7 +8,7 @@
 
 import shared
 
-extension ShoppingItemListView {
+extension ShoppingItemListScreen {
     class ViewModel: ObservableObject {
         let shoppingItemRepository = InjectorIos().shoppingItemRepository
         
