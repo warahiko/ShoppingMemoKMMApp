@@ -13,19 +13,19 @@ import shared
 struct ShoppingItemListScreen: View {
     @ObservedObject private(set) var viewModel: ViewModel
 
-    @ObservedObject private(set) var page: Page = .first()
+    @StateObject private var page: Page = .first()
 
     var body: some View {
         ShoppingItemListContentView(
-            shoppingItems: viewModel.shoppingItems,
+            shoppingItems: $viewModel.shoppingItems,
             page: page
         )
     }
 }
 
 private struct ShoppingItemListContentView: View {
-    let shoppingItems: [ShoppingItem]
-    let page: Page
+    @Binding var shoppingItems: [ShoppingItem]
+    @ObservedObject var page: Page
 
     var body: some View {
         VStack {
