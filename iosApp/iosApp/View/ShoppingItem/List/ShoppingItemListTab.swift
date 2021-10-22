@@ -6,6 +6,8 @@
 //  Copyright © 2021 orgName. All rights reserved.
 //
 
+import shared
+
 // CaseIterable プロトコルに準拠させることで allCases プロパティが生える
 enum ShoppingItemListTab: Int, CaseIterable, Identifiable {
     case main
@@ -24,6 +26,17 @@ enum ShoppingItemListTab: Int, CaseIterable, Identifiable {
             return "Archived"
         case .deleted:
             return "Deleted"
+        }
+    }
+    
+    var statusList: [Status] {
+        switch self {
+        case .main:
+            return [Status.theNew, Status.done]
+        case .archived:
+            return [Status.archived]
+        case .deleted:
+            return [Status.deleted]
         }
     }
 }
