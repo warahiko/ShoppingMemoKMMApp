@@ -11,7 +11,7 @@ import shared
 
 struct AddShoppingItemScreen: View {
     @ObservedObject private(set) var viewModel: ViewModel
-    
+
     var body: some View {
         AddShoppingItemContentView(uiModel: $viewModel.uiModel)
     }
@@ -20,7 +20,7 @@ struct AddShoppingItemScreen: View {
 private struct AddShoppingItemContentView: View {
     @Binding var uiModel: AddShoppingItemScreen.UiModel
     @State private var shoppingItemEditable = ShoppingItemEditable.companion.doNewInstanceToAdd()
-    
+
     var body: some View {
         VStack {
             ShoppingItemEditor(

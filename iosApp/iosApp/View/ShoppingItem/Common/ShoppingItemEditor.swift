@@ -7,18 +7,43 @@
 //
 
 import SwiftUI
+import Combine
 import shared
 
 struct ShoppingItemEditor: View {
     let tagsGroupedByType: Dictionary<String, [Tag]>
     let shoppingItem: ShoppingItemEditable
     let onChangeItem: (ShoppingItemEditable) -> Void
+    @State private var itemCount: String
+    @State private var itemMemo: String
+    
+    init(
+        tagsGroupedByType: Dictionary<String, [Tag]>,
+        shoppingItem: ShoppingItemEditable,
+        onChangeItem: @escaping (ShoppingItemEditable) -> Void
+    ) {
+        self.tagsGroupedByType = tagsGroupedByType
+        self.shoppingItem = shoppingItem
+        self.onChangeItem = onChangeItem
+        self.itemCount = self.shoppingItem.count
+        self.itemMemo = self.shoppingItem.memo
+    }
     
     var body: some View {
         VStack {
             TagSelector(tagsGroupedByType: tagsGroupedByType) { tag in
                 onChangeItem(shoppingItem.copy(tag: tag))
             }
+            TextField("数量", text: $itemCount)
+                .keyboardType(UIKeyboardType.numberPad)
+                .onChange(of: Just(itemCount)) { _ in
+                    onChangeItem(shoppingItem.copy(count: itemCount))
+                }
+            TextField("メモ", text: $itemMemo)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .onChange(of: Just(itemMemo)) { _ in
+                    onChangeItem(shoppingItem.copy(memo: itemMemo))
+                }
         }
     }
 }
