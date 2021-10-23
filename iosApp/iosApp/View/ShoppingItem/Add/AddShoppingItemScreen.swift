@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import shared
 
 struct AddShoppingItemScreen: View {
     @ObservedObject private(set) var viewModel: ViewModel
@@ -18,8 +19,17 @@ struct AddShoppingItemScreen: View {
 
 private struct AddShoppingItemContentView: View {
     @Binding var uiModel: AddShoppingItemScreen.UiModel
+    @State private var shoppingItemEditable = ShoppingItemEditable.companion.doNewInstanceToAdd()
     
     var body: some View {
-        Text("Add")
+        VStack {
+            ShoppingItemEditor(
+                tagsGroupedByType: uiModel.tagGroupedByType,
+                shoppingItem: shoppingItemEditable
+            ) { shoppingItemEditable in
+                self.shoppingItemEditable = shoppingItemEditable
+            }
+        }
+        .navigationTitle("アイテムを追加")
     }
 }
