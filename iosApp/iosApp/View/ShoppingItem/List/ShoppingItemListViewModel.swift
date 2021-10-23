@@ -14,7 +14,6 @@ extension ShoppingItemListScreen {
         let shoppingItemIosRepository = InjectorIos().shoppingItemIosRepository
 
         @Published var uiModel: UiModel = .EMPTY
-        @Published var shoppingItems: [ShoppingItem] = []
 
         init() {
             fetchShoppingItems()
@@ -24,11 +23,7 @@ extension ShoppingItemListScreen {
         }
 
         func fetchShoppingItems() {
-            shoppingItemRepository.fetchShoppingItems { shoppingItems, error in
-                if let shoppingItems = shoppingItems {
-                    self.shoppingItems = shoppingItems
-                }
-            }
+            shoppingItemRepository.fetchShoppingItems { _, _ in }
         }
     }
 

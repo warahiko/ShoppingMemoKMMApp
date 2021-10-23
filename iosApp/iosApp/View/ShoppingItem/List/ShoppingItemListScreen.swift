@@ -17,14 +17,14 @@ struct ShoppingItemListScreen: View {
 
     var body: some View {
         ShoppingItemListContentView(
-            shoppingItems: $viewModel.shoppingItems,
+            uiModel: $viewModel.uiModel,
             page: page
         )
     }
 }
 
 private struct ShoppingItemListContentView: View {
-    @Binding var shoppingItems: [ShoppingItem]
+    @Binding var uiModel: ShoppingItemListScreen.UiModel
     @ObservedObject var page: Page
 
     var body: some View {
@@ -39,11 +39,11 @@ private struct ShoppingItemListContentView: View {
             Pager(page: page, data: ShoppingItemListTab.allCases) { tab in
                 switch tab {
                 case .main:
-                    MainShoppingItemList(shoppingItems: shoppingItems)
+                    MainShoppingItemList(shoppingItems: uiModel.mainShoppingItems)
                 case .archived:
-                    ArchivedShoppingItemList()
+                    ArchivedShoppingItemList(shoppingItems: uiModel.archivedShoppingItems)
                 case .deleted:
-                    DeletedShoppingItemList()
+                    DeletedShoppingItemList(shoppingItems: uiModel.deletedShoppingItems)
                 }
             }
             .loopPages()

@@ -7,15 +7,31 @@
 //
 
 import SwiftUI
+import shared
 
 struct DeletedShoppingItemList: View {
+    let shoppingItems: [ShoppingItem]
+
     var body: some View {
-        Text("DeletedShoppingItemList")
+        List(shoppingItems) { shoppingItem in
+            ShoppingItemRow(shoppingItem: shoppingItem)
+        }
     }
 }
 
 struct DeletedShoppingItemList_Previews: PreviewProvider {
     static var previews: some View {
-        DeletedShoppingItemList()
+        DeletedShoppingItemList(shoppingItems: ShoppingItemPreview.shared.samples)
+            .previewLayout(PreviewLayout.sizeThatFits)
+            .padding()
+            .previewDisplayName("Light")
+        
+        
+        DeletedShoppingItemList(shoppingItems: ShoppingItemPreview.shared.samples)
+            .previewLayout(PreviewLayout.sizeThatFits)
+            .padding()
+            .background(Color(.systemBackground))
+            .environment(\.colorScheme, .dark)
+            .previewDisplayName("Dark")
     }
 }
