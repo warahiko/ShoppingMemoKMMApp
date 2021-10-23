@@ -16,10 +16,21 @@ struct ShoppingItemListScreen: View {
     @StateObject private var page: Page = .first()
 
     var body: some View {
-        ShoppingItemListContentView(
-            uiModel: $viewModel.uiModel,
-            page: page
-        )
+        NavigationView {
+            ShoppingItemListContentView(
+                uiModel: $viewModel.uiModel,
+                page: page
+            )
+                .navigationTitle("K買い物メモ[DEBUG]")
+                .navigationBarTitleDisplayMode(NavigationBarItem.TitleDisplayMode.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink(destination: AddShoppingItemScreen(viewModel: .init())) {
+                            Text("Add")
+                        }
+                    }
+                }
+        }
     }
 }
 
