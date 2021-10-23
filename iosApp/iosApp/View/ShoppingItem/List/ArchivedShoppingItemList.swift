@@ -14,7 +14,7 @@ struct ArchivedShoppingItemList: View {
     
     var body: some View {
         List(shoppingItems) { shoppingItem in
-            ShoppingItemRow(shoppingItem: shoppingItem)
+            ShoppingItemRow(shoppingItem: shoppingItem, showsCheckBox: false)
         }
     }
 }
