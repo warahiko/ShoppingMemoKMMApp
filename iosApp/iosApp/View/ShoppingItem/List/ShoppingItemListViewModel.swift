@@ -17,9 +17,9 @@ extension ShoppingItemListScreen {
 
         init() {
             fetchShoppingItems()
-            shoppingItemIosRepository.shoppingItems.collect(onEach: { shoppingItems in
+            shoppingItemIosRepository.shoppingItems.collect { shoppingItems in
                 self.uiModel = UiModel.from(shoppingItems: shoppingItems as? [ShoppingItem])
-            })
+            }
         }
 
         func fetchShoppingItems() {
