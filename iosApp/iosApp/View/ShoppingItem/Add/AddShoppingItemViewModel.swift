@@ -12,6 +12,7 @@ extension AddShoppingItemScreen {
     class ViewModel: ObservableObject {
         let tagRepository = InjectorIos().tagRepository
         let tagIosRepository = InjectorIos().tagIosRepository
+        let addShoppingItemUseCase = InjectorIos().addShoppingItemUseCase
         
         @Published var uiModel: UiModel = .EMPTY
         
@@ -19,6 +20,10 @@ extension AddShoppingItemScreen {
             tagIosRepository.tags.collect { tags in
                 self.uiModel = UiModel.from(tags: tags as? [Tag])
             }
+        }
+        
+        func addShoppingItem(_ shoppingItem: ShoppingItem) {
+            addShoppingItemUseCase.invoke(shoppingItem: shoppingItem) { _, _ in }
         }
     }
     

@@ -13,12 +13,13 @@ struct AddShoppingItemScreen: View {
     @ObservedObject private(set) var viewModel: ViewModel
 
     var body: some View {
-        AddShoppingItemContentView(uiModel: $viewModel.uiModel)
+        AddShoppingItemContentView(uiModel: $viewModel.uiModel, onAdd: viewModel.addShoppingItem(_:))
     }
 }
 
 private struct AddShoppingItemContentView: View {
     @Binding var uiModel: AddShoppingItemScreen.UiModel
+    let onAdd: (ShoppingItem) -> Void
     @State private var shoppingItemEditable = ShoppingItemEditable.companion.doNewInstanceToAdd()
 
     var body: some View {
@@ -28,6 +29,11 @@ private struct AddShoppingItemContentView: View {
                 shoppingItem: shoppingItemEditable
             ) { shoppingItemEditable in
                 self.shoppingItemEditable = shoppingItemEditable
+            }
+            Button {
+                onAdd(shoppingItemEditable.fix())
+            } label: {
+                Text("追加")
             }
         }
         .navigationTitle("アイテムを追加")
