@@ -11,9 +11,14 @@ import shared
 
 struct AddShoppingItemScreen: View {
     @ObservedObject private(set) var viewModel: ViewModel
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     var body: some View {
-        AddShoppingItemContentView(uiModel: $viewModel.uiModel, onAdd: viewModel.addShoppingItem(_:))
+        AddShoppingItemContentView(uiModel: $viewModel.uiModel) { shoppingItem in
+            viewModel.addShoppingItem(shoppingItem) {
+                self.presentationMode.wrappedValue.dismiss()
+            }
+        }
     }
 }
 

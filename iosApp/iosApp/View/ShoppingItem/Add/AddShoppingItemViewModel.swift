@@ -22,8 +22,12 @@ extension AddShoppingItemScreen {
             }
         }
         
-        func addShoppingItem(_ shoppingItem: ShoppingItem) {
-            addShoppingItemUseCase.invoke(shoppingItem: shoppingItem) { _, _ in }
+        func addShoppingItem(_ shoppingItem: ShoppingItem, onComplete: @escaping () -> Void) {
+            addShoppingItemUseCase.invoke(shoppingItem: shoppingItem) { _, error in
+                if error == nil {
+                    onComplete()
+                }
+            }
         }
     }
     
