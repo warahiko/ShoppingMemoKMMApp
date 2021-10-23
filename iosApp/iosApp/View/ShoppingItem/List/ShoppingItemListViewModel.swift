@@ -28,13 +28,13 @@ extension ShoppingItemListScreen {
     }
 
     struct UiModel {
-        let mainShoppingItems: [ShoppingItem]
-        let archivedShoppingItems: [ShoppingItem]
+        let mainShoppingItems: Dictionary<String, [ShoppingItem]>
+        let archivedShoppingItems: Dictionary<String, [ShoppingItem]>
         let deletedShoppingItems: [ShoppingItem]
 
         static let EMPTY: UiModel = .init(
-            mainShoppingItems: [],
-            archivedShoppingItems: [],
+            mainShoppingItems: [:],
+            archivedShoppingItems: [:],
             deletedShoppingItems: []
         )
 
@@ -45,12 +45,19 @@ extension ShoppingItemListScreen {
                         status == shoppingItem.status
                     }
                 })
+                .groupBy { shoppingItem in
+                    // かっこがあるとなぜかString? でなくString 扱いになる
+                    (shoppingItem.tag?.type).orEmpty()
+                }
             let archivedShoppingItems = shoppingItems.orEmpty()
                 .filter({ shoppingItem in
                     ShoppingItemListTab.archived.statusList.contains { status in
                         status == shoppingItem.status
                     }
                 })
+                .groupBy { shoppingItem in
+                    (shoppingItem.doneDate?.description()).orEmpty()
+                }
             let deletedShoppingItems = shoppingItems.orEmpty()
                 .filter({ shoppingItem in
                     ShoppingItemListTab.deleted.statusList.contains { status in
