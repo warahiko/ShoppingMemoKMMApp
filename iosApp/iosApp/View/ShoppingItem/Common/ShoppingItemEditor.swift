@@ -32,7 +32,7 @@ struct ShoppingItemEditor: View {
     var body: some View {
         VStack {
             TagSelector(tagsGroupedByType: tagsGroupedByType) { tag in
-                onChangeItem(shoppingItem.copy(tag: tag))
+                onChangeItem(shoppingItem.copy(name: tag.name, tag: tag))
             }
             TextField("数量", text: $itemCount)
                 .keyboardType(UIKeyboardType.numberPad)
