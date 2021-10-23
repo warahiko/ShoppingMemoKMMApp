@@ -34,6 +34,9 @@ private struct ShoppingItemListContentView: View {
                     Tab(parent: self, isSelected: page.index == index, tab: tab)
                         // こうするとなぜか等分になる
                         .frame(minWidth: 0, maxWidth: .infinity)
+                        .onTapGesture {
+                            page.update(Page.Update.new(index: index))
+                        }
                 }
             }
             Pager(page: page, data: ShoppingItemListTab.allCases) { tab in
