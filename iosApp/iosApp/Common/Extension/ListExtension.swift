@@ -15,3 +15,9 @@ extension Optional {
         }
     }
 }
+
+extension Array {
+    func groupBy<T>(_ by: (Element) -> T) -> Dictionary<T, [Element]> {
+        return Dictionary(grouping: self, by: by)
+    }
+}
