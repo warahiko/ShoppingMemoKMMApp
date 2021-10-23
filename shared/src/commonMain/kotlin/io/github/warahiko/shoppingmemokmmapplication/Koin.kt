@@ -28,8 +28,6 @@ import io.ktor.http.HttpHeaders
 import io.ktor.http.contentType
 import kotlinx.serialization.json.Json
 import org.koin.core.KoinApplication
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
 import org.koin.dsl.KoinAppDeclaration
@@ -88,13 +86,4 @@ private fun createHttpClient(): HttpClient {
             )
         }
     }
-}
-
-@Suppress("unused")
-fun initKoinIos() = initKoin {}
-
-@Suppress("unused")
-class InjectorIos : KoinComponent {
-    val shoppingItemRepository: ShoppingItemRepository by inject()
-    val tagRepository: TagRepository by inject()
 }
