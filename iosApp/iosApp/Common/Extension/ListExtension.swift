@@ -6,12 +6,12 @@
 //  Copyright © 2021 orgName. All rights reserved.
 //
 
-extension Optional where Wrapped: Collection {
-    func orEmpty() -> Wrapped {
-        if self == nil {
-            return Array<Wrapped.Element>() as! Wrapped
+extension Optional {
+    func orEmpty<T>() -> [T] where Wrapped == [T] {
+        if let unwrapped = self {
+            return unwrapped
         } else {
-            return self!
+            return []
         }
     }
 }
