@@ -10,12 +10,16 @@ import SwiftUI
 
 struct TagListScreen: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            TagListScreenContentView()
+                .navigationTitle("タグ")
+                .navigationBarTitleDisplayMode(NavigationBarItem.TitleDisplayMode.inline)
+        }
     }
 }
 
-struct TagListScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        TagListScreen()
+private struct TagListScreenContentView: View {
+    var body: some View {
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
