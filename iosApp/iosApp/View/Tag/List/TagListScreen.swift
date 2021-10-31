@@ -9,9 +9,13 @@
 import SwiftUI
 
 struct TagListScreen: View {
+    @ObservedObject private(set) var viewModel: ViewModel
+    
     var body: some View {
         NavigationView {
-            TagListScreenContentView()
+            TagListScreenContentView(
+                uiModel: $viewModel.uiModel
+            )
                 .navigationTitle("タグ")
                 .navigationBarTitleDisplayMode(NavigationBarItem.TitleDisplayMode.inline)
         }
@@ -19,7 +23,9 @@ struct TagListScreen: View {
 }
 
 private struct TagListScreenContentView: View {
+    @Binding var uiModel: TagListScreen.UiModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text(uiModel.tagsGroupedByType.first?.value.first?.description() ?? "null")
     }
 }

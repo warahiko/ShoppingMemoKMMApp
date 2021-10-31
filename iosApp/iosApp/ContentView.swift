@@ -10,7 +10,7 @@ struct ContentView: View {
                     Text("買い物リスト")
                 }
             
-            TagListScreen()
+            TagListScreen(viewModel: .init())
                 .tabItem {
                     Image(systemName: "tag.fill")
                     Text("タグ")
