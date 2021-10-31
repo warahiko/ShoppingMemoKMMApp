@@ -20,6 +20,8 @@
 		C79602A32721AB9300AA511F /* ArchivedShoppingItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79602A22721AB9300AA511F /* ArchivedShoppingItemList.swift */; };
 		C79602A52721ABAA00AA511F /* DeletedShoppingItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79602A42721ABAA00AA511F /* DeletedShoppingItemList.swift */; };
 		C79602A72721AE3B00AA511F /* ShoppingItemListTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79602A62721AE3B00AA511F /* ShoppingItemListTab.swift */; };
+		C796C1AE272E8A46001EED6D /* TagListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C796C1AD272E8A46001EED6D /* TagListScreen.swift */; };
+		C796C1B0272E8C60001EED6D /* TagListScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C796C1AF272E8C60001EED6D /* TagListScreenViewModel.swift */; };
 		C7CA112A2724328D00D7FF1A /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CA11292724328D00D7FF1A /* StringExtension.swift */; };
 		C7CA112C2724432F00D7FF1A /* AddShoppingItemScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CA112B2724432F00D7FF1A /* AddShoppingItemScreen.swift */; };
 		C7CA112E2724436F00D7FF1A /* AddShoppingItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CA112D2724436F00D7FF1A /* AddShoppingItemViewModel.swift */; };
@@ -49,6 +51,8 @@
 		C79602A22721AB9300AA511F /* ArchivedShoppingItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedShoppingItemList.swift; sourceTree = "<group>"; };
 		C79602A42721ABAA00AA511F /* DeletedShoppingItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletedShoppingItemList.swift; sourceTree = "<group>"; };
 		C79602A62721AE3B00AA511F /* ShoppingItemListTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemListTab.swift; sourceTree = "<group>"; };
+		C796C1AD272E8A46001EED6D /* TagListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListScreen.swift; sourceTree = "<group>"; };
+		C796C1AF272E8C60001EED6D /* TagListScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListScreenViewModel.swift; sourceTree = "<group>"; };
 		C7CA11292724328D00D7FF1A /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		C7CA112B2724432F00D7FF1A /* AddShoppingItemScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddShoppingItemScreen.swift; sourceTree = "<group>"; };
 		C7CA112D2724436F00D7FF1A /* AddShoppingItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddShoppingItemViewModel.swift; sourceTree = "<group>"; };
@@ -228,6 +232,8 @@
 		C7E10851271F16810006F3D8 /* List */ = {
 			isa = PBXGroup;
 			children = (
+				C796C1AD272E8A46001EED6D /* TagListScreen.swift */,
+				C796C1AF272E8C60001EED6D /* TagListScreenViewModel.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -390,6 +396,7 @@
 				C7E1085A271F18110006F3D8 /* CheckBox.swift in Sources */,
 				C796029D2721921F00AA511F /* ShoppingItemExtension.swift in Sources */,
 				C7E1085D271F19A00006F3D8 /* Color.swift in Sources */,
+				C796C1AE272E8A46001EED6D /* TagListScreen.swift in Sources */,
 				C7CA112C2724432F00D7FF1A /* AddShoppingItemScreen.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				C7CA113327244CE800D7FF1A /* TagExtension.swift in Sources */,
@@ -397,6 +404,7 @@
 				C79602A72721AE3B00AA511F /* ShoppingItemListTab.swift in Sources */,
 				C79602A32721AB9300AA511F /* ArchivedShoppingItemList.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
+				C796C1B0272E8C60001EED6D /* TagListScreenViewModel.swift in Sources */,
 				C7E10855271F16C20006F3D8 /* ShoppingItemListScreen.swift in Sources */,
 				C79602A52721ABAA00AA511F /* DeletedShoppingItemList.swift in Sources */,
 				C7CA112E2724436F00D7FF1A /* AddShoppingItemViewModel.swift in Sources */,
