@@ -26,6 +26,14 @@ private struct TagListScreenContentView: View {
     @Binding var uiModel: TagListScreen.UiModel
     
     var body: some View {
-        Text(uiModel.tagsGroupedByType.first?.value.first?.description() ?? "null")
+        List {
+            ForEach(uiModel.tagsGroupedByType.keys.map { $0 }, id: \.self) { type in
+                Section(header: Text(type)) {
+                    ForEach(uiModel.tagsGroupedByType[type].orEmpty()) { tag in
+                        Text(tag.name)
+                    }
+                }
+            }
+        }
     }
 }
