@@ -14,8 +14,8 @@ struct ArchivedShoppingItemList: View {
     
     var body: some View {
         List {
-            // RandomAccessCollection にするためList にする
-            ForEach(shoppingItems.keys.map { $0 }, id: \.self) { date in
+            // RandomAccessCollection にするためArray にする
+            ForEach(Array(shoppingItems.keys), id: \.self) { date in
                 Section(header: Text(date)) {
                     ForEach(shoppingItems[date].orEmpty()) { item in
                         ShoppingItemRow(shoppingItem: item, showsCheckBox: false)

@@ -14,8 +14,8 @@ struct MainShoppingItemList: View {
 
     var body: some View {
         List {
-            // RandomAccessCollection にするためList にする
-            ForEach(shoppingItems.keys.map { $0 }, id: \.self) { tag in
+            // RandomAccessCollection にするためArray にする
+            ForEach(Array(shoppingItems.keys), id: \.self) { tag in
                 Section(header: Text(tag)) {
                     ForEach(shoppingItems[tag].orEmpty()) { item in
                         ShoppingItemRow(shoppingItem: item)

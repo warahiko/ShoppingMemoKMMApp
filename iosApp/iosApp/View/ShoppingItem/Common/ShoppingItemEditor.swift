@@ -55,7 +55,7 @@ private struct TagSelector: View {
     
     var body: some View {
         Menu(selectedTag?.description() ?? "タグ") {
-            ForEach(tagsGroupedByType.keys.map { $0 }, id: \.self) { type in
+            ForEach(Array(tagsGroupedByType.keys), id: \.self) { type in
                 Menu(type) {
                     ForEach(tagsGroupedByType[type].orEmpty()) { tag in
                         Button {
