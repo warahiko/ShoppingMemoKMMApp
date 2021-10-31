@@ -18,7 +18,7 @@ struct AddShoppingItemScreen: View {
             viewModel.addShoppingItem(shoppingItem) {
                 self.presentationMode.wrappedValue.dismiss()
             }
-        }
+        }.loadingDialog(isLoading: viewModel.showProgress)
     }
 }
 
