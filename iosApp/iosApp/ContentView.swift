@@ -3,6 +3,18 @@ import shared
 
 struct ContentView: View {
 	var body: some View {
-        ShoppingItemListScreen(viewModel: .init())
+        TabView {
+            ShoppingItemListScreen(viewModel: .init())
+                .tabItem {
+                    Image(systemName: "cart.fill")
+                    Text("買い物リスト")
+                }
+            
+            TagListScreen()
+                .tabItem {
+                    Image(systemName: "tag.fill")
+                    Text("タグ")
+                }
+        }
 	}
 }
