@@ -54,7 +54,7 @@ private struct TagSelector: View {
     let onChangeTag: (Tag) -> Void
     
     var body: some View {
-        Menu(selectedTag?.description() ?? "タグ") {
+        Menu {
             ForEach(Array(tagsGroupedByType.keys), id: \.self) { type in
                 Menu(type) {
                     ForEach(tagsGroupedByType[type].orEmpty()) { tag in
@@ -67,6 +67,10 @@ private struct TagSelector: View {
                     }
                 }
             }
+        } label: {
+            Text(selectedTag?.description() ?? "タグを選択")
+                .padding(EdgeInsets(top: 8, leading: 4, bottom: 8, trailing: 4))
+                .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
 }
