@@ -14,22 +14,43 @@ struct ShoppingItemListScreen: View {
     @ObservedObject private(set) var viewModel: ViewModel
 
     @StateObject private var page: Page = .first()
+    
+    @State private var isActiveNavigateToEdit = false
+    @State private var shoppingItemToEdit: ShoppingItem? = nil
 
     var body: some View {
         NavigationView {
-            ShoppingItemListContentView(
-                uiModel: $viewModel.uiModel,
-                page: page
-            )
-                .navigationTitle("K買い物メモ[DEBUG]")
-                .navigationBarTitleDisplayMode(NavigationBarItem.TitleDisplayMode.inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink(destination: AddShoppingItemScreen(viewModel: .init())) {
-                            Text("Add")
+            ZStack {
+                ShoppingItemListContentView(
+                    uiModel: $viewModel.uiModel,
+                    page: page,
+                    onEdit: { item in
+                        shoppingItemToEdit = item
+                        isActiveNavigateToEdit = true
+                    }
+                )
+                    .navigationTitle("K買い物メモ[DEBUG]")
+                    .navigationBarTitleDisplayMode(NavigationBarItem.TitleDisplayMode.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            NavigationLink(destination: AddShoppingItemScreen(viewModel: .init())) {
+                                Text("Add")
+                            }
                         }
                     }
+                
+                if let shoppingItemToEdit = shoppingItemToEdit {
+                    NavigationLink(
+                        destination: EditShoppingItemScreen(
+                            viewModel: .init(),
+                            shoppingItem: shoppingItemToEdit
+                        ),
+                        isActive: $isActiveNavigateToEdit
+                    ) {
+                        EmptyView()
+                    }
                 }
+            }
         }
     }
 }
@@ -37,6 +58,8 @@ struct ShoppingItemListScreen: View {
 private struct ShoppingItemListContentView: View {
     @Binding var uiModel: ShoppingItemListScreen.UiModel
     @ObservedObject var page: Page
+    
+    let onEdit: (ShoppingItem) -> Void
 
     var body: some View {
         VStack {
@@ -53,7 +76,7 @@ private struct ShoppingItemListContentView: View {
             Pager(page: page, data: ShoppingItemListTab.allCases) { tab in
                 switch tab {
                 case .main:
-                    MainShoppingItemList(shoppingItems: uiModel.mainShoppingItems)
+                    MainShoppingItemList(shoppingItems: uiModel.mainShoppingItems, onEdit: onEdit)
                 case .archived:
                     ArchivedShoppingItemList(shoppingItems: uiModel.archivedShoppingItems)
                 case .deleted:
