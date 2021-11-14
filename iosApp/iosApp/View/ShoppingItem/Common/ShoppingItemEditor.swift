@@ -70,3 +70,27 @@ private struct TagSelector: View {
         }
     }
 }
+
+struct ShoppingItemEditor_Previews: PreviewProvider {
+    static var previews: some View {
+        ShoppingItemEditor(
+            tagsGroupedByType: [:],
+            shoppingItem: ShoppingItemEditable.companion.doNewInstanceToAdd(),
+            onChangeItem: { _ in }
+        )
+            .previewLayout(.device)
+            .padding()
+            .previewDisplayName("Light")
+        
+        ShoppingItemEditor(
+            tagsGroupedByType: [:],
+            shoppingItem: ShoppingItemEditable.companion.doNewInstanceToAdd(),
+            onChangeItem: { _ in }
+        )
+            .previewLayout(.device)
+            .padding()
+            .background(Color(.systemBackground))
+            .environment(\.colorScheme, .dark)
+            .previewDisplayName("Dark")
+    }
+}
