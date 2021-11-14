@@ -25,6 +25,7 @@ struct EditShoppingItemScreen: View {
                     }
                 }
             )
+                .loadingDialog(isLoading: viewModel.showProgress)
                 .navigationTitle("アイテムを編集")
                 .navigationBarTitleDisplayMode(NavigationBarItem.TitleDisplayMode.inline)
         }
