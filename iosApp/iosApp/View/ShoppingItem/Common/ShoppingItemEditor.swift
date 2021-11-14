@@ -31,7 +31,7 @@ struct ShoppingItemEditor: View {
     
     var body: some View {
         VStack {
-            TagSelector(tagsGroupedByType: tagsGroupedByType) { tag in
+            TagSelector(selectedTag: shoppingItem.tag, tagsGroupedByType: tagsGroupedByType) { tag in
                 onChangeItem(shoppingItem.copy(name: tag.name, tag: tag))
             }
             TextField("数量", text: $itemCount)
@@ -49,9 +49,9 @@ struct ShoppingItemEditor: View {
 }
 
 private struct TagSelector: View {
+    @State private(set) var selectedTag: Tag?
     let tagsGroupedByType: Dictionary<String, [Tag]>
     let onChangeTag: (Tag) -> Void
-    @State private(set) var selectedTag: Tag? = nil
     
     var body: some View {
         Menu(selectedTag?.description() ?? "タグ") {
