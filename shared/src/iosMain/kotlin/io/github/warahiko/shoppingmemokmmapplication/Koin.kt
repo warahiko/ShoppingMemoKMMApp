@@ -7,6 +7,7 @@ import io.github.warahiko.shoppingmemokmmapplication.data.repository.ShoppingIte
 import io.github.warahiko.shoppingmemokmmapplication.data.repository.TagIosRepository
 import io.github.warahiko.shoppingmemokmmapplication.data.repository.TagRepository
 import io.github.warahiko.shoppingmemokmmapplication.usecase.shoppingitem.AddShoppingItemUseCase
+import io.github.warahiko.shoppingmemokmmapplication.usecase.shoppingitem.EditShoppingItemUseCase
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.module.Module
@@ -29,4 +30,5 @@ class InjectorIos : KoinComponent {
     val tagIosRepository: TagIosRepository by inject()
 
     val addShoppingItemUseCase: AddShoppingItemUseCase by inject()
+    val editShoppingItemUseCase: EditShoppingItemUseCase by inject()
 }
