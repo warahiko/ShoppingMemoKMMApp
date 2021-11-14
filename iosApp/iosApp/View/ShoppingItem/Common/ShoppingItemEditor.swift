@@ -83,7 +83,6 @@ struct ShoppingItemEditor_Previews: PreviewProvider {
             onChangeItem: { _ in }
         )
             .previewLayout(.device)
-            .padding()
             .previewDisplayName("Light")
         
         ShoppingItemEditor(
@@ -92,7 +91,6 @@ struct ShoppingItemEditor_Previews: PreviewProvider {
             onChangeItem: { _ in }
         )
             .previewLayout(.device)
-            .padding()
             .background(Color(.systemBackground))
             .environment(\.colorScheme, .dark)
             .previewDisplayName("Dark")
