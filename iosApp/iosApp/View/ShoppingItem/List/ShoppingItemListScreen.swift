@@ -16,6 +16,7 @@ struct ShoppingItemListScreen: View {
     @StateObject private var page: Page = .first()
     
     @State private var isActiveNavigateToEdit = false
+    @State private var shoppingItemToEdit: ShoppingItem? = nil
 
     var body: some View {
         NavigationView {
@@ -24,6 +25,7 @@ struct ShoppingItemListScreen: View {
                     uiModel: $viewModel.uiModel,
                     page: page,
                     onEdit: { item in
+                        shoppingItemToEdit = item
                         isActiveNavigateToEdit = true
                     }
                 )
@@ -37,11 +39,16 @@ struct ShoppingItemListScreen: View {
                         }
                     }
                 
-                NavigationLink(
-                    destination: EditShoppingItemScreen(),
-                    isActive: $isActiveNavigateToEdit
-                ) {
-                    EmptyView()
+                if let shoppingItemToEdit = shoppingItemToEdit {
+                    NavigationLink(
+                        destination: EditShoppingItemScreen(
+                            viewModel: .init(),
+                            shoppingItem: shoppingItemToEdit
+                        ),
+                        isActive: $isActiveNavigateToEdit
+                    ) {
+                        EmptyView()
+                    }
                 }
             }
         }

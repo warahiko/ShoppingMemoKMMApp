@@ -7,19 +7,58 @@
 //
 
 import SwiftUI
+import shared
 
 struct EditShoppingItemScreen: View {
+    @ObservedObject private(set) var viewModel: ViewModel
+    let shoppingItem: ShoppingItem
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+
     var body: some View {
         NavigationView {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            EditShoppingItemContentView(
+                shoppingItem: shoppingItem,
+                uiModel: $viewModel.uiModel,
+                onEdit: { shoppingItem in
+                    viewModel.editShoppingItem(shoppingItem) {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                }
+            )
                 .navigationTitle("アイテムを編集")
                 .navigationBarTitleDisplayMode(NavigationBarItem.TitleDisplayMode.inline)
         }
     }
 }
 
-struct EditShoppingItemScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        EditShoppingItemScreen()
+private struct EditShoppingItemContentView: View {
+    @Binding var uiModel: EditShoppingItemScreen.UiModel
+    let onEdit: (ShoppingItem) -> Void
+    @State private var shoppingItemEditable: ShoppingItemEditable
+
+    init(
+        shoppingItem: ShoppingItem,
+        uiModel: Binding<EditShoppingItemScreen.UiModel>,
+        onEdit: @escaping (ShoppingItem) -> Void
+    ) {
+        self._uiModel = uiModel
+        self.onEdit = onEdit
+        self.shoppingItemEditable = shoppingItem.toEditable()
+    }
+
+    var body: some View {
+        VStack {
+            ShoppingItemEditor(
+                tagsGroupedByType: uiModel.tagGroupedByType,
+                shoppingItem: shoppingItemEditable
+            ) { shoppingItemEditable in
+                self.shoppingItemEditable = shoppingItemEditable
+            }
+            Button {
+                onEdit(shoppingItemEditable.fix())
+            } label: {
+                Text("編集")
+            }
+        }
     }
 }
