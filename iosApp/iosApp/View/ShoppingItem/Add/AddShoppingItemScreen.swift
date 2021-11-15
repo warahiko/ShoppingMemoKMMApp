@@ -45,7 +45,7 @@ private struct AddShoppingItemContentView: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                     .background(
                         RoundedRectangle(cornerRadius: 8)
-                            .foregroundColor(Color.blue)
+                            .foregroundColor(ShoppingMemoColor.lightRed.color)
                     )
             }
             .padding()
