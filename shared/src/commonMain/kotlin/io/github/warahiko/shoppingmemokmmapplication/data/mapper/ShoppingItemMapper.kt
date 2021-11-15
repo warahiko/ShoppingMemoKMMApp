@@ -27,9 +27,10 @@ fun ShoppingItemPage.toShoppingItem(): ShoppingItem {
 }
 
 fun ShoppingItemPage.toShoppingItemWithTag(tags: List<Tag>): ShoppingItem {
-    val relationId = relations.first().id
+    val item = this.toShoppingItem()
+    val relationId = relations.firstOrNull()?.id ?: return item
     val tag = tags.singleOrNull { it.id.toString() == relationId }
-    return this.toShoppingItem().copy(tag = tag)
+    return item.copy(tag = tag)
 }
 
 val ShoppingItemPage.relations: List<Relation>
