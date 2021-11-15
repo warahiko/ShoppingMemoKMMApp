@@ -35,12 +35,17 @@ private struct AddShoppingItemContentView: View {
             ) { shoppingItemEditable in
                 self.shoppingItemEditable = shoppingItemEditable
             }
+            .padding()
             Button {
                 onAdd(shoppingItemEditable.fix())
             } label: {
                 Text("追加")
             }
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .trailing)
         }
+        .frame(maxHeight: .infinity, alignment: .top)
+        .background(ShoppingMemoColor.lightGray.color)
         .navigationTitle("アイテムを追加")
     }
 }

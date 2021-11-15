@@ -55,11 +55,16 @@ private struct EditShoppingItemContentView: View {
             ) { shoppingItemEditable in
                 self.shoppingItemEditable = shoppingItemEditable
             }
+            .padding()
             Button {
                 onEdit(shoppingItemEditable.fix())
             } label: {
                 Text("編集")
             }
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .trailing)
         }
+        .frame(maxHeight: .infinity, alignment: .top)
+        .background(ShoppingMemoColor.lightGray.color)
     }
 }

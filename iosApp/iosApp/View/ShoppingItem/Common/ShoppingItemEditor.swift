@@ -30,21 +30,31 @@ struct ShoppingItemEditor: View {
     }
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             TagSelector(selectedTag: shoppingItem.tag, tagsGroupedByType: tagsGroupedByType) { tag in
                 onChangeItem(shoppingItem.copy(name: tag.name, tag: tag))
             }
+            .frame(height: 36)
+            Divider()
             TextField("数量", text: $itemCount)
                 .keyboardType(UIKeyboardType.numberPad)
                 .onChange(of: Just(itemCount)) { _ in
                     onChangeItem(shoppingItem.copy(count: itemCount))
                 }
+                .frame(height: 36)
+            Divider()
             TextField("メモ", text: $itemMemo)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
                 .onChange(of: Just(itemMemo)) { _ in
                     onChangeItem(shoppingItem.copy(memo: itemMemo))
                 }
+                .frame(height: 36)
         }
+        .padding(.leading, 8)
+        .padding(.vertical, 4)
+        .background(
+            RoundedRectangle(cornerRadius: 8)
+                .foregroundColor(ShoppingMemoColor.white.color)
+        )
     }
 }
 
