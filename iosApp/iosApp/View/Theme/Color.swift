@@ -14,6 +14,7 @@ enum ShoppingMemoColor {
     case lightRed
     case black
     case white
+    case lightGray
     
     var color: Color {
         switch self {
@@ -27,6 +28,8 @@ enum ShoppingMemoColor {
             return Color(value: 0xFF000000)
         case .white:
             return Color(value: 0xFFFFFFFF)
+        case .lightGray:
+            return Color(value: 0xFFEEEEEE)
         }
     }
 }
