@@ -28,7 +28,7 @@ private struct AddShoppingItemContentView: View {
     @State private var shoppingItemEditable = ShoppingItemEditable.companion.doNewInstanceToAdd()
 
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             ShoppingItemEditor(
                 tagsGroupedByType: uiModel.tagGroupedByType,
                 shoppingItem: shoppingItemEditable
@@ -40,6 +40,13 @@ private struct AddShoppingItemContentView: View {
                 onAdd(shoppingItemEditable.fix())
             } label: {
                 Text("追加")
+                    .foregroundColor(ShoppingMemoColor.white.color)
+                    .padding(.vertical, 8)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .foregroundColor(Color.blue)
+                    )
             }
             .padding()
             .frame(maxWidth: .infinity, alignment: .trailing)
