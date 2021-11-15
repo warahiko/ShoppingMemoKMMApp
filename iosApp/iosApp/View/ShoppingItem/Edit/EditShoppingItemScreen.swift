@@ -48,18 +48,30 @@ private struct EditShoppingItemContentView: View {
     }
 
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             ShoppingItemEditor(
                 tagsGroupedByType: uiModel.tagGroupedByType,
                 shoppingItem: shoppingItemEditable
             ) { shoppingItemEditable in
                 self.shoppingItemEditable = shoppingItemEditable
             }
+            .padding()
             Button {
                 onEdit(shoppingItemEditable.fix())
             } label: {
                 Text("編集")
+                    .foregroundColor(ShoppingMemoColor.white.color)
+                    .padding(.vertical, 8)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .foregroundColor(ShoppingMemoColor.lightRed.color)
+                    )
             }
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .trailing)
         }
+        .frame(maxHeight: .infinity, alignment: .top)
+        .background(ShoppingMemoColor.lightGray.color)
     }
 }
